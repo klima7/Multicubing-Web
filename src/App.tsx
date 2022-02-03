@@ -26,7 +26,7 @@ function App() {
 }
 
 function performRequest() {
-  axios.get(`http://127.0.0.1:8000/api/todos/`)
+  axios.post(`https://multicubing-backend.herokuapp.com/api/accounts/register/`)
   .then(res => {
     const persons = res.data;
     console.log(persons);
