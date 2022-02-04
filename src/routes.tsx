@@ -3,7 +3,7 @@ import App from './App';
 
 const routes = (
   <Routes>
-    <Route path="/abc" element={<App />}/>
+    <Route path="/" element={<App />}/>
   </Routes>
 );
 
