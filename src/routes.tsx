@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router';
-import App from './App';
+import RequestPage from './pages/RequestPage';
 
 const routes = (
   <Routes>
-    <Route path="/" element={<App />}/>
+    <Route path="/" element={<RequestPage />}/>
   </Routes>
 );
 
