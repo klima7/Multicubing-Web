@@ -1,18 +1,22 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { Coffee } from 'mdi-material-ui'
-import Button from '@mui/material/Button';
+import logo from '../images/logo.svg';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 function IndexPage() {
   return (
-    <div>
-        <h1>Index Page</h1>
-        <Button variant="contained">Hello Material UI!</Button>
-        <DeleteIcon />
-        <FontAwesomeIcon icon={faCoffee} />
-        <Coffee />
-    </div>
+<Grid container spacing={2} alignItems="center">
+  <Grid item xs={12} md={6} style={{textAlign: "center"}}>
+    <Box sx={{mt: 10}}>
+      <img src={logo} className="App-logo" alt="logo" width='300pt' />
+      <h1>Multicubing</h1>
+    </Box>
+  </Grid>
+  <Grid item xs={12} md={6} style={{textAlign: "center"}}>
+    <Box sx={{mt: 10}}>
+      <p>Rozwiązuj układanki logiczne z ludźmi z całęgo świata!</p>
+    </Box>
+  </Grid>
+</Grid>
   );
 }
 
