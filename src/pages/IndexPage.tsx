@@ -13,7 +13,7 @@ function IndexPage() {
   </Grid>
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
     <Box sx={{mt: 10}}>
-      <p>Rozwiązuj układanki logiczne z ludźmi z całęgo świata!</p>
+      <h2>Solve puzzles with speedcubers around the world!</h2>
     </Box>
   </Grid>
 </Grid>
