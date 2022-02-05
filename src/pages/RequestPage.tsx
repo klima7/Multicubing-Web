@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function App() {
+function RequestPage() {
   return (
     <div>
         <button onClick={performRequest}>Perform request</button>
@@ -16,4 +16,4 @@ function performRequest() {
   })
 }
 
-export default App;
+export default RequestPage;
