@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import React from 'react'
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -7,6 +9,48 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 function LoginPage() {
+
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(true);
+  const [error, setError] = useState(false);
+  const [buttonEnabled, setButtonEnabled] = React.useState(false);
+  
+  function performLogin() {
+    console.log(`Logging ${login} ${password}`);
+    setError(true);
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const targetId = event.target.id;
+    if(targetId === 'login') {
+      setLogin(event.target.value);
+      setError(false);
+    }
+    else if(targetId === 'password') {
+      setPassword(event.target.value);
+      setError(false);
+    }
+    else if(targetId === 'rememberMe') {
+      setRememberMe(event.target.checked);
+      console.log(event.target.checked);
+    }
+  }
+
+  useEffect(() => {
+    setButtonEnabled(login.length > 0 && password.length > 0);
+  }, [login, password])
+
+  function renderError() {
+    return (
+      <div>
+        <p style={{color: 'red', fontWeight: 'bold', marginBottom: '0'}}>
+          Invalid login or password
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div>
         <Grid container>
@@ -14,10 +58,44 @@ function LoginPage() {
             <Box sx={{mt: 10}}>
               <Paper variant="outlined" style={{display: 'inline-block', width: '60ex', borderColor: '#0000ff', borderWidth: '1.2pt', padding: '10pt'}}>
                 <h1>Login</h1>
-                <div><TextField label="Login" variant="outlined" style={{width: '100%', marginBottom: '10px'}}/></div>
-                <div><TextField label="Password" variant="outlined" type="password" style={{width: '100%'}} /></div>
-                <div style={{textAlign: 'left'}}><FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" /></div>
-                <div><Button variant="contained" style={{width: '100%'}}>Login</Button></div>
+                <div>
+                  <TextField 
+                  id="login"
+                  label="Login" 
+                  variant="outlined" 
+                  onChange={handleChange} 
+                  autoComplete="false"
+                  style={{width: '100%', marginBottom: '10px'}}
+                  />
+                </div>
+                <div>
+                  <TextField 
+                  id="password"
+                  label="Password" 
+                  variant="outlined" 
+                  type="password" 
+                  onChange={handleChange} 
+                  style={{width: '100%'}} 
+                  />
+                </div>
+                <div style={{textAlign: 'left'}}>
+                  <FormControlLabel 
+                  control={
+                    <Checkbox 
+                    id="rememberMe"
+                    onChange={handleChange} 
+                    defaultChecked 
+                    />} 
+                  label="Remember me" /></div>
+                <div>
+                  <Button 
+                  variant="contained" 
+                  style={{width: '100%'}} 
+                  onClick={performLogin}
+                  disabled={!buttonEnabled}
+                  >Login</Button>
+                </div>
+                {error && renderError()}
               </Paper>
             </Box>
           </Grid>
