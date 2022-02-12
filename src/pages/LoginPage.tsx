@@ -17,7 +17,7 @@ function LoginPage() {
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
   
   function performLogin() {
-    console.log(`Logging ${login} ${password}`);
+    console.log(`Logging ${login} ${password} ${rememberMe}`);
     setError(true);
   }
 

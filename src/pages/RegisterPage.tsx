@@ -19,6 +19,10 @@ function RegisterPage() {
 
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
+  function performRegister() {
+    console.log(`Logging ${login} ${email} ${password}`);
+  }
+
   function validateEmail(email: string) {
     if(email.length === 0) return true;
     const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -118,6 +122,7 @@ function RegisterPage() {
                   <Button 
                   variant="contained" 
                   disabled={!buttonEnabled}
+                  onClick={performRegister}
                   style={{width: '100%'}}
                   >Register</Button>
                 </div>
