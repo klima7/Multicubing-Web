@@ -4,6 +4,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useAppDispatch } from '../hooks';
+import { registerThunk } from '../actions/registerActions';
 
 function RegisterPage() {
 
@@ -19,8 +21,11 @@ function RegisterPage() {
 
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
+  const dispatch = useAppDispatch()
+
   function performRegister() {
     console.log(`Logging ${login} ${email} ${password}`);
+    dispatch(registerThunk({login: login, email: email, password: password}))
   }
 
   function validateEmail(email: string) {
