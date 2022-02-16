@@ -9,7 +9,7 @@ const routes = (
     <Route path="/" element={<IndexPage />}/>
     <Route path="/login" element={<LoginPage />}/>
     <Route path="/register" element={<RegisterPage />}/>
-    <Route path="/request" element={<RequestPage />}/>
+    <Route path="/test" element={<RequestPage />}/>
   </Routes>
 );
 

@@ -24,7 +24,7 @@ function RegisterPage() {
   const dispatch = useAppDispatch()
 
   function performRegister() {
-    console.log(`Logging ${login} ${email} ${password}`);
+    console.log(`Registering ${login} ${email} ${password}`);
     dispatch(registerThunk({login: login, email: email, password: password}))
   }
 
