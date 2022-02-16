@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 function RequestPage() {
+  const env = process.env.NODE_ENV;
   return (
     <div>
         <button onClick={performRequest}>Perform request</button>
+        <p>Environment: {env}</p>
     </div>
   );
 }
