@@ -8,6 +8,7 @@ function RequestPage() {
   const dispatch = useAppDispatch()
 
   const env = process.env.NODE_ENV;
+  
   return (
     <div>
         <button onClick={performRequest}>Perform request</button>

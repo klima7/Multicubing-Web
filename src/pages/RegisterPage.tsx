@@ -4,8 +4,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useAppDispatch } from '../hooks';
-import { registerThunk } from '../actions/registerActions';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { register } from '../actions/registerActions';
 
 function RegisterPage() {
 
@@ -14,18 +14,24 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [repeatedPassword, setRepeatedPassword] = useState('');
 
-  const [emailError, setEmailError] = useState(false);
-  const [loginError, setLoginError] = useState(false);
+  const [emailError, setEmailError] = useState(0);
+  const [loginError, setLoginError] = useState(0);
   const [passwordError, setPasswordError] = useState(false);
   const [repeatedPasswordError, setRepeatedPasswordError] = useState(false);
 
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
   const dispatch = useAppDispatch()
+  const pending = useAppSelector((state) => state.registrationReducer.pending)
 
   function performRegister() {
     console.log(`Registering ${login} ${email} ${password}`);
-    dispatch(registerThunk({login: login, email: email, password: password}))
+    const promise = dispatch(register({login: login, email: email, password: password}))
+    promise.then(response => {
+      console.log('then', response);
+      if(response.meta.requestStatus === "rejected") {
+      }
+    })
   }
 
   function validateEmail(email: string) {
@@ -39,12 +45,12 @@ function RegisterPage() {
     if(targetId === 'login') {
       const value = event.target.value
       setLogin(value);
-      setLoginError(value.length !== 0 && value.length < 5)
+      setLoginError((value.length !== 0 && value.length < 5) ? 1 : 0)
     }
     if(targetId === 'email') {
       const value = event.target.value
       setEmail(value);
-      setEmailError(value.length !== 0 && !validateEmail(value))
+      setEmailError((value.length !== 0 && !validateEmail(value)) ? 1 : 0)
     }
     else if(targetId === 'password') {
       const value = event.target.value
@@ -55,6 +61,27 @@ function RegisterPage() {
       const value = event.target.value
       setRepeatedPassword(value);
       setRepeatedPasswordError(value.length !== 0 && value !== password)
+    }
+  }
+
+  function getLoginError(code: number) {
+    if(code === 0 || code === 1) {
+      return "Minimum 5 characters";
+    }
+    else if(code === 2) {
+      return "Login already taken";
+    }
+  }
+
+  function getEmailError(code: number) {
+    if(code === 0) {
+      return "";
+    }
+    else if(code === 1) {
+      return "Invalid email format";
+    }
+    else if(code === 2) {
+      return "Email already taken";
     }
   }
 
@@ -73,28 +100,29 @@ function RegisterPage() {
             <Box sx={{mt: 10}}>
               <Paper variant="outlined" style={{display: 'inline-block', width: '60ex', borderColor: '#0000ff', borderWidth: '1.2pt', padding: '10pt'}}>
                 <h1>Register</h1>
+                <h2>Pending: {pending ? 'true' : 'false'}</h2>
                 <div>
                   <TextField 
-                  error={loginError}
+                  error={loginError !== 0}
                   id="login"
                   label="Login" 
                   variant="outlined" 
                   autoComplete="false"
                   onChange={handleChange} 
-                  helperText={"Minimum 5 characters"}
+                  helperText={getLoginError(loginError)}
                   style={{width: '100%', marginBottom: '10px'}}
                   />
                 </div>
                 <div>
                   <TextField 
-                  error={emailError}
+                  error={emailError !== 0}
                   id="email"
                   label="Email" 
                   variant="outlined" 
                   autoComplete="false"
                   onChange={handleChange} 
                   style={{width: '100%', marginBottom: '10px'}}
-                  helperText={emailError ? 'Invalid email format' : ' '}
+                  helperText={getEmailError(emailError)}
                   />
                 </div>
                 <div>
