@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { register } from '../actions/registerActions';
 
@@ -100,7 +101,6 @@ function RegisterPage() {
             <Box sx={{mt: 10}}>
               <Paper variant="outlined" style={{display: 'inline-block', width: '60ex', borderColor: '#0000ff', borderWidth: '1.2pt', padding: '10pt'}}>
                 <h1>Register</h1>
-                <h2>Pending: {pending ? 'true' : 'false'}</h2>
                 <div>
                   <TextField 
                   error={loginError !== 0}
@@ -152,12 +152,16 @@ function RegisterPage() {
                   />
                 </div>
                 <div>
+                  {!pending ?
                   <Button 
                   variant="contained" 
                   disabled={!buttonEnabled}
                   onClick={performRegister}
                   style={{width: '100%'}}
-                  >Register</Button>
+                  >Register</Button> 
+                  :
+                  <CircularProgress /> 
+                  }
                 </div>
               </Paper>
             </Box>
