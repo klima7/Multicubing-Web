@@ -10,7 +10,7 @@ const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
   message: 'Now you can see how easy it is to use notifications in React!',
   position: 'tr',
-  autoDismiss: 2,
+  autoDismiss: 4,
 };
 
 function TestPage() {
