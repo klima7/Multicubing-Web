@@ -1,11 +1,18 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import authReducer from './reducers/authReducer';
 import registrationReducer from './reducers/registrationReducer';
+import {reducer as notificationsReducer} from 'react-notification-system-redux';
+
+const combined = combineReducers({
+  notifications: notificationsReducer,
+});
 
 export const store = configureStore({
   reducer: {
-    authReducer: authReducer,
-    registrationReducer: registrationReducer,
+    authReducer,
+    registrationReducer,
+    notifications: combined,
   },
 });
 
