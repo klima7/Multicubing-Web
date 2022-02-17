@@ -1,12 +1,14 @@
 import backend from '../backend'
 
 
-export function login(email: string, password: string) {
+export async function login(email: string, password: string) {
   const data = {
-    'email': email,
+    'login': email,
     'password': password,
   }
-  backend.post('/accounts/login/', data);
+  const response = await backend.post('/accounts/login/', data);
+  const token = response.data.token;
+  return token;
 }
 
 export function register(login: string, email: string, password: string) {

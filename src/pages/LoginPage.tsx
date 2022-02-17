@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useAppDispatch } from '../hooks';
+import { login as loginAction } from '../actions/authActions';
 
 function LoginPage() {
 
@@ -15,9 +17,12 @@ function LoginPage() {
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState(false);
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
+
+  const dispatch = useAppDispatch()
   
   function performLogin() {
     console.log(`Logging ${login} ${password} ${rememberMe}`);
+    dispatch(loginAction(login, password))
     setError(true);
   }
 
