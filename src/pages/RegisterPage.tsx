@@ -28,9 +28,11 @@ function RegisterPage() {
   function performRegister() {
     console.log(`Registering ${login} ${email} ${password}`);
     const promise = dispatch(register({login: login, email: email, password: password}))
-    promise.then(response => {
-      console.log('then', response);
-      if(response.meta.requestStatus === "rejected") {
+    promise.then(action => {
+      console.log('then', action);
+      if(action.meta.requestStatus === "rejected") {
+        if('email' in action.payload) setEmailError(2);
+        if('username' in action.payload) setLoginError(2);
       }
     })
   }
