@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
 
+const token: string = localStorage.getItem('token') ?? ''
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    token: '',
-    logged: false,
+    token: token,
+    logged: token.length > 0,
     loggingInProgress: false,
   },
   reducers: {
