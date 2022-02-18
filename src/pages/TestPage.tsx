@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../hooks';
 import Button from '@mui/material/Button';
 import { success, error, warning, info } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
+import backend from '../backend'
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
@@ -42,7 +43,7 @@ function TestPage() {
 }
 
 function performRequest() {
-  axios.post(`https://multicubing-backend.herokuapp.com/api/accounts/register/`)
+  backend.get(`/accounts/`)
   .then(res => {
     const persons = res.data;
     console.log(persons);

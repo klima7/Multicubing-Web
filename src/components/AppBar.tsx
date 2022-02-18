@@ -6,12 +6,15 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
+import { useAppSelector, useAppDispatch } from '../hooks';
+import { logout } from '../actions/authActions';
 
 
 function AppBarCustom() {
   const navigate = useNavigate();
-  const logged = useAppSelector((state) => state.authReducer.logged)
+
+  const dispatch = useAppDispatch();
+  const logged = useAppSelector((state) => state.authReducer.logged);
 
   return (
       <Box sx={{ flexGrow: 1 }}>
@@ -25,6 +28,7 @@ function AppBarCustom() {
             </div>
             <div style={{flex: 1}} />
             {logged ? 'Logged' : 'Not logged'} 
+            <Button color="inherit" onClick={() => dispatch(logout())}>Logout</Button>
             <Button color="inherit" component={Link} to={'/login'}>Login</Button>
             <Button color="inherit" component={Link} to={'/register'}>Register</Button>
           </Toolbar>
