@@ -27,10 +27,19 @@ function AppBarCustom() {
               </Typography>
             </div>
             <div style={{flex: 1}} />
-            {logged ? 'Logged' : 'Not logged'} 
-            <Button color="inherit" onClick={() => dispatch(logout())}>Logout</Button>
-            <Button color="inherit" component={Link} to={'/login'}>Login</Button>
-            <Button color="inherit" component={Link} to={'/register'}>Register</Button>
+
+            {logged &&
+            <>
+              <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
+            </>
+            }
+
+            {!logged &&
+            <>
+              <Button color="inherit" component={Link} to={'/login'}>Login</Button>
+              <Button color="inherit" component={Link} to={'/register'}>Register</Button>
+            </>
+            }
           </Toolbar>
         </AppBar>
       </Box>

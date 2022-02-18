@@ -15,46 +15,32 @@ function LoginPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
-  const [error, setError] = useState(false);
+
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
 
   const dispatch = useAppDispatch()
   
   function performLogin() {
     console.log(`Logging ${login} ${password} ${rememberMe}`);
-    dispatch(loginAction(login, password, rememberMe))
-    setError(true);
+    dispatch(loginAction(login, password, rememberMe));
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const targetId = event.target.id;
     if(targetId === 'login') {
       setLogin(event.target.value);
-      setError(false);
     }
     else if(targetId === 'password') {
       setPassword(event.target.value);
-      setError(false);
     }
     else if(targetId === 'rememberMe') {
       setRememberMe(event.target.checked);
-      console.log(event.target.checked);
     }
   }
 
   useEffect(() => {
     setButtonEnabled(login.length > 0 && password.length > 0);
   }, [login, password])
-
-  function renderError() {
-    return (
-      <div>
-        <p style={{color: 'red', fontWeight: 'bold', marginBottom: '0'}}>
-          Invalid login or password
-        </p>
-      </div>
-    )
-  }
 
   return (
     <div>
@@ -100,7 +86,6 @@ function LoginPage() {
                   disabled={!buttonEnabled}
                   >Login</Button>
                 </div>
-                {error && renderError()}
               </Paper>
             </Box>
           </Grid>
