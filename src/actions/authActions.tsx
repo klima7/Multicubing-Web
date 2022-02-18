@@ -1,16 +1,39 @@
+import { success } from 'react-notification-system-redux';
+import { Notification } from 'react-notification-system';
 import * as authService from "../services/authService"
 import { authSlice } from "../reducers/authReducer";
 
-export const { loginStart, loginSuccess, loginFailure, logout } = authSlice.actions
+
+const authActions = authSlice.actions;
 
 export function login(login: string, password: string, rememberMe: boolean) {
   return async (dispatch: any) => {
-    dispatch(loginStart())
+    dispatch(authActions.loginStart())
     try {
       const token = await authService.login(login, password);
-      dispatch(loginSuccess({token, rememberMe}))
+      dispatch(authActions.loginSuccess({token, rememberMe}))
+      const notification: Notification = {
+        title: 'Login success',
+        message: 'You have successfully logged',
+        position: 'tr',
+        autoDismiss: 8,
+      };
+      dispatch(success(notification))
     } catch(err) {
-      dispatch(loginFailure())
+      dispatch(authActions.loginFailure())
     }
   };
+}
+
+export function logout() {
+  return async (dispatch: any) => {
+    dispatch(authActions.logout)
+    const notification: Notification = {
+      title: 'Logout success',
+      message: 'You have successfully logged out',
+      position: 'tr',
+      autoDismiss: 8,
+    };
+    dispatch(success(notification))
+  }
 }
