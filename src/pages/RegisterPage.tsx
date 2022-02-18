@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { register } from '../actions/registerActions';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function RegisterPage() {
 
@@ -26,7 +26,7 @@ function RegisterPage() {
   const dispatch = useAppDispatch()
   const pending = useAppSelector((state) => state.registrationReducer.pending)
 
-  const navigate = useNavigate();
+  const history = useHistory();
 
   function performRegister() {
     console.log(`Registering ${login} ${email} ${password}`);
@@ -38,7 +38,7 @@ function RegisterPage() {
         if('username' in action.payload) setLoginError(2);
       }
       else if(action.meta.requestStatus === "fulfilled") {
-        navigate('/login');
+        history.push('/login');
       }
     })
   }

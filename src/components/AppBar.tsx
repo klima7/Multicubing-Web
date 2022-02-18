@@ -3,15 +3,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
-import { useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { logout } from '../actions/authActions';
 
 
 function AppBarCustom() {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.authReducer.logged);
@@ -20,7 +19,7 @@ function AppBarCustom() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="primary">
           <Toolbar>
-            <div style={{display: 'flex', cursor: 'pointer'}} onClick={() => navigate('/')}>
+            <div style={{display: 'flex', cursor: 'pointer'}} onClick={() => history.push('/')}>
               <img src={logo} className="App-logo" alt="logo" height='35pt' style={{ marginRight: '10pt' }} />
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Multicubing
