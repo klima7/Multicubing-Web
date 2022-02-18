@@ -2,6 +2,7 @@ import { success, error } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
 import * as authService from "../services/authService"
 import { authSlice } from "../reducers/authReducer";
+import { push } from 'connected-react-router'
 
 
 const authActions = authSlice.actions;
@@ -19,6 +20,7 @@ export function login(login: string, password: string, rememberMe: boolean) {
         autoDismiss: 8,
       };
       dispatch(success(notification))
+      dispatch(push('/rooms'))
     } catch(err) {
       dispatch(authActions.loginFailure())
       const notification: Notification = {

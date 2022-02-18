@@ -6,6 +6,7 @@ import {reducer as notificationsReducer} from 'react-notification-system-redux';
 import { connectRouter } from 'connected-react-router'
 import history from './history'
 import thunk from 'redux-thunk'
+import { routerMiddleware } from 'connected-react-router'
 
 const combined = combineReducers({
   registrationReducer,
@@ -14,7 +15,7 @@ const combined = combineReducers({
   router: connectRouter(history),
 });
 
-export const store = createStore(combined, applyMiddleware(thunk))
+export const store = createStore(combined, applyMiddleware(thunk, routerMiddleware(history)))
 
 store.subscribe(() => {
   const auth = store.getState().authReducer;

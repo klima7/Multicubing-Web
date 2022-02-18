@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ConnectedRouter } from 'connected-react-router'
 import { BrowserRouter } from "react-router-dom";
 import CssBaseline from '@mui/material/CssBaseline';
 import '@fontsource/roboto/300.css';
@@ -11,15 +12,16 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import App from './app'
 import theme from './theme'
+import history from './history'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <CssBaseline />
           <App />
-        </BrowserRouter>
+        </ConnectedRouter>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
