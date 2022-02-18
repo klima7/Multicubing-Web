@@ -4,7 +4,7 @@ import { Style } from 'react-notification-system'
 
 
 function Notifications() {
-  const notifications = useAppSelector((state) => state.notifications.notifications)
+  const notifications = useAppSelector((state) => state.notifications)
 
     const style: Style = {
       NotificationItem: {

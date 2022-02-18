@@ -1,20 +1,20 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import {ThunkAction, Action } from '@reduxjs/toolkit';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import authReducer from './reducers/authReducer';
 import registrationReducer from './reducers/registrationReducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
+import { connectRouter } from 'connected-react-router'
+import history from './history'
+import thunk from 'redux-thunk'
 
 const combined = combineReducers({
+  registrationReducer,
+  authReducer,
   notifications: notificationsReducer,
+  router: connectRouter(history),
 });
 
-export const store = configureStore({
-  reducer: {
-    authReducer,
-    registrationReducer,
-    notifications: combined,
-  },
-});
+export const store = createStore(combined, applyMiddleware(thunk))
 
 store.subscribe(() => {
   const auth = store.getState().authReducer;
