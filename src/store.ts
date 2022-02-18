@@ -19,7 +19,7 @@ export const store = createStore(combined, applyMiddleware(thunk, routerMiddlewa
 
 store.subscribe(() => {
   const auth = store.getState().authReducer;
-  if(auth.rememberMe) {
+  if(auth.rememberMe || !auth.logged) {
     localStorage.setItem('token', auth.token)
   }
 });

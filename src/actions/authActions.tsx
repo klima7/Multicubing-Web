@@ -36,7 +36,6 @@ export function login(login: string, password: string, rememberMe: boolean) {
 
 export function logout(dispatch: any) {
   dispatch(authActions.logout())
-  console.log("Logging out")
   const notification: Notification = {
     title: 'Logout success',
     message: 'You have successfully logged out',
