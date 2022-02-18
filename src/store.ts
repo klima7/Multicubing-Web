@@ -17,7 +17,10 @@ export const store = configureStore({
 });
 
 store.subscribe(() => {
-  localStorage.setItem('token', store.getState().authReducer.token)
+  const auth = store.getState().authReducer;
+  if(auth.rememberMe) {
+    localStorage.setItem('token', auth.token)
+  }
 });
 
 export type AppDispatch = typeof store.dispatch;

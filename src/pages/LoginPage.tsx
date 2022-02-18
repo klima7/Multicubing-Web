@@ -22,7 +22,7 @@ function LoginPage() {
   
   function performLogin() {
     console.log(`Logging ${login} ${password} ${rememberMe}`);
-    dispatch(loginAction(login, password))
+    dispatch(loginAction(login, password, rememberMe))
     setError(true);
   }
 
