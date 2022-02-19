@@ -1,4 +1,4 @@
-import backend from '../backend'
+import backend from './backend'
 
 
 export async function login(email: string, password: string) {

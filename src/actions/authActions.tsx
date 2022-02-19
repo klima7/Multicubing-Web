@@ -1,6 +1,6 @@
 import { success, error } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
-import * as authService from "../services/authService"
+import * as authService from "../api/authApi"
 import { authSlice } from "../reducers/authReducer";
 import { push } from 'connected-react-router'
 

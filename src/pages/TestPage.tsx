@@ -2,7 +2,7 @@ import { useAppDispatch } from '../hooks';
 import Button from '@mui/material/Button';
 import { success, error, warning, info } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
-import backend from '../backend'
+import backend from '../api/backend'
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
