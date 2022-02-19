@@ -1,7 +1,7 @@
 import {ThunkAction, Action } from '@reduxjs/toolkit';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import authReducer from './reducers/authReducer';
-import registrationReducer from './reducers/registrationReducer';
+import registrationReducer from './reducers/registerReducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
 import { connectRouter } from 'connected-react-router'
 import history from './utils/history'
