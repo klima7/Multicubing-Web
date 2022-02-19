@@ -10,7 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { useAppDispatch } from '../hooks';
 import { login as loginAction } from '../actions/authActions';
 import { useLocation } from 'react-router-dom';
-import { LocationState } from '../utils/types';
+import { LocationState } from '../types/libraryTypes';
 
 function LoginPage() {
 
