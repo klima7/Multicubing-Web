@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { useAppSelector, useAppDispatch } from '../hooks';
+import { useAppDispatch } from '../hooks';
 import Button from '@mui/material/Button';
 import { success, error, warning, info } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';

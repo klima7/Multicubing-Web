@@ -25,7 +25,7 @@ export function login(
         autoDismiss: 8,
       };
       dispatch(success(notification))
-      dispatch(push(from ?? '/'))
+      dispatch(push(from ?? '/rooms'))
     } catch(err) {
       dispatch(authActions.loginFailure())
       const notification: Notification = {
