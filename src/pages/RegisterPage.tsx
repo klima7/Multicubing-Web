@@ -24,7 +24,7 @@ function RegisterPage() {
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
   const dispatch = useAppThunkDispatch()
-  const pending = useAppSelector((state) => state.registrationReducer.pending)
+  const pending = useAppSelector((state) => state.register.pending)
 
   const history = useHistory();
 

@@ -4,14 +4,14 @@ import authReducer from './reducers/authReducer';
 import registrationReducer from './reducers/registrationReducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
 import { connectRouter } from 'connected-react-router'
-import history from './history'
+import history from './utils/history'
 import thunk from 'redux-thunk'
 import { routerMiddleware } from 'connected-react-router'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const combined = combineReducers({
-  registrationReducer,
-  authReducer,
+  register: registrationReducer,
+  auth: authReducer,
   notifications: notificationsReducer,
   router: connectRouter(history),
 });
@@ -19,7 +19,7 @@ const combined = combineReducers({
 export const store = createStore(combined, composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))))
 
 store.subscribe(() => {
-  const auth = store.getState().authReducer;
+  const auth = store.getState().auth;
   if(auth.rememberMe || !auth.logged) {
     localStorage.setItem('token', auth.token)
   }

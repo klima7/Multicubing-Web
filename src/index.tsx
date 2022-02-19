@@ -10,8 +10,8 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import App from './app'
-import theme from './theme'
-import history from './history'
+import theme from './utils/theme'
+import history from './utils/history'
 
 ReactDOM.render(
   <React.StrictMode>

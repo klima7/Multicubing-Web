@@ -13,7 +13,7 @@ function AppBarCustom() {
   const history = useHistory();
 
   const dispatch = useAppDispatch();
-  const logged = useAppSelector((state) => state.authReducer.logged);
+  const logged = useAppSelector((state) => state.auth.logged);
 
   return (
       <Box sx={{ flexGrow: 1 }}>

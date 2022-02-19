@@ -8,7 +8,7 @@ import { useAppSelector, useAppThunkDispatch } from '../hooks';
 interface Props extends RouteProps<string> {}
 
 const PrivateRoute: FC<Props> = ({ children, ...rest }) => {
-    const logged = useAppSelector((state) => state.authReducer.logged);
+    const logged = useAppSelector((state) => state.auth.logged);
     const dispatch = useAppThunkDispatch()
 
     if(!logged) {
