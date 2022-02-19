@@ -9,20 +9,25 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useAppDispatch } from '../hooks';
 import { login as loginAction } from '../actions/authActions';
+import { useLocation } from 'react-router-dom';
+import { LocationState } from '../utils/types';
 
 function LoginPage() {
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
-
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
+  
+  const { state } = useLocation<LocationState>()
+  const from = state?.from.pathname
+  console.log(from);
 
   const dispatch = useAppDispatch()
   
   function performLogin() {
     console.log(`Logging ${login} ${password} ${rememberMe}`);
-    dispatch(loginAction(login, password, rememberMe));
+    dispatch(loginAction(login, password, rememberMe, from));
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {

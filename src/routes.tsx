@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import RoomsPage from './pages/RoomsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import PrivateRoute from './components/ProtectedRoute';
 
 const routes = (
   <Switch>
@@ -14,9 +15,9 @@ const routes = (
     <Route path="/register" exact>
       <RegisterPage />
     </Route>
-    <Route path="/rooms" exact>
+    <PrivateRoute path="/rooms" exact>
       <RoomsPage />
-    </Route>
+    </PrivateRoute>
     <Route path="/test" exact>
       <TestPage />
     </Route>

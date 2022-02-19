@@ -7,7 +7,12 @@ import { push } from 'connected-react-router'
 
 const authActions = authSlice.actions;
 
-export function login(login: string, password: string, rememberMe: boolean) {
+export function login(
+  login: string, 
+  password: string, 
+  rememberMe: boolean,
+  from: string | undefined
+  ) {
   return async (dispatch: any) => {
     dispatch(authActions.loginStart())
     try {
@@ -20,7 +25,7 @@ export function login(login: string, password: string, rememberMe: boolean) {
         autoDismiss: 8,
       };
       dispatch(success(notification))
-      dispatch(push('/rooms'))
+      dispatch(push(from ?? '/'))
     } catch(err) {
       dispatch(authActions.loginFailure())
       const notification: Notification = {
@@ -42,5 +47,6 @@ export function logout(dispatch: any) {
     position: 'tr',
     autoDismiss: 8,
   };
+  dispatch(push('/'))
   dispatch(success(notification))
 }
