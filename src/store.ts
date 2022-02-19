@@ -7,6 +7,7 @@ import { connectRouter } from 'connected-react-router'
 import history from './history'
 import thunk from 'redux-thunk'
 import { routerMiddleware } from 'connected-react-router'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const combined = combineReducers({
   registrationReducer,
@@ -15,7 +16,7 @@ const combined = combineReducers({
   router: connectRouter(history),
 });
 
-export const store = createStore(combined, applyMiddleware(thunk, routerMiddleware(history)))
+export const store = createStore(combined, composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))))
 
 store.subscribe(() => {
   const auth = store.getState().authReducer;
