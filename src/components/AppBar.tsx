@@ -17,7 +17,7 @@ function AppBarCustom() {
 
   return (
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="primary" elevation={0}>
           <Toolbar>
             <div style={{display: 'flex', cursor: 'pointer'}} onClick={() => history.push('/')}>
               <img src={logo} className="App-logo" alt="logo" height='35pt' style={{ marginRight: '10pt' }} />
