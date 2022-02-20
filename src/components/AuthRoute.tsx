@@ -7,7 +7,7 @@ import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
 
 interface Props extends RouteProps<string> {}
 
-const PrivateRoute: FC<Props> = ({ children, ...rest }) => {
+const AuthRoute: FC<Props> = ({ children, ...rest }) => {
     const logged = useAppSelector((state) => state.auth.logged);
     const dispatch = useAppThunkDispatch()
 
@@ -38,4 +38,4 @@ const PrivateRoute: FC<Props> = ({ children, ...rest }) => {
       );
 }
 
-export default PrivateRoute;
+export default AuthRoute;

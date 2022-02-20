@@ -5,25 +5,26 @@ import LoginPage from './routes/Login';
 import RegisterPage from './routes/Register';
 import RoomsPage from './routes/Rooms';
 import NotFoundPage from './routes/NotFound';
-import PrivateRoute from './components/ProtectedRoute';
+import AuthRoute from './components/AuthRoute';
+import NotAuthRoute from './components/NotAuthRoute';
 
 const routes = (
   <Switch>
-    <Route path="/login" exact>
+    <NotAuthRoute path="/login" exact>
       <LoginPage />
-    </Route>
-    <Route path="/register" exact>
+    </NotAuthRoute>
+    <NotAuthRoute path="/register" exact>
       <RegisterPage />
-    </Route>
-    <PrivateRoute path="/rooms" exact>
+    </NotAuthRoute>
+    <AuthRoute path="/rooms" exact>
       <RoomsPage />
-    </PrivateRoute>
+    </AuthRoute>
     <Route path="/test" exact>
       <TestPage />
     </Route>
-    <Route path="/" exact>
+    <NotAuthRoute path="/" exact>
       <IndexPage />
-    </Route>
+    </NotAuthRoute>
     <Route path="*">
       <NotFoundPage />
     </Route>
