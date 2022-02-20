@@ -3,7 +3,7 @@ import { Notification } from 'react-notification-system';
 import { warning } from 'react-notification-system-redux';
 import { FC } from 'react';
 import { RouteProps, Redirect } from 'react-router-dom';
-import { useAppSelector, useAppThunkDispatch } from '../hooks';
+import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
 
 interface Props extends RouteProps<string> {}
 

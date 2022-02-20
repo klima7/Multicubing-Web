@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../assets/images/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../hooks';
+import { useAppSelector, useAppDispatch } from '../utils/hooks';
 import { logout } from '../actions/auth-actions';
 
 

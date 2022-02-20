@@ -9,14 +9,24 @@ import thunk from 'redux-thunk'
 import { routerMiddleware } from 'connected-react-router'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const combined = combineReducers({
+const rootReducer = combineReducers({
   register: registrationReducer,
   auth: authReducer,
   notifications: notificationsReducer,
   router: connectRouter(history),
 });
 
-export const store = createStore(combined, composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))))
+const middleware = [
+  thunk, 
+  routerMiddleware(history)
+]
+
+export const store = createStore(
+  rootReducer, 
+  composeWithDevTools(
+    applyMiddleware(...middleware)
+    )
+  );
 
 store.subscribe(() => {
   const auth = store.getState().auth;

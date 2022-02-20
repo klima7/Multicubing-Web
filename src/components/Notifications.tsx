@@ -1,4 +1,4 @@
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../utils/hooks';
 import NotificationsList from 'react-notification-system-redux';
 import { Style } from 'react-notification-system'
 
