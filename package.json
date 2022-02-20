@@ -24,6 +24,7 @@
     "mdi-material-ui": "^7.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-lottie": "^1.2.3",
     "react-notification-system": "^0.4.0",
     "react-notification-system-redux": "^2.0.1",
     "react-redux": "^7.2.6",
@@ -55,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-lottie": "^1.2.6",
     "@types/react-notification-system-redux": "^1.1.7",
     "@types/react-router-dom": "^5.3.3",
     "redux-devtools-extension": "^2.13.9"
