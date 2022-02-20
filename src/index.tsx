@@ -10,7 +10,7 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import App from './components/App'
-import theme from './utils/theme'
+import theme from './assets/themes/theme'
 import history from './utils/history'
 
 ReactDOM.render(

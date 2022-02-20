@@ -1,7 +1,7 @@
-import logo from '../images/logo.svg';
+import logo from '../assets/images/logo.svg';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import '../styles/index.css'
+import '../assets/styles/index.css'
 
 function IndexPage() {
   return (
