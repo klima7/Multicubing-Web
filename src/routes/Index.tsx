@@ -2,8 +2,16 @@ import logo from '../assets/images/logo.svg';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import '../assets/styles/Index.css'
+import { useAppSelector } from '../utils/hooks';
+import { Redirect } from 'react-router-dom';
 
 function IndexPage() {
+  const logged = useAppSelector((state) => state.auth.logged);
+  
+  if(logged) {
+    return (<Redirect to="/rooms" />)
+  }
+
   return (
 <Grid container spacing={2} alignItems="center">
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
