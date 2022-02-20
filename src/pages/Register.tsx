@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppSelector, useAppThunkDispatch } from '../hooks';
-import { register } from '../actions/registerActions';
+import { register } from '../actions/register-actions';
 import { useHistory } from 'react-router-dom';
 
 function RegisterPage() {

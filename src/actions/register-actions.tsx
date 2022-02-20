@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import * as authService from '../api/authApi'
+import * as authService from '../api/auth-api'
 import { success } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
 

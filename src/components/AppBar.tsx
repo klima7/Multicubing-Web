@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import logo from '../images/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../hooks';
-import { logout } from '../actions/authActions';
+import { logout } from '../actions/auth-actions';
 
 
 function AppBarCustom() {

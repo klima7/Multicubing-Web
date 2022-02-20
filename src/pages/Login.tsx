@@ -8,9 +8,9 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useAppDispatch } from '../hooks';
-import { login as loginAction } from '../actions/authActions';
+import { login as loginAction } from '../actions/auth-actions';
 import { useLocation } from 'react-router-dom';
-import { LocationState } from '../types/libraryTypes';
+import { LocationState } from '../types/lib-types';
 
 function LoginPage() {
 
