@@ -1,15 +1,26 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
+import { Account } from '../types/types';
 
-const token: string = localStorage.getItem('token') ?? ''
+const token = JSON.parse(String(localStorage.getItem('token'))) as string | null;
+const account = JSON.parse(String(localStorage.getItem('account'))) as Account | null;
+
+interface StateType {
+  token: string | null;
+  logged: boolean;
+  rememberMe: boolean;
+  account: Account | null;
+  loggingInProgress: boolean;
+}
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     token: token,
-    logged: token.length > 0,
+    logged: token != null,
     rememberMe: false,
+    account: account,
     loggingInProgress: false,
-  },
+  } as StateType,
   reducers: {
     loginStart(state) {
       console.log('loginStart');
@@ -19,17 +30,19 @@ export const authSlice = createSlice({
       console.log('loginFailure');
       state.loggingInProgress = false;
     },
-    loginSuccess(state, action: PayloadAction<{token: string, rememberMe: boolean}>) {
+    loginSuccess(state, action: PayloadAction<{token: string, account: Account, rememberMe: boolean}>) {
       console.log(`loginSuccess ${action.payload}`);
       state.loggingInProgress = false;
       state.logged = true;
       state.token = action.payload.token;
+      state.account = action.payload.account;
       state.rememberMe = action.payload.rememberMe;
     },
     logout(state) {
       console.log('logout');
       state.logged = false;
-      state.token = '';
+      state.token = null;
+      state.account = null;
     }
   },
 });

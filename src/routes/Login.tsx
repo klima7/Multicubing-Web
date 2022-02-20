@@ -57,7 +57,7 @@ function LoginPage() {
                 <div>
                   <TextField 
                   id="login"
-                  label="Login" 
+                  label="Email" 
                   variant="outlined" 
                   onChange={handleChange} 
                   autoComplete="false"

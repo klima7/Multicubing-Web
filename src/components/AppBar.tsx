@@ -14,6 +14,7 @@ function AppBarCustom() {
 
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.auth.logged);
+  const account = useAppSelector((state) => state.auth.account);
 
   return (
       <Box sx={{ flexGrow: 1 }}>
@@ -29,6 +30,7 @@ function AppBarCustom() {
 
             {logged &&
             <>
+              {account!.username}
               <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
             </>
             }

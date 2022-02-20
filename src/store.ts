@@ -31,7 +31,8 @@ export const store = createStore(
 store.subscribe(() => {
   const auth = store.getState().auth;
   if(auth.rememberMe || !auth.logged) {
-    localStorage.setItem('token', auth.token)
+    localStorage.setItem('token', JSON.stringify(auth.token));
+    localStorage.setItem('account', JSON.stringify(auth.account));
   }
 });
 

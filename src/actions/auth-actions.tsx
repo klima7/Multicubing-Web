@@ -16,8 +16,12 @@ export function login(
   return async (dispatch: any) => {
     dispatch(authActions.loginStart())
     try {
-      const token = await authService.login(login, password);
-      dispatch(authActions.loginSuccess({token, rememberMe}))
+      const loginResponse = await authService.login(login, password);
+      dispatch(authActions.loginSuccess({
+        token: loginResponse.token, 
+        account: loginResponse.account, 
+        rememberMe
+      }))
       const notification: Notification = {
         title: 'Login success',
         message: 'You have successfully logged',
@@ -49,4 +53,8 @@ export function logout(dispatch: any) {
   };
   dispatch(push('/'))
   dispatch(success(notification))
+}
+
+export function refreshAccount(dispatch: any) {
+
 }
