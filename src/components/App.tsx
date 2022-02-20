@@ -1,6 +1,6 @@
-import AppBarCustom from "./components/AppBar";
-import routes from './routes'
-import Notifications from './components/Notifications'
+import AppBarCustom from "./AppBar";
+import Notifications from './Notifications'
+import routes from '../routes'
 
 
 function App() {

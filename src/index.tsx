@@ -9,7 +9,7 @@ import '@fontsource/roboto/700.css';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
-import App from './app'
+import App from './components/App'
 import theme from './utils/theme'
 import history from './utils/history'
 
