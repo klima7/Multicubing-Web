@@ -3,6 +3,7 @@ import { Notification } from 'react-notification-system';
 import * as authService from "../api/auth-api"
 import { authSlice } from "../reducers/auth-reducer";
 import { push } from 'connected-react-router'
+import { getCurrentAccount } from '../api/accounts-api';
 
 
 const authActions = authSlice.actions;
@@ -51,10 +52,17 @@ export function logout(dispatch: any) {
     position: 'tr',
     autoDismiss: 8,
   };
-  dispatch(push('/'))
-  dispatch(success(notification))
+  dispatch(push('/'));
+  dispatch(success(notification));
 }
 
-export function refreshAccount(dispatch: any) {
-
+export async function refreshAccount(dispatch: any) {
+  dispatch(authActions.accountRefreshStart());
+  try {
+    const account = await getCurrentAccount();
+    dispatch(authActions.accountRefreshSuccess({account}));
+  } catch(err) {
+    dispatch(authActions.accountRefreshFailure());
+    console.log(err);
+  }
 }

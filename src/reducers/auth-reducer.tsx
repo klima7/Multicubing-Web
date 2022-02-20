@@ -10,6 +10,7 @@ interface StateType {
   rememberMe: boolean;
   account: Account | null;
   loggingInProgress: boolean;
+  accountRefreshInProgress: boolean;
 }
 
 export const authSlice = createSlice({
@@ -20,6 +21,7 @@ export const authSlice = createSlice({
     rememberMe: false,
     account: account,
     loggingInProgress: false,
+    accountRefreshInProgress: false,
   } as StateType,
   reducers: {
     loginStart(state) {
@@ -43,7 +45,16 @@ export const authSlice = createSlice({
       state.logged = false;
       state.token = null;
       state.account = null;
-    }
+    },
+    accountRefreshStart(state) {
+      state.accountRefreshInProgress = true;
+    },
+    accountRefreshSuccess(state, action: PayloadAction<{account: Account}>) {
+      state.accountRefreshInProgress = false;
+    },
+    accountRefreshFailure(state) {
+      state.accountRefreshInProgress = false;
+    },
   },
 });
 

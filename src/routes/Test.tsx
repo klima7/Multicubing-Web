@@ -1,8 +1,9 @@
-import { useAppDispatch } from '../utils/hooks';
+import { useAppThunkDispatch } from '../utils/hooks';
 import Button from '@mui/material/Button';
 import { success, error, warning, info } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
 import backend from '../api/backend'
+import { refreshAccount } from '../actions/auth-actions';
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
@@ -12,13 +13,14 @@ const notificationOpts: Notification = {
 };
 
 function TestPage() {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppThunkDispatch();
 
   const env = process.env.NODE_ENV;
   
   return (
     <div>
         <button onClick={performRequest}>Perform request</button>
+        <button onClick={() => dispatch(refreshAccount)}>Refresh account</button>
         <p>Environment: {env}</p>
 
         <Button 
