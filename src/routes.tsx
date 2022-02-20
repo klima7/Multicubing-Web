@@ -1,10 +1,10 @@
 import { Switch, Route } from 'react-router-dom';
-import TestPage from './pages/Test';
-import IndexPage from './pages/Index';
-import LoginPage from './pages/Login';
-import RegisterPage from './pages/Register';
-import RoomsPage from './pages/Rooms';
-import NotFoundPage from './pages/NotFound';
+import TestPage from './routes/Test';
+import IndexPage from './routes/Index';
+import LoginPage from './routes/Login';
+import RegisterPage from './routes/Register';
+import RoomsPage from './routes/Rooms';
+import NotFoundPage from './routes/NotFound';
 import PrivateRoute from './components/ProtectedRoute';
 
 const routes = (
