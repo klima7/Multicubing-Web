@@ -30,6 +30,11 @@ export const userSlice = createSlice({
     },
     loadingFailure(state) {
       state.loading = false;
+    },
+    clearUser(state) {
+      state.user = null;
+      state.loading = false;
+      state.notFound = false;
     }
   },
 });

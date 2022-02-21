@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import NotFound from '../components/NotFound';
 import LoadingIndicator from '../components/LoadingIndicator';
 import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
-import { getUser } from '../actions/user-actions'
+import { getUser, clearUser } from '../actions/user-actions'
 
 type UserParams = {
   username: string;
@@ -19,6 +19,9 @@ function UserPage() {
   useEffect(() => {
     dispatch(getUser(username))
   // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      dispatch(clearUser())
+    }
   }, [])
 
   if(loading) {

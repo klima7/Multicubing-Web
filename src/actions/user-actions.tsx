@@ -22,3 +22,5 @@ export function getUser(username: string) {
     }
   };
 }
+
+export const clearUser = userActions.clearUser;
