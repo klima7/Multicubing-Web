@@ -5,6 +5,7 @@ import LoginPage from './routes/Login';
 import RegisterPage from './routes/Register';
 import RoomsPage from './routes/Rooms';
 import NotFoundPage from './routes/NotFound';
+import UserPage from './routes/User';
 import AuthRoute from './components/AuthRoute';
 import NotAuthRoute from './components/NotAuthRoute';
 
@@ -22,6 +23,9 @@ const routes = (
     <Route path="/test" exact>
       <TestPage />
     </Route>
+    <AuthRoute path="/user/:username" exact>
+      <UserPage />
+    </AuthRoute>
     <NotAuthRoute path="/" exact>
       <IndexPage />
     </NotAuthRoute>
