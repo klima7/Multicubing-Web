@@ -11,7 +11,8 @@ type UserParams = {
 function UserPage() {
   const { username } = useParams<UserParams>();
   const dispatch = useAppThunkDispatch();
-  const notFound = useAppSelector(state => state.user.notFound)
+  const notFound = useAppSelector(state => state.user.notFound);
+  const user = useAppSelector(state => state.user.user);
 
   useEffect(() => {
     dispatch(getUser(username))
@@ -24,7 +25,10 @@ function UserPage() {
   }
 
   return (
-    <h1>User {username}</h1>
+    <div>
+      <h1>Username {user?.username}</h1>
+      <h1>Email {user?.email}</h1>
+    </div>
   );
 }
 
