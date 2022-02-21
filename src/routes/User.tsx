@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import NotFound from '../components/NotFound';
+import LoadingIndicator from '../components/LoadingIndicator';
 import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
 import { getUser } from '../actions/user-actions'
 
@@ -13,10 +14,18 @@ function UserPage() {
   const dispatch = useAppThunkDispatch();
   const notFound = useAppSelector(state => state.user.notFound);
   const user = useAppSelector(state => state.user.user);
+  const loading = useAppSelector(state => state.user.loading);
 
   useEffect(() => {
     dispatch(getUser(username))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if(loading) {
+    return (
+      <LoadingIndicator />
+    );
+  }
 
   if(notFound === true) {
     return (

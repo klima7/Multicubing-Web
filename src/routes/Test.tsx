@@ -45,6 +45,16 @@ function TestPage() {
           component={Link}
           to={"/sfer"}
         >To nowhere</Button>
+        <Button
+          variant="contained"
+          component={Link}
+          to={"/user/klima7"}
+        >klima7 profile</Button>
+        <Button
+          variant="contained"
+          component={Link}
+          to={"/user/unknown"}
+        >Unknown profile</Button>
     </div>
   );
 }
