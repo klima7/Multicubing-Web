@@ -7,6 +7,7 @@ import logo from '../assets/images/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../utils/hooks';
 import { logout } from '../actions/auth-actions';
+import CurrentUserIndicator from './CurrentUserIndicator';
 
 
 function AppBarCustom() {
@@ -14,7 +15,6 @@ function AppBarCustom() {
 
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.auth.logged);
-  const account = useAppSelector((state) => state.auth.account);
 
   return (
       <Box sx={{ flexGrow: 1 }}>
@@ -30,7 +30,8 @@ function AppBarCustom() {
 
             {logged &&
             <>
-              {account!.username}
+              <CurrentUserIndicator />
+              <Box sx={{mr: 3}} />
               <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
             </>
             }
