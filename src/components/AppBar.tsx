@@ -1,18 +1,15 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import logo from '../assets/images/logo.svg';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../utils/hooks';
 import { logout } from '../actions/auth-actions';
+import AppBarLogo from './AppBarLogo';
 import CurrentUserIndicator from './CurrentUserIndicator';
 
 
 function AppBarCustom() {
-  const history = useHistory();
-
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.auth.logged);
 
@@ -20,12 +17,8 @@ function AppBarCustom() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="primary" elevation={0}>
           <Toolbar>
-            <div style={{display: 'flex', cursor: 'pointer'}} onClick={() => history.push('/')}>
-              <img src={logo} className="App-logo" alt="logo" height='35pt' style={{ marginRight: '10pt' }} />
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Multicubing
-              </Typography>
-            </div>
+            <AppBarLogo />
+
             <div style={{flex: 1}} />
 
             {logged &&
