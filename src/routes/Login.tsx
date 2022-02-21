@@ -7,7 +7,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useAppDispatch } from '../utils/hooks';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { login as loginAction } from '../actions/auth-actions';
 import { useLocation } from 'react-router-dom';
 import { LocationState } from '../types/lib-types';
@@ -21,7 +22,7 @@ function LoginPage() {
   
   const { state } = useLocation<LocationState>()
   const from = state?.from.pathname
-  console.log(from);
+  const pending = useAppSelector((state) => state.auth.loggingInProgress)
 
   const dispatch = useAppDispatch()
   
@@ -84,12 +85,16 @@ function LoginPage() {
                     />} 
                   label="Remember me" /></div>
                 <div>
+                {!pending ?
                   <Button 
                   variant="contained" 
                   style={{width: '100%'}} 
                   onClick={performLogin}
                   disabled={!buttonEnabled}
                   >Login</Button>
+                  :
+                  <CircularProgress /> 
+                }
                 </div>
               </Paper>
             </Box>
