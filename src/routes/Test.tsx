@@ -4,6 +4,7 @@ import { success, error, warning, info } from 'react-notification-system-redux';
 import { Notification } from 'react-notification-system';
 import backend from '../api/backend'
 import { refreshAccount } from '../actions/auth-actions';
+import { Link } from 'react-router-dom';
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
@@ -39,6 +40,11 @@ function TestPage() {
           variant="contained" 
           onClick={() => dispatch(info(notificationOpts))}
           >Info</Button>
+        <Button
+          variant="contained"
+          component={Link}
+          to={"/sfer"}
+        >To nowhere</Button>
     </div>
   );
 }
