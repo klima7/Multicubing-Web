@@ -18,10 +18,10 @@ function UserPage() {
 
   useEffect(() => {
     dispatch(getUser(username))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
     return () => {
       dispatch(clearUser())
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if(loading) {
@@ -38,8 +38,9 @@ function UserPage() {
 
   return (
     <div>
-      <h1>Username {user?.username}</h1>
-      <h1>Email {user?.email}</h1>
+      <h1>Username: {user?.username}</h1>
+      <h1>Email: {user?.email}</h1>
+      <h1>Join date: {String(user?.dateJoined?.toLocaleDateString("en-US"))}</h1>
     </div>
   );
 }

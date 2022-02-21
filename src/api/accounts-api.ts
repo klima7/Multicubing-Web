@@ -1,10 +1,10 @@
 import backend from './backend'
-import { Account } from '../types/types'
+import { Account, AccountResponse } from '../types/types'
 
 
 export async function getAccount(username: string) {
-  const response = await backend.get(`/accounts/${username}/`);
-  const account = response.data as Account;
+  const response = await backend.get<AccountResponse>(`/accounts/${username}/`);
+  const account = new Account(response.data);
   return account;
 }
 
