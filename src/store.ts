@@ -3,6 +3,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import authReducer from './reducers/auth-reducer';
 import registrationReducer from './reducers/register-reducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
+import userReducer from './reducers/user-reducer';
 import { connectRouter } from 'connected-react-router'
 import history from './utils/history'
 import thunk from 'redux-thunk'
@@ -12,6 +13,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const rootReducer = combineReducers({
   register: registrationReducer,
   auth: authReducer,
+  user: userReducer,
   notifications: notificationsReducer,
   router: connectRouter(history),
 });
