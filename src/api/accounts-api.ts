@@ -9,7 +9,7 @@ export async function getAccountById(id: number) {
 }
 
 export async function getCurrentAccount() {
-  const response = await backend.get('/accounts/current/');
+  const response = await backend.get('/accounts/me/');
   const account = response.data as Account;
   return account;
 }
