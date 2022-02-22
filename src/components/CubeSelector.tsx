@@ -23,9 +23,6 @@ const CubeSelector: FC<Props> = (props) => {
 
   return (
     <Stack spacing={2}>
-      <Box sx={{p: 2}}>
-        <img src={cubes[cubeId].image} alt="" style={{width: '100%'}} />
-      </Box>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Cube</InputLabel>
         <Select
@@ -40,6 +37,9 @@ const CubeSelector: FC<Props> = (props) => {
           )}
         </Select>
       </FormControl>
+      <Box sx={{p: 2}}>
+        <img src={cubes[cubeId].image} alt="" style={{width: '100%'}} />
+      </Box>
     </Stack>
   );
 }
