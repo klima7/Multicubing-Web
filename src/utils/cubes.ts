@@ -13,6 +13,10 @@ export class Cube {
     this.name = name;
     this.image = image;
   }
+
+  toString(): string {
+    return this.name;
+  }
 }
 
 const twoCube = new Cube(0, '2x2x2', cube2Image);
@@ -22,11 +26,11 @@ const fiveCube = new Cube(3, '5x5x5', cube5Image);
 
 export const cubes = [
   twoCube, threeCube, fourCube, fiveCube
-]
+];
 
-export function getCubeById(id: number): Cube | null {
-  const filtered = cubes.filter(cube => cube.id === id)
-  if(filtered.length === 0)
-    return null;
-  return filtered[0];
-}
+export enum CubeId {
+  Two = 0,
+  Three,
+  Four,
+  Five
+};
