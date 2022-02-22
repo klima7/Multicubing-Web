@@ -9,16 +9,14 @@ import { FC } from 'react';
 import Stack from '@mui/material/Stack';
 
 interface Props {
-  onChange?: (cube: Cube)  => void;
+  onChange?: (cube: number)  => void;
+  value: number;
 }
 
-const CubeSelector: FC<Props> = (props) => {
-  const [cubeId, setCubeId] = useState<number>(CubeId.Three);
-
+const CubeSelector: FC<Props> = ({value, onChange}) => {
   const handleChange = (event: SelectChangeEvent) => {
     const cubeId = parseInt(event.target.value);
-    setCubeId(cubeId);
-    props.onChange?.(cubes[cubeId]);
+    onChange?.(cubeId);
   };
 
   return (
@@ -28,7 +26,7 @@ const CubeSelector: FC<Props> = (props) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={String(cubeId)}
+          value={String(value)}
           label="Age"
           onChange={handleChange}
         >
@@ -38,7 +36,7 @@ const CubeSelector: FC<Props> = (props) => {
         </Select>
       </FormControl>
       <Box sx={{p: 2}}>
-        <img src={cubes[cubeId].image} alt="" style={{width: '100%'}} />
+        <img src={cubes[value].image} alt="" style={{width: '100%'}} />
       </Box>
     </Stack>
   );

@@ -5,7 +5,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
 import { clearAddRoomDialog } from "../actions/add-room-actions";
-import CubeSelector from "./CubeSelector";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Cube } from "../utils/cubes";
@@ -13,6 +12,7 @@ import { Form, Field } from "react-final-form";
 import {
   TextFieldAdapter,
   SwitchAdapter,
+  CubeSelectorAdapter,
   Condition,
 } from "../utils/form-adapters";
 import { minLength, required, composeValidators } from "../utils/form-validators";
@@ -55,6 +55,7 @@ export default function AddRoomDialog() {
     <Dialog fullWidth={true} maxWidth="md" open={open} onClose={handleClose}>
       <Form
         onSubmit={onSubmit}
+        initialValues={{cube: '1'}}
         render={({ handleSubmit, form, submitting, pristine, values, invalid }) => (
           <>
             <DialogTitle>Add room</DialogTitle>
@@ -62,7 +63,10 @@ export default function AddRoomDialog() {
               <Box sx={{ pt: 1 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={4}>
-                    <CubeSelector onChange={handleCubeChange} />
+                    <Field
+                      name="cube"
+                      component={CubeSelectorAdapter}
+                    />
                   </Grid>
                   <Grid item xs={8}>
                     <form>
@@ -103,7 +107,7 @@ export default function AddRoomDialog() {
                           />
                         </Condition>
                       </Stack>
-                      {/* <pre>{JSON.stringify(values, undefined, 2)}</pre> */}
+                      <pre>{JSON.stringify(values, undefined, 2)}</pre>
                     </form>
                   </Grid>
                 </Grid>
