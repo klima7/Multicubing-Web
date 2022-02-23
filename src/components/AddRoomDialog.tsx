@@ -3,11 +3,13 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import CircularProgress from '@mui/material/CircularProgress';
 import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
 import { clearAddRoomDialog } from "../actions/add-room-actions";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Form, Field } from "react-final-form";
+import Stack from "@mui/material/Stack";
 import {
   TextFieldAdapter,
   SwitchAdapter,
@@ -15,7 +17,7 @@ import {
   Condition,
 } from "../utils/form-adapters";
 import { minLength, required, composeValidators } from "../utils/form-validators";
-import Stack from "@mui/material/Stack";
+import { addRoom } from "../actions/add-room-actions";
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 25;
@@ -28,13 +30,14 @@ const MAX_PASSWORD_LENGTH = 100;
 export default function AddRoomDialog() {
   const dispatch = useAppThunkDispatch();
   const open = useAppSelector((state) => state.addRoom.open);
+  const pending = useAppSelector((state) => state.addRoom.pending);
 
   const handleClose = () => {
     dispatch(clearAddRoomDialog());
   };
 
   const handleAdd = () => {
-    dispatch(clearAddRoomDialog());
+    dispatch(addRoom('abc'));
   };
 
   const onSubmit = (values: any) => {
@@ -109,13 +112,23 @@ export default function AddRoomDialog() {
               </Box>
             </DialogContent>
             <DialogActions>
-              <Button type="submit" disabled={invalid} onClick={handleSubmit}>
-                Add
-              </Button>
-              <Button disabled={submitting || pristine} onClick={() => onReset(form)}>
-                Reset
-              </Button>
-              <Button onClick={handleClose}>Close</Button>
+              {!pending ? 
+              (
+                <>
+                  <Button type="submit" disabled={invalid} onClick={handleAdd}>
+                    Add
+                  </Button>
+                  <Button disabled={submitting || pristine} onClick={() => onReset(form)}>
+                    Reset
+                  </Button>
+                </>
+              )
+              :
+              (
+                <CircularProgress style={{width: 30, height: 30}}/>
+              )
+            }
+            <Button onClick={handleClose}>Close</Button>
             </DialogActions>
           </>
         )}
