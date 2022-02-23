@@ -25,7 +25,7 @@ const MAX_NAME_LENGTH = 25;
 const MAX_DESCRIPTION_LENGTH = 100;
 
 const MIN_PASSWORD_LENGTH = 3;
-const MAX_PASSWORD_LENGTH = 100;
+const MAX_PASSWORD_LENGTH = 25;
 
 export default function AddRoomDialog() {
   const dispatch = useAppThunkDispatch();

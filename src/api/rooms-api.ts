@@ -1,5 +1,16 @@
-export async function createRoom() {
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  if(Math.random() < 0.5)
-    throw Error('abc')
+import backend from './backend'
+
+export async function createRoom(
+  name: string,
+  description: string,
+  cube: string,
+  password: string | null,
+) {
+  const data = {
+    'name': name,
+    'description': description,
+    'cube': cube,
+    'password': password,
+  }
+  return backend.post('/rooms/', data);
 }

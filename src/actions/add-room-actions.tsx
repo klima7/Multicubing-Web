@@ -14,13 +14,13 @@ export function addRoom(
   name: string,
   description: string,
   cube: string,
-  password: string,
+  password: string | null,
   ) {
   return async (dispatch: any) => {
     console.log(name, description, cube, password);
     dispatch(userActions.addingStarted());
     try {
-      await createRoom();
+      await createRoom(name, description, cube, password);
       dispatch(userActions.addingFinished());
       dispatch(userActions.clear());
       const notification: Notification = {
