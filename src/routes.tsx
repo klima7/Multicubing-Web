@@ -8,6 +8,7 @@ import NotFoundPage from './routes/NotFound';
 import UserPage from './routes/User';
 import AuthRoute from './components/AuthRoute';
 import NotAuthRoute from './components/NotAuthRoute';
+import RoomPage from './routes/Room';
 
 const routes = (
   <Switch>
@@ -25,6 +26,9 @@ const routes = (
     </Route>
     <AuthRoute path="/user/:username" exact>
       <UserPage />
+    </AuthRoute>
+    <AuthRoute path="/room/:room" exact>
+      <RoomPage />
     </AuthRoute>
     <NotAuthRoute path="/" exact>
       <IndexPage />

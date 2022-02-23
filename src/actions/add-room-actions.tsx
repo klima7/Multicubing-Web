@@ -2,6 +2,7 @@ import { success, error } from 'react-notification-system-redux';
 import { addRoomSlice } from '../reducers/add-room-reducer';
 import { createRoom } from '../api/rooms-api';
 import { Notification } from 'react-notification-system';
+import { push } from 'connected-react-router'
 
 const userActions = addRoomSlice.actions;
 
@@ -25,7 +26,7 @@ export function addRoom(
         autoDismiss: 8,
         action: {
           label: 'Join',
-          callback: () => {},
+          callback: () => {dispatch(push(`/room/${name}`))},
         }
       };
       dispatch(success(notification))
@@ -37,7 +38,7 @@ export function addRoom(
         position: 'tr',
         autoDismiss: 8,
       };
-      dispatch(error(notification))
+      dispatch(error(notification));
     }
   };
 }
