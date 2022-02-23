@@ -36,8 +36,8 @@ export default function AddRoomDialog() {
     dispatch(clearAddRoomDialog());
   };
 
-  const handleAdd = () => {
-    dispatch(addRoom('abc'));
+  const handleAdd = (values: any) => {
+    dispatch(addRoom(values.name, values.description, values.cube, values.password));
   };
 
   const onSubmit = (values: any) => {
@@ -115,7 +115,7 @@ export default function AddRoomDialog() {
               {!pending ? 
               (
                 <>
-                  <Button type="submit" disabled={invalid} onClick={handleAdd}>
+                  <Button type="submit" disabled={invalid} onClick={() => handleAdd(values)}>
                     Add
                   </Button>
                   <Button disabled={submitting || pristine} onClick={() => onReset(form)}>

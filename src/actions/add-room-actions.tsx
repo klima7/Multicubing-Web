@@ -12,8 +12,12 @@ export const clearAddRoomDialog = userActions.clear;
 
 export function addRoom(
   name: string,
+  description: string,
+  cube: string,
+  password: string,
   ) {
   return async (dispatch: any) => {
+    console.log(name, description, cube, password);
     dispatch(userActions.addingStarted());
     try {
       await createRoom();
