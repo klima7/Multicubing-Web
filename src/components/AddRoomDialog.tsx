@@ -7,7 +7,6 @@ import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
 import { clearAddRoomDialog } from "../actions/add-room-actions";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { Cube } from "../utils/cubes";
 import { Form, Field } from "react-final-form";
 import {
   TextFieldAdapter,
@@ -38,10 +37,6 @@ export default function AddRoomDialog() {
     dispatch(clearAddRoomDialog());
   };
 
-  const handleCubeChange = (cube: Cube) => {
-    console.log(`Cube changed to ${cube}`);
-  };
-
   const onSubmit = (values: any) => {
     console.log(values);
   };
@@ -55,7 +50,7 @@ export default function AddRoomDialog() {
     <Dialog fullWidth={true} maxWidth="md" open={open} onClose={handleClose}>
       <Form
         onSubmit={onSubmit}
-        initialValues={{cube: '1'}}
+        initialValues={{cube: 'three'}}
         render={({ handleSubmit, form, submitting, pristine, values, invalid }) => (
           <>
             <DialogTitle>Add room</DialogTitle>
@@ -107,7 +102,7 @@ export default function AddRoomDialog() {
                           />
                         </Condition>
                       </Stack>
-                      <pre>{JSON.stringify(values, undefined, 2)}</pre>
+                      {/* <pre>{JSON.stringify(values, undefined, 2)}</pre> */}
                     </form>
                   </Grid>
                 </Grid>

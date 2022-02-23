@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { Cube, cubes, CubeId } from "../utils/cubes";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,16 +5,20 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { FC } from 'react';
 import Stack from '@mui/material/Stack';
+import { Cube } from '../types/types';
+import { cubeVisualizations } from '../utils/cube-visualization';
+
+const cubes: Cube[] = ['two', 'three', 'four', 'five'];
 
 interface Props {
-  onChange?: (cube: number)  => void;
-  value: number;
+  onChange?: (cube: string)  => void;
+  value: string;
 }
 
 const CubeSelector: FC<Props> = ({value, onChange}) => {
   const handleChange = (event: SelectChangeEvent) => {
-    const cubeId = parseInt(event.target.value);
-    onChange?.(cubeId);
+    const cube = event.target.value;
+    onChange?.(cube);
   };
 
   return (
@@ -26,17 +28,17 @@ const CubeSelector: FC<Props> = ({value, onChange}) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={String(value)}
+          value={value}
           label="Age"
           onChange={handleChange}
         >
-          {cubes.map(cube => 
-            <MenuItem key={cube.id} value={cube.id}>{cube.name}</MenuItem>
-          )}
+          {cubes.map(cube => (
+            <MenuItem key={cube} value={cube}>{cubeVisualizations[cube]?.name}</MenuItem>
+          ))}
         </Select>
       </FormControl>
       <Box sx={{p: 2}}>
-        <img src={cubes[value].image} alt="" style={{width: '100%'}} />
+        <img src={cubeVisualizations[value].image} alt="" style={{width: '100%'}} />
       </Box>
     </Stack>
   );

@@ -21,3 +21,6 @@ export interface LoginResponse {
   token: string;
   account: Account;
 }
+
+
+export type Cube = 'two' | 'three' | 'four' | 'five';

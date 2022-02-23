@@ -39,7 +39,7 @@ export const SwitchAdapter: FC<FieldRenderProps<string, HTMLElement>> =
 }
 
 
-export const CubeSelectorAdapter: FC<FieldRenderProps<number, HTMLElement>> = 
+export const CubeSelectorAdapter: FC<FieldRenderProps<string, HTMLElement>> = 
 ({ input, meta, ...rest }) => {
   return (
     <CubeSelector
