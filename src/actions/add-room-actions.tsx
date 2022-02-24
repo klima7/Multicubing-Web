@@ -1,8 +1,10 @@
+import axios from 'axios';
 import { success, error } from 'react-notification-system-redux';
 import { addRoomSlice } from '../reducers/add-room-reducer';
 import { createRoom } from '../api/rooms-api';
 import { Notification } from 'react-notification-system';
 import { push } from 'connected-react-router'
+import { ApiError } from '../types/types';
 
 const userActions = addRoomSlice.actions;
 
@@ -35,14 +37,24 @@ export function addRoom(
       };
       dispatch(success(notification))
     } catch(e) {
-      dispatch(userActions.addingFinished());
-      const notification: Notification = {
-        title: 'Failed to add room',
-        message: 'Unexpected error occurred',
-        position: 'tr',
-        autoDismiss: 8,
-      };
-      dispatch(error(notification));
+      console.log('catch');
+      if(e instanceof ApiError) {
+        console.log('catch 2');
+        if(e.status !== 0 && e.data.error === 'name-taken') {
+          console.log('name taken');
+          dispatch(userActions.addingFinishedWithTakenError({name: name}));
+        }
+        else {
+          const notification: Notification = {
+            title: 'Failed to add room',
+            message: 'Unexpected error occurred',
+            position: 'tr',
+            autoDismiss: 8,
+          };
+          dispatch(error(notification));
+          dispatch(userActions.addingFinished());
+        }
+      }
     }
   };
 }

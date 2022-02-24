@@ -31,6 +31,7 @@ export default function AddRoomDialog() {
   const dispatch = useAppThunkDispatch();
   const open = useAppSelector((state) => state.addRoom.open);
   const pending = useAppSelector((state) => state.addRoom.pending);
+  const takenName = useAppSelector((state) => state.addRoom.takenName);
 
   const handleClose = () => {
     dispatch(clearAddRoomDialog());
@@ -107,6 +108,9 @@ export default function AddRoomDialog() {
                       </Stack>
                       {/* <pre>{JSON.stringify(values, undefined, 2)}</pre> */}
                     </form>
+                    {takenName !== null && (
+                      <span style={{color: 'red', fontWeight: 'bold'}}>Name {takenName} is taken</span>
+                    )}
                   </Grid>
                 </Grid>
               </Box>

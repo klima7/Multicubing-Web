@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { ApiError, ApiErrorData } from '../types/types';
 import backend from './backend'
 
 export async function createRoom(
@@ -12,5 +14,11 @@ export async function createRoom(
     'cube': cube,
     'password': password,
   }
-  return backend.post('/rooms/', data);
+  try {
+    await backend.post('/rooms/', data);
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+  }
 }

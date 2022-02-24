@@ -24,3 +24,21 @@ export interface LoginResponse {
 
 
 export type Cube = 'two' | 'three' | 'four' | 'five';
+
+
+export interface ApiErrorData {
+  error: string;
+  details?: any;
+}
+
+
+export class ApiError extends Error {
+  data: ApiErrorData;
+  status: number;
+
+  constructor(data: ApiErrorData, status: number) {
+    super('Api error');
+    this.data = data;
+    this.status = status;
+  }
+}

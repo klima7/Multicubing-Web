@@ -1,8 +1,9 @@
-import { createSlice  } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface StateType {
   open: boolean;
   pending: boolean;
+  takenName: string | null;
 }
 
 export const addRoomSlice = createSlice({
@@ -10,15 +11,18 @@ export const addRoomSlice = createSlice({
   initialState: {
     open: false,
     pending: false,
+    takenName: null,
   } as StateType,
   reducers: {
     open(state) {
       state.open = true;
       state.pending = false;
+      state.takenName = null;
     },
     clear(state) {
       state.open = false;
       state.pending = false;
+      state.takenName = null;
     },
     addingStarted(state) {
       state.pending = true;
@@ -26,6 +30,10 @@ export const addRoomSlice = createSlice({
     addingFinished(state) {
       state.pending = false;
     },
+    addingFinishedWithTakenError(state, action: PayloadAction<{name: string}>) {
+      state.pending = false;
+      state.takenName = action.payload.name;
+    }
   },
 });
 
