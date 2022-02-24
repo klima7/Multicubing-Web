@@ -5,6 +5,7 @@ import registrationReducer from './reducers/register-reducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
 import userReducer from './reducers/user-reducer';
 import addRoomReducer from './reducers/add-room-reducer';
+import roomsReducer from './reducers/rooms-reducer';
 import { connectRouter } from 'connected-react-router'
 import history from './utils/history'
 import thunk from 'redux-thunk'
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   addRoom: addRoomReducer,
+  rooms: roomsReducer,
   notifications: notificationsReducer,
   router: connectRouter(history),
 });

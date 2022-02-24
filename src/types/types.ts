@@ -16,21 +16,17 @@ export class Account {
   }
 }
 
-
 export interface LoginResponse {
   token: string;
   account: Account;
 }
 
-
 export type Cube = 'two' | 'three' | 'four' | 'five';
-
 
 export interface ApiErrorData {
   error: string;
   details?: any;
 }
-
 
 export class ApiError extends Error {
   data: ApiErrorData;
@@ -40,5 +36,29 @@ export class ApiError extends Error {
     super('Api error');
     this.data = data;
     this.status = status;
+  }
+}
+
+export interface RoomResponse {
+  name: string;
+  description: string | null;
+  cube: string;
+  private: boolean;
+  creation_date: string;
+}
+
+export class Room {
+  name: string;
+  description: string | null;
+  cube: string;
+  private: boolean;
+  creation_date: Date;
+
+  constructor(response: RoomResponse) {
+    this.name = response.name;
+    this.description = response.description;
+    this.cube = response.cube;
+    this.private = response.private;
+    this.creation_date = new Date(response.creation_date);
   }
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { ApiError, ApiErrorData } from '../types/types';
+import roomsReducer from '../reducers/rooms-reducer';
+import { ApiError, ApiErrorData, RoomResponse, Room } from '../types/types';
 import backend from './backend'
 
 export async function createRoom(
@@ -20,5 +21,20 @@ export async function createRoom(
     if(axios.isAxiosError(e)) {
       throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
     }
+  }
+}
+
+
+export async function getRooms(): Promise<Room[]> {
+  try {
+    const response = await backend.get('/rooms/');
+    const roomResponses = response.data as RoomResponse[]
+    const rooms = roomResponses.map(roomResponse => new Room(roomResponse))
+    return rooms;
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+    throw e;
   }
 }

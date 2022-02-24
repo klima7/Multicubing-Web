@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { deepOrange } from '@mui/material/colors';
 import AddRoomDialog from '../components/AddRoomDialog';
 import { openAddRoomDialog } from '../actions/add-room-actions';
 import { useAppThunkDispatch } from '../utils/hooks';
+import { getRooms } from '../actions/rooms-actions';
 
 const fabStyle = {
   backgroundColor: deepOrange[500], 
@@ -18,11 +19,16 @@ const fabStyle = {
 } as React.CSSProperties;;
 
 function RoomsPage() {
+
   const dispatch = useAppThunkDispatch();
 
   function handleAddRoomClick() {
     dispatch(openAddRoomDialog());
   }
+
+  useEffect(() => {
+    dispatch(getRooms());
+  }, [])
 
   return (
     <div>

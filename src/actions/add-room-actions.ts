@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { success, error } from 'react-notification-system-redux';
 import { addRoomSlice } from '../reducers/add-room-reducer';
 import { createRoom } from '../api/rooms-api';
