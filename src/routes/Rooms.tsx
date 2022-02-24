@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import AddRoomDialog from '../components/AddRoomDialog';
@@ -37,15 +37,15 @@ function RoomsPage() {
   return (
     <div>
       <h1>Rooms</h1>
-      <Box sx={{mx: 20}}>
-        <Grid container spacing={2} rowSpacing={0}>
+      <Container fixed>
+        <Grid container spacing={2} sx={{mb: 2}}>
           {rooms.map(room => (
-            <Grid item xs={6} md={3} lg={2} rowSpacing={0}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <RoomTile room={room}/>
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Container>
       <AddRoomDialog />
       <Fab variant="extended" style={fabStyle} onClick={handleAddRoomClick}>
         <AddIcon sx={{ mr: 1 }} />
