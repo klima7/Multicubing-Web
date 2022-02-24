@@ -2,7 +2,7 @@ import backend from './backend'
 
 export async function createRoom(
   name: string,
-  description: string,
+  description: string | null,
   cube: string,
   password: string | null,
 ) {

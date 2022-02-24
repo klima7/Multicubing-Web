@@ -12,9 +12,9 @@ export const clearAddRoomDialog = userActions.clear;
 
 export function addRoom(
   name: string,
-  description: string,
+  description: string | null = null,
   cube: string,
-  password: string | null,
+  password: string | null = null,
   ) {
   return async (dispatch: any) => {
     console.log(name, description, cube, password);
