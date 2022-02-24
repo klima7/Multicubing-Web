@@ -21,7 +21,9 @@ function Notifications() {
     };
 
     return (
-      <NotificationsList notifications={notifications} style={style} />
+      <div style={{position: 'absolute'}}>
+        <NotificationsList notifications={notifications} style={style} />
+      </div>
     );
   }
 
