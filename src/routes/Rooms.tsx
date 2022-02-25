@@ -32,6 +32,7 @@ function RoomsPage() {
 
   useEffect(() => {
     dispatch(getRooms());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

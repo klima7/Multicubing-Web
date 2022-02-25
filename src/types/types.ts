@@ -41,6 +41,7 @@ export class ApiError extends Error {
 
 export interface RoomResponse {
   name: string;
+  slug: string;
   description: string | null;
   cube: string;
   private: boolean;
@@ -49,6 +50,7 @@ export interface RoomResponse {
 
 export class Room {
   name: string;
+  slug: string;
   description: string | null;
   cube: string;
   private: boolean;
@@ -56,6 +58,7 @@ export class Room {
 
   constructor(response: RoomResponse) {
     this.name = response.name;
+    this.slug = response.slug;
     this.description = response.description;
     this.cube = response.cube;
     this.private = response.private;
