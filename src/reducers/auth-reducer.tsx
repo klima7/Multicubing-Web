@@ -25,15 +25,12 @@ export const authSlice = createSlice({
   } as StateType,
   reducers: {
     loginStart(state) {
-      console.log('loginStart');
       state.loggingInProgress = true;
     },
     loginFailure(state) {
-      console.log('loginFailure');
       state.loggingInProgress = false;
     },
     loginSuccess(state, action: PayloadAction<{token: string, account: Account, rememberMe: boolean}>) {
-      console.log(`loginSuccess ${action.payload}`);
       state.loggingInProgress = false;
       state.logged = true;
       state.token = action.payload.token;
@@ -41,7 +38,6 @@ export const authSlice = createSlice({
       state.rememberMe = action.payload.rememberMe;
     },
     logout(state) {
-      console.log('logout');
       state.logged = false;
       state.token = null;
       state.account = null;

@@ -63,6 +63,5 @@ export async function refreshAccount(dispatch: any) {
     dispatch(authActions.accountRefreshSuccess({account}));
   } catch(err) {
     dispatch(authActions.accountRefreshFailure());
-    console.log(err);
   }
 }

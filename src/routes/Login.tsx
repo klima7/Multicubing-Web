@@ -27,7 +27,6 @@ function LoginPage() {
   const dispatch = useAppDispatch()
   
   function performLogin() {
-    console.log(`Logging ${login} ${password} ${rememberMe}`);
     dispatch(loginAction(login, password, rememberMe, from));
   }
 

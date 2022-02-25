@@ -18,7 +18,6 @@ export function addRoom(
   password: string | null = null,
   ) {
   return async (dispatch: any) => {
-    console.log(name, description, cube, password);
     dispatch(userActions.addingStarted());
     try {
       await createRoom(name, description, cube, password);
@@ -36,11 +35,8 @@ export function addRoom(
       };
       dispatch(success(notification))
     } catch(e) {
-      console.log('catch');
       if(e instanceof ApiError) {
-        console.log('catch 2');
         if(e.status !== 0 && e.data.error === 'name-taken') {
-          console.log('name taken');
           dispatch(userActions.addingFinishedWithTakenError({name: name}));
         }
         else {

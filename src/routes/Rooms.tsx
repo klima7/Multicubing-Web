@@ -41,7 +41,7 @@ function RoomsPage() {
       <Container fixed>
         <Grid container spacing={2} sx={{mb: 2}}>
           {rooms.map(room => (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={room.slug}>
               <RoomTile room={room}/>
             </Grid>
           ))}

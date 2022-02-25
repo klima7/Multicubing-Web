@@ -41,10 +41,6 @@ export default function AddRoomDialog() {
     dispatch(addRoom(values.name, values.description, values.cube, values.password));
   };
 
-  const onSubmit = (values: any) => {
-    console.log(values);
-  };
-
   const onReset = (form: any) => {
     form.reset();
     form.resetFieldState('name');
@@ -53,7 +49,7 @@ export default function AddRoomDialog() {
   return (
     <Dialog fullWidth={true} maxWidth="md" open={open} onClose={handleClose}>
       <Form
-        onSubmit={onSubmit}
+        onSubmit={(values) => {}}
         initialValues={{cube: 'three'}}
         render={({ handleSubmit, form, submitting, pristine, values, invalid }) => (
           <>
