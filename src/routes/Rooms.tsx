@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/material';
@@ -22,6 +22,17 @@ const fabStyle = {
 } as React.CSSProperties;;
 
 function RoomsPage() {
+
+  const webSocket = useRef<WebSocket>();
+  useEffect(() => {
+      webSocket.current = new WebSocket("ws://localhost:8000/ws/rooms/?token=b35c6be01f4630d9db6e5d8694e64d7ec1e4c4e0");
+      webSocket.current.addEventListener('open', event => { console.log("Open") });
+      webSocket.current.addEventListener('close', event => { console.log("Close") });
+      webSocket.current.onmessage = (event) => {
+        console.log(`Message: ${event.data}`);
+      };
+      return () => webSocket.current?.close();
+  }, []);
 
   const dispatch = useAppThunkDispatch();
   const rooms = useAppSelector(state => state.rooms.rooms);
