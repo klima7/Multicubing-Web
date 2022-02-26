@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import ReconnectingWebSocket from 'reconnecting-websocket';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/material';
@@ -9,6 +10,7 @@ import { openAddRoomDialog } from '../actions/add-room-actions';
 import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
 import { getRooms } from '../actions/rooms-actions';
 import RoomTile from '../components/RoomTile';
+import { useWebSocket } from '../utils/hooks';
 
 const fabStyle = {
   backgroundColor: deepOrange[500], 
@@ -23,16 +25,13 @@ const fabStyle = {
 
 function RoomsPage() {
 
-  const webSocket = useRef<WebSocket>();
-  useEffect(() => {
-      webSocket.current = new WebSocket("ws://localhost:8000/ws/rooms/?token=b35c6be01f4630d9db6e5d8694e64d7ec1e4c4e0");
-      webSocket.current.addEventListener('open', event => { console.log("Open") });
-      webSocket.current.addEventListener('close', event => { console.log("Close") });
-      webSocket.current.onmessage = (event) => {
-        console.log(`Message: ${event.data}`);
-      };
-      return () => webSocket.current?.close();
-  }, []);
+  const ws = useWebSocket({
+    url: "ws://localhost:8000/ws/rooms/", 
+    onMessage: event => console.log(event.data),
+    onOpen: event => console.log('open'),
+    onClose: event => console.log('Close'),
+    onReconnect: event => console.log('Reconnect'),
+  });
 
   const dispatch = useAppThunkDispatch();
   const rooms = useAppSelector(state => state.rooms.rooms);
