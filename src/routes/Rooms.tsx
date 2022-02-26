@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import ReconnectingWebSocket from 'reconnecting-websocket';
+import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/material';
@@ -8,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import AddRoomDialog from '../components/AddRoomDialog';
 import { openAddRoomDialog } from '../actions/add-room-actions';
 import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
-import { getRooms } from '../actions/rooms-actions';
+import { getRooms, processRoomsMessage } from '../actions/rooms-actions';
 import RoomTile from '../components/RoomTile';
 import { useWebSocket } from '../utils/hooks';
 
@@ -25,15 +24,21 @@ const fabStyle = {
 
 function RoomsPage() {
 
-  const ws = useWebSocket({
+  const dispatch = useAppThunkDispatch();
+
+  useWebSocket({
     url: "ws://localhost:8000/ws/rooms/", 
-    onMessage: event => console.log(event.data),
-    onOpen: event => console.log('open'),
+    onMessage: event => {
+      dispatch(processRoomsMessage(event.data));
+    },
+    onOpen: event => console.log('Open'),
     onClose: event => console.log('Close'),
-    onReconnect: event => console.log('Reconnect'),
+    onReconnect: event => {
+      console.log("Reconnect");
+      dispatch(getRooms());
+    },
   });
 
-  const dispatch = useAppThunkDispatch();
   const rooms = useAppSelector(state => state.rooms.rooms);
 
   function handleAddRoomClick() {

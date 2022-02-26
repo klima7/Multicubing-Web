@@ -23,6 +23,12 @@ export const roomsSlice = createSlice({
     roomsFetchingFailure(state) {
       state.fetching = false;
     },
+    updateRoom(state, action: PayloadAction<{room: Room}>) {
+      state.rooms.push(action.payload.room);
+    },
+    deleteRoom(state, action: PayloadAction<{slug: string}>) {
+      state.rooms = state.rooms.filter(room => room.slug !== action.payload.slug);
+    },
   },
 });
 

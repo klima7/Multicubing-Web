@@ -14,3 +14,18 @@ export function getRooms() {
     }
   };
 }
+
+export function processRoomsMessage(message: any) {
+  return async (dispatch: any) => {
+    const json = JSON.parse(message);
+    console.log(`Processing message: ${json}`)
+    console.log(`Type: ${json.type}`);
+    if(json.type === 'rooms.added') {
+      dispatch(roomsActions.updateRoom({room: json.room}));
+    }
+    if(json.type === 'rooms.deleted') {
+      console.log("deleted");
+      dispatch(roomsActions.deleteRoom({slug: json.slug}));
+    }
+  }
+}
