@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import { Box } from '@mui/material';
@@ -41,6 +41,7 @@ function RoomsPage() {
     },
   });
 
+  const allRooms = useAppSelector(state => state.rooms.rooms);
   const rooms = useAppSelector(state => state.rooms.filteredRooms);
 
   function handleAddRoomClick() {
@@ -65,6 +66,14 @@ function RoomsPage() {
               <RoomTile room={room}/>
             </Grid>
           ))}
+          {rooms.length === 0 && (
+            <Grid item xs={12}>
+              <Typography variant="h2">No rooms</Typography>
+              {allRooms.length !== 0 && (
+                <Typography variant="subtitle1">Relax the filtering criteria</Typography>
+              )}
+            </Grid>
+          )}
         </Grid>
       </Container>
       <AddRoomDialog />
