@@ -24,9 +24,8 @@ export function addRoom(
       dispatch(userActions.addingFinished());
       dispatch(userActions.clear());
       const notification: Notification = {
-        title: 'Your Room created',
-        message: 'Now you can join it!',
-        position: 'tr',
+        title: 'Room created',
+        position: 'bc',
         autoDismiss: 8,
         action: {
           label: 'Join',

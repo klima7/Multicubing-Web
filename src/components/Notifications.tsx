@@ -7,11 +7,6 @@ function Notifications() {
   const notifications = useAppSelector((state) => state.notifications)
 
     const style: Style = {
-      NotificationItem: {
-        DefaultStyle: {
-          margin: '10px 5px 2px 1px'
-        },
-      },
       Containers: {
         DefaultStyle: {},
         tr: {
