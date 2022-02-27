@@ -4,17 +4,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../utils/hooks';
-import { logout } from '../actions/auth-actions';
 import AppBarLogo from './AppBarLogo';
 import CurrentUserIndicator from './CurrentUserIndicator';
+import LogoutDialog from './LogoutDialog';
+import { showLogoutDialog } from '../actions/auth-actions';
 
 
 function AppBarCustom() {
   const dispatch = useAppDispatch();
   const logged = useAppSelector((state) => state.auth.logged);
 
+  function handleLogout() {
+    dispatch(showLogoutDialog());
+  };
+
   return (
       <div>
+        <LogoutDialog />
         <AppBar position="fixed" color="primary" elevation={0}>
           <Toolbar>
             <AppBarLogo />
@@ -25,7 +31,7 @@ function AppBarCustom() {
             <>
               <CurrentUserIndicator />
               <Box sx={{mr: 3}} />
-              <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
+              <Button color="inherit" onClick={handleLogout}>Logout</Button>
             </>
             }
 

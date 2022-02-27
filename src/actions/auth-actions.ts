@@ -65,3 +65,7 @@ export async function refreshAccount(dispatch: any) {
     dispatch(authActions.accountRefreshFailure());
   }
 }
+
+export const showLogoutDialog = authActions.showLogoutDialog;
+
+export const hideLogoutDialog = authActions.hideLogoutDialog;

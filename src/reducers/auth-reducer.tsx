@@ -11,6 +11,7 @@ interface StateType {
   account: Account | null;
   loggingInProgress: boolean;
   accountRefreshInProgress: boolean;
+  logoutDialogVisible: boolean;
 }
 
 export const authSlice = createSlice({
@@ -22,6 +23,7 @@ export const authSlice = createSlice({
     account: account,
     loggingInProgress: false,
     accountRefreshInProgress: false,
+    logoutDialogVisible: false,
   } as StateType,
   reducers: {
     loginStart(state) {
@@ -41,6 +43,7 @@ export const authSlice = createSlice({
       state.logged = false;
       state.token = null;
       state.account = null;
+      state.logoutDialogVisible = false;
     },
     accountRefreshStart(state) {
       state.accountRefreshInProgress = true;
@@ -50,6 +53,12 @@ export const authSlice = createSlice({
     },
     accountRefreshFailure(state) {
       state.accountRefreshInProgress = false;
+    },
+    showLogoutDialog(state) {
+      state.logoutDialogVisible = true;
+    },
+    hideLogoutDialog(state) {
+      state.logoutDialogVisible = false;
     },
   },
 });
