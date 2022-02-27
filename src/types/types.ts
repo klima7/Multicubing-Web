@@ -69,3 +69,7 @@ export class Room {
 export class RoomsFilters {
   constructor(readonly cube: string, readonly publicOnly: boolean, readonly notEmpty: boolean) {}
 }
+
+export enum Theme {
+  Standard, Dark
+}

@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { deepOrange } from '@mui/material/colors';
 
 
-const theme = createTheme({
+export const standardTheme = createTheme({
   palette: {
     background: {
       default: "#F7F7F7"
@@ -14,4 +14,15 @@ const theme = createTheme({
 });
 
 
-export default theme;
+export const darkTheme = createTheme({
+  palette: {
+    background: {
+      default: "#000000"
+    },
+    secondary: {
+      main: deepOrange[500]
+    }
+  }
+});
+
+
