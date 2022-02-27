@@ -14,28 +14,31 @@ function AppBarCustom() {
   const logged = useAppSelector((state) => state.auth.logged);
 
   return (
-      <AppBar position="fixed" color="primary" elevation={0}>
-        <Toolbar>
-          <AppBarLogo />
+      <div>
+        <AppBar position="fixed" color="primary" elevation={0}>
+          <Toolbar>
+            <AppBarLogo />
 
-          <div style={{flex: 1}} />
+            <div style={{flex: 1}} />
 
-          {logged &&
-          <>
-            <CurrentUserIndicator />
-            <Box sx={{mr: 3}} />
-            <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
-          </>
-          }
+            {logged &&
+            <>
+              <CurrentUserIndicator />
+              <Box sx={{mr: 3}} />
+              <Button color="inherit" onClick={() => dispatch(logout)}>Logout</Button>
+            </>
+            }
 
-          {!logged &&
-          <>
-            <Button color="inherit" component={Link} to={'/login'}>Login</Button>
-            <Button color="inherit" component={Link} to={'/register'}>Register</Button>
-          </>
-          }
-        </Toolbar>
-      </AppBar>
+            {!logged &&
+            <>
+              <Button color="inherit" component={Link} to={'/login'}>Login</Button>
+              <Button color="inherit" component={Link} to={'/register'}>Register</Button>
+            </>
+            }
+          </Toolbar>
+        </AppBar>
+        <Toolbar />
+      </div>
     );
 }
 

@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -14,8 +15,14 @@ interface Props {
 }
 
 const RoomTile: FC<Props> = ({room}) => {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push(`/room/${room.slug}`)
+  }
+
   return (
-    <Paper elevation={3} style={{textAlign: 'left'}}>
+    <Paper elevation={3} style={{textAlign: 'left', cursor: 'pointer'}} onClick={handleClick}>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <Box sx={{ml: 2, my: 1}}>
