@@ -4,12 +4,14 @@ import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
+import { Box } from '@mui/material';
 import AddRoomDialog from '../components/AddRoomDialog';
 import { openAddRoomDialog } from '../actions/add-room-actions';
 import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
 import { getRooms, processRoomsMessage } from '../actions/rooms-actions';
 import RoomTile from '../components/RoomTile';
 import { useWebSocket } from '../utils/hooks';
+import FiltersBar from '../components/FiltersBar';
 
 const fabStyle = {
   backgroundColor: deepOrange[500], 
@@ -54,6 +56,9 @@ function RoomsPage() {
     <div>
       <h1>Rooms</h1>
       <Container fixed>
+        <Box sx={{mb: 4}}>
+          <FiltersBar />
+        </Box>
         <Grid container spacing={2} sx={{mb: 2}}>
           {rooms.map(room => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={room.slug}>
