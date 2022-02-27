@@ -43,6 +43,7 @@ function RoomsPage() {
 
   const allRooms = useAppSelector(state => state.rooms.rooms);
   const rooms = useAppSelector(state => state.rooms.filteredRooms);
+  const fetching = useAppSelector(state => state.rooms.fetching);
 
   function handleAddRoomClick() {
     dispatch(openAddRoomDialog());
@@ -66,7 +67,7 @@ function RoomsPage() {
               <RoomTile room={room}/>
             </Grid>
           ))}
-          {rooms.length === 0 && (
+          {rooms.length === 0 && fetching === false && (
             <Grid item xs={12}>
               <Typography variant="h2">No rooms</Typography>
               {allRooms.length !== 0 && (

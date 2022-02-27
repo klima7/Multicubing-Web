@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 import { Action, ThunkDispatch } from '@reduxjs/toolkit';
 import { Event, CloseEvent } from 'reconnecting-websocket';
