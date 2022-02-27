@@ -41,7 +41,7 @@ function RoomsPage() {
     },
   });
 
-  const rooms = useAppSelector(state => state.rooms.rooms);
+  const rooms = useAppSelector(state => state.rooms.filteredRooms);
 
   function handleAddRoomClick() {
     dispatch(openAddRoomDialog());
