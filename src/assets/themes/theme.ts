@@ -1,28 +1,18 @@
 import { createTheme } from '@mui/material/styles';
 import { deepOrange } from '@mui/material/colors';
+import { ThemeIdentifier } from '../../types/types';
+import { ThemeOptions } from '@mui/material';
 
 
-export const standardTheme = createTheme({
-  palette: {
-    background: {
-      default: "#F7F7F7"
-    },
-    secondary: {
-      main: deepOrange[500]
+export function getTheme(theme: ThemeIdentifier) {
+  const mode = theme === ThemeIdentifier.Standard ? 'light' : 'dark';
+  const themeParams: ThemeOptions = {
+    palette: {
+      mode: mode,
+      secondary: {
+        main: deepOrange[500]
+      }
     }
   }
-});
-
-
-export const darkTheme = createTheme({
-  palette: {
-    background: {
-      default: "#000000"
-    },
-    secondary: {
-      main: deepOrange[500]
-    }
-  }
-});
-
-
+  return createTheme(themeParams);
+}
