@@ -1,10 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import ReconnectingWebSocket from 'reconnecting-websocket';
-import type { RootState, AppDispatch } from '../store';
 import { Action, ThunkDispatch } from '@reduxjs/toolkit';
-import { Account } from '../types/types';
 import { Event, CloseEvent } from 'reconnecting-websocket';
+import type { RootState, AppDispatch } from '../store';
+import { Account } from '../types/types';
+import config from '../config';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -35,7 +36,8 @@ export function useWebSocket({
   const [webSocket, setWebSocket] = useState<ReconnectingWebSocket>();
   const token = useAppSelector(state => state.auth.token);
   useEffect(() => {
-      let addr = token != null ? `${url}?token=${token}` : url;
+      const protocol = config.secured ? 'wss' : 'ws';
+      let addr = token != null ? `${protocol}://${config.backend}${url}?token=${token}` : url;
       const ws = new ReconnectingWebSocket(addr)
       setWebSocket(ws);
       ws.onopen = (event) => {

@@ -29,7 +29,7 @@ function RoomsPage() {
   const dispatch = useAppThunkDispatch();
 
   useWebSocket({
-    url: "ws://localhost:8000/ws/rooms/", 
+    url: "/ws/rooms/", 
     onMessage: event => {
       dispatch(processRoomsMessage(event.data));
     },

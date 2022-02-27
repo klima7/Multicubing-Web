@@ -1,11 +1,13 @@
 const env = process.env.NODE_ENV
 
 const prod = {
-    backendUrl: 'https://multicubing-backend.herokuapp.com'
+    backend: 'multicubing-backend.herokuapp.com',
+    secured: true,
 };
 
 const dev = {
-    backendUrl: 'http://localhost:8000'
+    backend: 'localhost:8000',
+    secured: false,
 };
 
 
