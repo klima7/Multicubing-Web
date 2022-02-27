@@ -65,3 +65,7 @@ export class Room {
     this.creation_date = new Date(response.creation_date);
   }
 }
+
+export class RoomsFilters {
+  constructor(readonly cube: string, readonly publicOnly: boolean, readonly notEmpty: boolean) {}
+}

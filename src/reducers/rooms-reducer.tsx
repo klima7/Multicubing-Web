@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Room } from '../types/types';
+import { Room, RoomsFilters } from '../types/types';
 
 interface StateType {
   rooms: Room[];
   fetching: boolean;
+  filters: RoomsFilters;
 }
 
 export const roomsSlice = createSlice({
@@ -11,6 +12,7 @@ export const roomsSlice = createSlice({
   initialState: {
     rooms: [],
     fetching: false,
+    filters: new RoomsFilters("all", false, false),
   } as StateType,
   reducers: {
     roomsFetchingStarted(state) {
@@ -28,6 +30,9 @@ export const roomsSlice = createSlice({
     },
     deleteRoom(state, action: PayloadAction<{slug: string}>) {
       state.rooms = state.rooms.filter(room => room.slug !== action.payload.slug);
+    },
+    setRoomsFilters(state, action: PayloadAction<{filters: RoomsFilters}>) {
+      state.filters = action.payload.filters;
     },
   },
 });

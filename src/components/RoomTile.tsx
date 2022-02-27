@@ -52,7 +52,7 @@ const RoomTile: FC<Props> = ({room}) => {
               <span style={{fontSize: '12pt'}}>{room.name}</span>
               <Box 
               sx={{display: 'flex'}}
-              style={{position: 'absolute', bottom: 6, width: '100%'}}
+              style={{position: 'absolute', bottom: 0, width: '100%'}}
               >
                 {room.private && (
                   <Tooltip title="Private room">

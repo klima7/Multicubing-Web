@@ -11,7 +11,7 @@ import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
 import { getRooms, processRoomsMessage } from '../actions/rooms-actions';
 import RoomTile from '../components/RoomTile';
 import { useWebSocket } from '../utils/hooks';
-import FiltersBar from '../components/FiltersBar';
+import RoomsFiltersBar from '../components/RoomsFiltersBar';
 
 const fabStyle = {
   backgroundColor: deepOrange[500], 
@@ -57,7 +57,7 @@ function RoomsPage() {
       <h1>Rooms</h1>
       <Container fixed>
         <Box sx={{mb: 4}}>
-          <FiltersBar />
+          <RoomsFiltersBar />
         </Box>
         <Grid container spacing={2} sx={{mb: 2}}>
           {rooms.map(room => (

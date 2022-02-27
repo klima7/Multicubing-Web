@@ -29,6 +29,7 @@ const CubeFilter: FC<Props> = ({value, onChange}) => {
           variant="outlined"
           onChange={handleChange}
           style={{color: 'white'}}
+          sx={{ minWidth: 130 }}
         >
           <MenuItem key="all" value="all">All</MenuItem>
           {cubes.map(cube => (

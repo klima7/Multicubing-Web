@@ -29,3 +29,5 @@ export function processRoomsMessage(message: any) {
     }
   }
 }
+
+export const setRoomsFilters = roomsActions.setRoomsFilters;
