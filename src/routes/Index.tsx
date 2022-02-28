@@ -1,4 +1,3 @@
-import logo from '../assets/images/logo.svg';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Logo from '../components/Logo';

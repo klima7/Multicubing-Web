@@ -7,6 +7,7 @@ import { FC } from 'react';
 import Stack from '@mui/material/Stack';
 import { Cube } from '../types/types';
 import { cubeVisualizations } from '../utils/cube-visualization';
+import CubeImage from './CubeImage';
 
 const cubes: Cube[] = ['two', 'three', 'four', 'five'];
 
@@ -38,7 +39,7 @@ const CubeSelector: FC<Props> = ({value, onChange}) => {
         </Select>
       </FormControl>
       <Box sx={{p: 2}}>
-        <img src={cubeVisualizations[value].image} alt="" style={{width: '100%'}} />
+        <CubeImage src={cubeVisualizations[value].image} />
       </Box>
     </Stack>
   );

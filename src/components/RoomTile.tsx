@@ -11,6 +11,7 @@ import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { Room } from '../types/types'
 import { cubeVisualizations } from '../utils/cube-visualization';
+import CubeImage from './CubeImage';
 
 interface Props {
   room: Room;
@@ -35,15 +36,15 @@ const RoomTile: FC<Props> = ({room}) => {
       <Box sx={{ml: 2, mb: 1, mt: 2}}>
         <Grid container spacing={1}>
           <Grid item xs={4}>
-            <Badge 
-              color="secondary" 
-              badgeContent="0" 
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}>
-              <img src={cubeVisualizations[room.cube].image} alt="" style={{width: '100%'}} />
-            </Badge>
+              <Badge 
+                color="secondary" 
+                badgeContent="0" 
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}>
+                <CubeImage src={cubeVisualizations[room.cube].image} />
+              </Badge>
           </Grid>
           <Grid item xs={8}>
             <Box 
