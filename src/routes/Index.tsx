@@ -1,6 +1,7 @@
 import logo from '../assets/images/logo.svg';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Logo from '../components/Logo';
 import '../assets/styles/Index.css'
 
 function IndexPage() {
@@ -8,7 +9,7 @@ function IndexPage() {
 <Grid container spacing={2} alignItems="center">
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
     <Box sx={{mt: 10}}>
-      <img src={logo} className="App-logo" alt="logo" width='300pt' style={{animation: 'logo-animation 3s infinite'}} />
+      <Logo width='300pt' style={{animation: 'logo-animation 3s infinite'}} />
       <h1>Multicubing</h1>
     </Box>
   </Grid>
