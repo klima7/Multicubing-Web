@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { Container, Typography } from '@mui/material';
@@ -27,6 +28,7 @@ const fabStyle = {
 
 function RoomsPage() {
 
+  const [t] = useTranslation();
   const dispatch = useAppThunkDispatch();
 
   useWebSocket({
@@ -57,7 +59,7 @@ function RoomsPage() {
 
   return (
     <div>
-      <h1>Rooms</h1>
+      <h1>{t("rooms")}</h1>
       <Container fixed>
         <Box sx={{mb: 4}}>
           <RoomsFiltersBar />

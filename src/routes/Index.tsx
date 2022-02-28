@@ -17,7 +17,7 @@ function IndexPage() {
   </Grid>
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
     <Box sx={{mt: 10}}>
-      <h2>{t("Solve puzzles with speedcubers around the world!")}</h2>
+      <h2>{t("index_welcome")}</h2>
     </Box>
   </Grid>
 </Grid>
