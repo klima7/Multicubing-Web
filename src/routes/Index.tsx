@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Logo from '../components/Logo';
 import '../assets/styles/Index.css'
 
 function IndexPage() {
+  const [t] = useTranslation();
+
   return (
 <Grid container spacing={2} alignItems="center">
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
@@ -14,7 +17,7 @@ function IndexPage() {
   </Grid>
   <Grid item xs={12} md={6} style={{textAlign: "center"}}>
     <Box sx={{mt: 10}}>
-      <h2>Solve puzzles with speedcubers around the world!</h2>
+      <h2>{t("Solve puzzles with speedcubers around the world!")}</h2>
     </Box>
   </Grid>
 </Grid>

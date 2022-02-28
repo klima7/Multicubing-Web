@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import App from './components/App'
 import history from './utils/history'
 import ThemeSupplier from "./components/ThemeSupplier"
+import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
