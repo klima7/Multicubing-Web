@@ -26,7 +26,7 @@ const RoomTile: FC<Props> = ({room}) => {
 
   return (
     <Paper 
-    elevation={2} 
+    elevation={0} 
     style={{textAlign: 'left', cursor: 'pointer', border: 'solid 2px #1976D2'}} 
     onClick={handleClick}
     onMouseEnter={() => setMouseOver(true)}

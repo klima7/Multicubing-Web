@@ -22,6 +22,7 @@ const fabStyle = {
   bottom: 30,
   left: 'auto',
   position: 'fixed',
+  boxShadow: 'none',
 } as React.CSSProperties;;
 
 function RoomsPage() {
