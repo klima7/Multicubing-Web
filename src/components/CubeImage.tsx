@@ -1,13 +1,14 @@
 import { FC } from 'react';
+import { cubeVisualizations } from '../utils/cube-visualization';
 
 interface Props {
-  src: string;
+  cube: string;
 }
 
-const CubeImage: FC<Props> = ({src, ...rest}) => {
+const CubeImage: FC<Props> = ({cube}) => {
   return (
     <div style={{padding: '2px', backgroundColor: '#FFFFFF80', borderRadius: '5px', lineHeight: 0}}>
-      <img src={src} alt="" style={{width: '100%'}} />
+      <img src={cubeVisualizations[cube].image} alt="" style={{width: '100%'}} />
     </div>
   );
 };

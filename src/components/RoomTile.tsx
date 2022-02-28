@@ -10,7 +10,6 @@ import LockIcon from '@mui/icons-material/Lock';
 import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { Room } from '../types/types'
-import { cubeVisualizations } from '../utils/cube-visualization';
 import CubeImage from './CubeImage';
 
 interface Props {
@@ -43,7 +42,7 @@ const RoomTile: FC<Props> = ({room}) => {
                   vertical: 'top',
                   horizontal: 'left',
                 }}>
-                <CubeImage src={cubeVisualizations[room.cube].image} />
+                <CubeImage cube={room.cube} />
               </Badge>
           </Grid>
           <Grid item xs={8}>

@@ -39,7 +39,7 @@ const CubeSelector: FC<Props> = ({value, onChange}) => {
         </Select>
       </FormControl>
       <Box sx={{p: 2}}>
-        <CubeImage src={cubeVisualizations[value].image} />
+        <CubeImage cube={value} />
       </Box>
     </Stack>
   );
