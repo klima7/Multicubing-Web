@@ -37,11 +37,13 @@ export const store = createStore(
   );
 
 store.subscribe(() => {
+  const state = store.getState();
   const auth = store.getState().auth;
   if(auth.rememberMe || !auth.logged) {
     localStorage.setItem('token', JSON.stringify(auth.token));
     localStorage.setItem('account', JSON.stringify(auth.account));
   }
+  localStorage.setItem('general', JSON.stringify(state.general));
 });
 
 export type AppDispatch = typeof store.dispatch;

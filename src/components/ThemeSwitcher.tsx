@@ -12,20 +12,20 @@ const ThemeSwitcher = () => {
   const theme = useAppSelector(state => state.general.theme);
 
   function changeTheme() {
-    const newTheme = theme === ThemeIdentifier.Standard ? ThemeIdentifier.Dark : ThemeIdentifier.Standard;
+    const newTheme = theme === "light" ? "dark" : "light";
     dispatch(setTheme({theme: newTheme}));
   }
 
   return (
     <Box>
-      {theme === ThemeIdentifier.Standard && (
+      {theme === "light" && (
         <Tooltip title="Dark mode">
           <IconButton onClick={changeTheme}>
             <DarkModeIcon />
           </IconButton>
         </Tooltip>
       )}
-      {theme === ThemeIdentifier.Dark && (
+      {theme === "dark" && (
         <Tooltip title="Light mode">
           <IconButton onClick={changeTheme}>
             <LightModeIcon />
