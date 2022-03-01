@@ -165,7 +165,7 @@ function RegisterPage() {
                   variant="contained" 
                   disabled={!buttonEnabled}
                   onClick={performRegister}
-                  style={{width: '100%'}}
+                  style={{width: '100%', boxShadow: 'none'}}
                   >Register</Button> 
                   :
                   <CircularProgress /> 

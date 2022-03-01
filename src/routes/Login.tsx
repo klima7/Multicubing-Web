@@ -89,7 +89,7 @@ function LoginPage() {
                 {!pending ?
                   <Button 
                   variant="contained" 
-                  style={{width: '100%'}} 
+                  style={{width: '100%', boxShadow: 'none'}} 
                   onClick={performLogin}
                   disabled={!buttonEnabled}
                   >Login</Button>
