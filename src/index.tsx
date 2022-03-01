@@ -8,6 +8,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import 'overlayscrollbars/css/OverlayScrollbars.css';
+import OverlayScrollbars from 'overlayscrollbars';
 import App from './components/App'
 import history from './utils/history'
 import ThemeSupplier from "./components/ThemeSupplier"
@@ -26,3 +28,9 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+OverlayScrollbars(document.body, {
+  nativeScrollbarsOverlaid: {
+      initialize: false
+  }
+});
