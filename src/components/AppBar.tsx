@@ -9,6 +9,7 @@ import CurrentUserIndicator from './CurrentUserIndicator';
 import LogoutDialog from './LogoutDialog';
 import { showLogoutDialog } from '../actions/auth-actions';
 import ThemeSwitcher from './ThemeSwitcher';
+import LanguageSelector from './LanguageSelector';
 
 
 function AppBarCustom() {
@@ -27,6 +28,9 @@ function AppBarCustom() {
             <AppBarLogo />
 
             <div style={{flex: 1}} />
+
+            <LanguageSelector />
+            <Box sx={{mr: 3}} />
 
             <ThemeSwitcher />
             <Box sx={{mr: 3}} />
