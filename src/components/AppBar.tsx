@@ -30,15 +30,15 @@ function AppBarCustom() {
             <div style={{flex: 1}} />
 
             <LanguageSelector />
-            <Box sx={{mr: 3}} />
+            <Box sx={{mr: 4}} />
 
             <ThemeSwitcher />
-            <Box sx={{mr: 3}} />
+            <Box sx={{mr: 4}} />
 
             {logged &&
             <>
               <CurrentUserIndicator />
-              <Box sx={{mr: 3}} />
+              <Box sx={{mr: 4}} />
               <Button color="inherit" onClick={handleLogout}>Logout</Button>
             </>
             }

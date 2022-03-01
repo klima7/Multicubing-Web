@@ -4,7 +4,6 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
-import { ThemeIdentifier } from '../types/types';
 import { setTheme } from '../actions/general-actions';
 
 const ThemeSwitcher = () => {
@@ -21,7 +20,7 @@ const ThemeSwitcher = () => {
       {theme === "light" && (
         <Tooltip title="Dark mode">
           <IconButton onClick={changeTheme}>
-            <DarkModeIcon />
+            <DarkModeIcon style={{color: 'white'}} />
           </IconButton>
         </Tooltip>
       )}
