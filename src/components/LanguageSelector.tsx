@@ -13,25 +13,36 @@ const LanguageSelector = () => {
     i18n.changeLanguage(event.target.value);
   };
 
-  console.log(i18n.language);
+  let lang = normalizeLanguage(i18n.language);
+  console.log(lang);
 
   return (
     <Box display="flex" style={{alignItems: 'center'}}>
       <LanguageIcon />
       <FormControl size="small" style={{ paddingLeft: '10px' }}>
         <Select
-          value={i18n.language}
+          value={lang}
           variant="outlined"
           onChange={handleChange}
           style={{color: 'white'}}
           sx={{ minWidth: 130 }}
         >
-          <MenuItem key="pl-PL" value="pl-PL">Polski</MenuItem>
-          <MenuItem key="en-EN" value="en-EN">English</MenuItem>
+          <MenuItem key="pl" value="pl">Polski</MenuItem>
+          <MenuItem key="en" value="en">English</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
 };
+
+function normalizeLanguage(lang: string) {
+  if(lang.includes('-')) {
+    const pos = lang.indexOf('-');
+    return lang.substring(0, pos);
+  }
+  else {
+    return lang;
+  }
+}
 
 export default LanguageSelector;
