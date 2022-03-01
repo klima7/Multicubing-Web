@@ -1,11 +1,13 @@
 import { createTheme } from '@mui/material/styles';
 import { deepOrange } from '@mui/material/colors';
+import shadows, { Shadows } from '@mui/material/styles/shadows';
 import { ThemeIdentifier } from '../../types/types';
 import { ThemeOptions } from '@mui/material';
 
 
 export function getTheme(mode: ThemeIdentifier) {
   const themeParams: ThemeOptions = {
+    shadows: shadows.map(() => 'none') as Shadows,
     palette: {
       mode: mode,
       background: {
