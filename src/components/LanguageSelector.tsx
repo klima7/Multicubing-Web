@@ -13,6 +13,8 @@ const LanguageSelector = () => {
     i18n.changeLanguage(event.target.value);
   };
 
+  console.log(i18n.language);
+
   return (
     <Box display="flex" style={{alignItems: 'center'}}>
       <LanguageIcon />
@@ -24,8 +26,8 @@ const LanguageSelector = () => {
           style={{color: 'white'}}
           sx={{ minWidth: 130 }}
         >
-          <MenuItem key="pl" value="pl">Polski</MenuItem>
-          <MenuItem key="en" value="en">English</MenuItem>
+          <MenuItem key="pl-PL" value="pl-PL">Polski</MenuItem>
+          <MenuItem key="en-EN" value="en-EN">English</MenuItem>
         </Select>
       </FormControl>
     </Box>
