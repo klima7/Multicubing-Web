@@ -47,7 +47,7 @@ export default function AddRoomDialog() {
   }
 
   return (
-    <Dialog fullWidth={true} maxWidth="md" open={open} onClose={handleClose}>
+    <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={handleClose}>
       <Form
         onSubmit={(values) => {}}
         initialValues={{cube: 'three'}}

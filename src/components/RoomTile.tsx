@@ -21,7 +21,7 @@ const RoomTile: FC<Props> = ({room}) => {
   const [mouseOver, setMouseOver] = useState(false);
 
   function handleClick() {
-    history.push(`/room/${room.slug}`)
+    history.push(`/rooms/${room.slug}`)
   }
 
   return (

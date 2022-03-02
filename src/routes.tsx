@@ -27,7 +27,7 @@ const routes = (
     <AuthRoute path="/user/:username" exact>
       <UserPage />
     </AuthRoute>
-    <AuthRoute path="/room/:room" exact>
+    <AuthRoute path="/rooms/:room" exact>
       <RoomPage />
     </AuthRoute>
     <NotAuthRoute path="/" exact>

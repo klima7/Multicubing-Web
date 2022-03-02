@@ -26,7 +26,7 @@ export function addRoom(
         title: 'Room created',
         action: {
           label: 'Join',
-          callback: () => {dispatch(push(`/room/${name}`))},
+          callback: () => {dispatch(push(`/rooms/${name}`))},
         }
       };
       dispatch(show(notification, 'success'))
