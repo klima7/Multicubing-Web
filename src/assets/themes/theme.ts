@@ -1,10 +1,10 @@
 import { createTheme } from '@mui/material/styles';
 import { deepOrange } from '@mui/material/colors';
 import { ThemeIdentifier } from '../../types/types';
-import { ThemeOptions } from '@mui/material';
+import { ThemeOptions, Theme } from '@mui/material';
 
 
-export function getTheme(mode: ThemeIdentifier) {
+export function getTheme(mode: ThemeIdentifier): Theme {
   const themeParams: ThemeOptions = {
     palette: {
       mode: mode,
