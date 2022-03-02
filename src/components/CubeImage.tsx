@@ -7,7 +7,7 @@ interface Props {
 
 const CubeImage: FC<Props> = ({cube}) => {
   return (
-    <div style={{padding: '2px', backgroundColor: '#FFFFFF80', borderRadius: '5px', lineHeight: 0}}>
+    <div style={{padding: '4px', backgroundColor: '#FFFFFFB0', borderRadius: '5px', lineHeight: 0}}>
       <img src={cubeVisualizations[cube].image} alt="" style={{width: '100%'}} />
     </div>
   );
