@@ -14,7 +14,7 @@ interface StateType {
   }
 }
 
-export const roomSlice = createSlice({
+export const permitSlice = createSlice({
   name: 'room',
   initialState: {
     permit: false,
@@ -52,4 +52,4 @@ export const roomSlice = createSlice({
   },
 });
 
-export default roomSlice.reducer;
+export default permitSlice.reducer;

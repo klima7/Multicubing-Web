@@ -1,5 +1,4 @@
 import axios from 'axios';
-import roomsReducer from '../reducers/rooms-reducer';
 import { ApiError, ApiErrorData, RoomResponse, Room } from '../types/types';
 import backend from './backend'
 
@@ -31,6 +30,24 @@ export async function getRooms(): Promise<Room[]> {
     const roomResponses = response.data as RoomResponse[]
     const rooms = roomResponses.map(roomResponse => new Room(roomResponse))
     return rooms;
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+    throw e;
+  }
+}
+
+
+interface CheckRoomPermitResponse {
+  permit: boolean;
+}
+
+export async function checkRoomPermit(roomSlug: string): Promise<boolean> {
+  try {
+    const response = await backend.get(`/rooms/${roomSlug}/permit/`);
+    const typeResponses = response.data as CheckRoomPermitResponse;
+    return typeResponses.permit;
   } catch(e) {
     if(axios.isAxiosError(e)) {
       throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
