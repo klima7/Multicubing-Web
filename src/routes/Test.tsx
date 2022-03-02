@@ -1,7 +1,6 @@
 import { useAppThunkDispatch } from '../utils/hooks';
 import Button from '@mui/material/Button';
-import { success, error, warning, info } from 'react-notification-system-redux';
-import { Notification } from 'react-notification-system';
+import { show, Notification } from '../utils/notifications';
 import backend from '../api/backend'
 import { refreshAccount } from '../actions/auth-actions';
 import { Link } from 'react-router-dom';
@@ -26,19 +25,19 @@ function TestPage() {
 
         <Button 
           variant="contained" 
-          onClick={() => dispatch(success(notificationOpts))}
+          onClick={() => dispatch(show(notificationOpts, 'success'))}
           >Success</Button>
         <Button 
           variant="contained" 
-          onClick={() => dispatch(error(notificationOpts))}
+          onClick={() => dispatch(show(notificationOpts, 'error'))}
           >Error</Button>
         <Button 
           variant="contained" 
-          onClick={() => dispatch(warning(notificationOpts))}
+          onClick={() => dispatch(show(notificationOpts, 'warning'))}
           >Warning</Button>
         <Button 
           variant="contained" 
-          onClick={() => dispatch(info(notificationOpts))}
+          onClick={() => dispatch(show(notificationOpts, 'info'))}
           >Info</Button>
         <Button
           variant="contained"

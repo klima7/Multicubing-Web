@@ -1,7 +1,6 @@
-import { success, error } from 'react-notification-system-redux';
+import { show, Notification } from '../utils/notifications';
 import { addRoomSlice } from '../reducers/add-room-reducer';
 import { createRoom } from '../api/rooms-api';
-import { Notification } from 'react-notification-system';
 import { push } from 'connected-react-router'
 import { ApiError } from '../types/types';
 
@@ -25,14 +24,12 @@ export function addRoom(
       dispatch(userActions.clear());
       const notification: Notification = {
         title: 'Room created',
-        position: 'bc',
-        autoDismiss: 8,
         action: {
           label: 'Join',
           callback: () => {dispatch(push(`/room/${name}`))},
         }
       };
-      dispatch(success(notification))
+      dispatch(show(notification, 'success'))
     } catch(e) {
       if(e instanceof ApiError) {
         if(e.status !== 0 && e.data.error === 'name-taken') {
@@ -42,10 +39,8 @@ export function addRoom(
           const notification: Notification = {
             title: 'Failed to add room',
             message: 'Unexpected error occurred',
-            position: 'tr',
-            autoDismiss: 8,
           };
-          dispatch(error(notification));
+          dispatch(show(notification, 'error'));
           dispatch(userActions.addingFinished());
         }
       }
