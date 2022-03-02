@@ -3,6 +3,7 @@ import React from 'react'
 import { useTheme } from '@emotion/react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -55,7 +56,12 @@ function LoginPage() {
           <Grid item xs={12} style={{textAlign: 'center'}}>
             <Box sx={{mt: 10}}>
               <Paper variant="outlined" style={{display: 'inline-block', width: '60ex', borderColor: theme.palette.primary.main, borderWidth: '1.2pt', padding: '10pt'}}>
-                <h1>Login</h1>
+                <Box sx={{my: 2}}>
+                  <Typography variant="h4" >Login</Typography>
+                  {from != null && (
+                    <Typography variant="subtitle1" sx={{mt: 1}}>Login is required to access desired page</Typography>
+                  )}
+                </Box>
                 <div>
                   <TextField 
                   id="login"
