@@ -7,6 +7,7 @@ import userReducer from './reducers/user-reducer';
 import addRoomReducer from './reducers/add-room-reducer';
 import roomsReducer from './reducers/rooms-reducer';
 import generalReducer from './reducers/general-reducer';
+import permitReducer from './reducers/permit-reducer';
 import { connectRouter } from 'connected-react-router'
 import history from './utils/history'
 import thunk from 'redux-thunk'
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   addRoom: addRoomReducer,
   rooms: roomsReducer,
+  permit: permitReducer,
   notifications: notificationsReducer,
   router: connectRouter(history),
 });
