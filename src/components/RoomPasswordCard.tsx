@@ -1,25 +1,37 @@
-import { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@emotion/react';
-import React from 'react';
+import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
+import { enterRoomPassword } from '../actions/permit-actions';
 
-const RoomPasswordCard = () => {
+interface Props {
+  roomSlug: string;
+};
+
+const RoomPasswordCard: FC<Props> = ({roomSlug}) => {
 
   const theme = useTheme() as any;
   const [password, setPassword] = useState('');
-  const pending = false;
+
+  const dispatch = useAppThunkDispatch();
+  const enteredPassword = useAppSelector(state => state.permit.enter.password);
+  const invalidPassword = useAppSelector(state => state.permit.enter.invalidPassword);
+  const pending = useAppSelector(state => state.permit.enter.pending);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   };
 
   function handleConfirm() {
+    dispatch(enterRoomPassword(roomSlug, password));
+  };
 
+  function shouldShowInvalidPassword() {
+    return invalidPassword && password === enteredPassword;
   };
 
   return (
@@ -30,25 +42,23 @@ const RoomPasswordCard = () => {
       </Box>
       <div>
         <TextField 
+        error={shouldShowInvalidPassword()}
         id="password"
         label="Password" 
         variant="outlined" 
         type="password" 
+        helperText={shouldShowInvalidPassword() ? "Invalid password": " "}
         onChange={handleChange} 
         style={{width: '100%'}} 
         />
       </div>
-      <Box sx={{mt: 2}}>
-      {!pending ?
+      <Box sx={{mt: 1}}>
         <Button 
         variant="contained" 
         style={{width: '100%', boxShadow: 'none'}} 
         onClick={handleConfirm}
-        disabled={password.length === 0}
+        disabled={password.length === 0 || pending}
         >Confirm</Button>
-        :
-        <CircularProgress /> 
-      }
       </Box>
     </Paper>
   )

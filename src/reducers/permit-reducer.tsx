@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Room, RoomsFilters } from '../types/types';
 
 interface StateType {
   permit: boolean;
@@ -9,6 +8,7 @@ interface StateType {
   },
   enter: {
     password: string | null;
+    invalidPassword: boolean;
     pending: boolean;
     error: any;
   }
@@ -24,6 +24,7 @@ export const permitSlice = createSlice({
     },
     enter: {
       password: null,
+      invalidPassword: false,
       pending: false,
       error: null,
     }
@@ -47,6 +48,25 @@ export const permitSlice = createSlice({
         pending: false,
         error: action.payload.error,
       };
+      state.permit = false;
+    },
+
+    enterStart(state, action: PayloadAction<{password: string}>) {
+      state.enter = {
+        password: action.payload.password,
+        invalidPassword: false,
+        pending: true,
+        error: null,
+      };
+    },
+    enterSuccess(state, action: PayloadAction<{passwordCorrect: boolean}>) {
+      state.enter.pending = false;
+      state.enter.invalidPassword = !action.payload.passwordCorrect;
+      state.permit = action.payload.passwordCorrect;
+    },
+    enterFailure(state, action: PayloadAction<{error: any}>) {
+      state.enter.pending = false;
+      state.enter.error = action.payload.error;
       state.permit = false;
     },
   },

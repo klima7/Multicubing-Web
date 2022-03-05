@@ -55,3 +55,21 @@ export async function checkRoomPermit(roomSlug: string): Promise<boolean> {
     throw e;
   }
 }
+
+export async function sendRoomPassword(roomSlug: string, password: string): Promise<boolean> {
+  try {
+    const data = { password }
+    await backend.post(`/rooms/${roomSlug}/permit/`, data);
+    return true;
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      if(e.response?.status === 401) {
+        return false;
+      }
+      else {
+        throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+      }
+    }
+    throw e;
+  }
+}

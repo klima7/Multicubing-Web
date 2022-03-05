@@ -22,7 +22,7 @@ function RoomPage() {
 
   return (
     <div>
-      {permit ? <RoomScreen /> : <RoomPasswordScreen /> }
+      {permit ? <RoomScreen /> : <RoomPasswordScreen roomSlug={roomSlug} /> }
     </div>
   );
 }

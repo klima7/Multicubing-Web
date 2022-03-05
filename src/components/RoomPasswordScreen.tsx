@@ -1,10 +1,15 @@
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 import Lottie from "react-lottie";
 import RoomPasswordCard from "./RoomPasswordCard";
 import lockLottie from "../assets/lotties/lock.json";
 
-function RoomPasswordScreen() {
+interface Props {
+  roomSlug: string;
+}
+
+const RoomPasswordScreen: FC<Props> = ({ roomSlug }) => {
   const lottieOptions = {
     loop: false,
     animationData: lockLottie,
@@ -17,7 +22,7 @@ function RoomPasswordScreen() {
           <Box sx={{my: 3}}>
             <Lottie options={lottieOptions} width={150} />
           </Box>
-          <RoomPasswordCard />
+          <RoomPasswordCard roomSlug={roomSlug}/>
         </Box>
       </Grid>
     </Grid>
