@@ -8,8 +8,7 @@ function LoadingIndicator() {
   };
 
   return (
-    // <Lottie options={lottieOptions} width={400} />
-    <span></span>
+    <Lottie options={lottieOptions} width={400} />
   );
 }
 

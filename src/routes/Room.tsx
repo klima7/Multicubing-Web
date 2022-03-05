@@ -4,6 +4,7 @@ import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
 import RoomPasswordScreen from '../components/RoomPasswordScreen';
 import RoomScreen from '../components/RoomScreen';
 import { checkPermit } from '../actions/permit-actions';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 
 type RoomParams = {
@@ -12,6 +13,7 @@ type RoomParams = {
 
 function RoomPage() {
   const permit = useAppSelector(state => state.permit.permit);
+  const permitCheckPending = useAppSelector(state => state.permit.check.pending);
   const dispatch = useAppThunkDispatch();
   const { roomSlug } = useParams<RoomParams>();
 
@@ -19,6 +21,12 @@ function RoomPage() {
     dispatch(checkPermit(roomSlug));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if(permitCheckPending) {
+    return (
+      <LoadingIndicator />
+    )
+  }
 
   return (
     <div>
