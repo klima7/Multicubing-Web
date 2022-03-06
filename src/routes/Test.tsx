@@ -1,10 +1,10 @@
-import { useAppThunkDispatch } from '../utils/hooks';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import { show, Notification } from '../utils/notifications';
 import backend from '../api/backend'
 import { refreshAccount } from '../actions/auth-actions';
-import { Link } from 'react-router-dom';
+import { useAppThunkDispatch, useParentUrl } from '../utils/hooks';
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',
@@ -14,6 +14,8 @@ const notificationOpts: Notification = {
 };
 
 function TestPage() {
+  useParentUrl('/');
+
   const dispatch = useAppThunkDispatch();
 
   const env = process.env.NODE_ENV;

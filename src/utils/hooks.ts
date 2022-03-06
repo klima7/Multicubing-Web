@@ -6,6 +6,7 @@ import { Event, CloseEvent } from 'reconnecting-websocket';
 import type { RootState, AppDispatch } from '../store';
 import { Account } from '../types/types';
 import config from '../config';
+import { setParentUrl, resetParentUrl } from '../actions/general-actions';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -50,6 +51,18 @@ export function useWebSocket({
       ws.onclose = onClose;
       ws.onmessage = onMessage;
       return () => ws?.close();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   return webSocket!;
+}
+
+export function useParentUrl(parentUrl: string, dependents: Array<any> = []) {
+  const dispatch = useAppThunkDispatch();
+  useEffect(() => {
+    dispatch(setParentUrl({parentUrl: parentUrl}))
+    return () => {
+      dispatch(resetParentUrl());
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, dependents);
 }

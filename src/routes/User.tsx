@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import NotFound from '../components/NotFound';
 import LoadingIndicator from '../components/LoadingIndicator';
-import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
+import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../utils/hooks';
 import { getUser, clearUser } from '../actions/user-actions'
 
 type UserParams = {
@@ -15,6 +15,8 @@ function UserPage() {
   const notFound = useAppSelector(state => state.user.notFound);
   const user = useAppSelector(state => state.user.user);
   const loading = useAppSelector(state => state.user.loading);
+
+  useParentUrl('/rooms');
 
   useEffect(() => {
     dispatch(getUser(username))

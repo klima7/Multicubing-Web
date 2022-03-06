@@ -10,6 +10,7 @@ import LogoutDialog from './LogoutDialog';
 import { showLogoutDialog } from '../actions/auth-actions';
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSelector from './LanguageSelector';
+import ParrentNav from './ParrentNav';
 
 
 function AppBarCustom() {
@@ -26,6 +27,8 @@ function AppBarCustom() {
         <AppBar position="fixed" color="primary" elevation={0}>
           <Toolbar>
             <AppBarLogo />
+            <Box sx={{mr: 3}} />
+            <ParrentNav />
 
             <div style={{flex: 1}} />
 

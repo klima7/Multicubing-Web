@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
+import { useAppSelector, useAppThunkDispatch, useParentUrl } from "../utils/hooks";
 import RoomPasswordScreen from '../components/RoomPasswordScreen';
 import RoomScreen from '../components/RoomScreen';
 import { checkPermit } from '../actions/permit-actions';
@@ -12,6 +12,8 @@ type RoomParams = {
 };
 
 function RoomPage() {
+  useParentUrl('/rooms/');
+
   const permit = useAppSelector(state => state.permit.permit);
   const permitCheckPending = useAppSelector(state => state.permit.check.pending);
   const dispatch = useAppThunkDispatch();

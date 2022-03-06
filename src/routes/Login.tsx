@@ -10,12 +10,13 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useAppDispatch, useAppSelector } from '../utils/hooks';
+import { useAppDispatch, useAppSelector, useParentUrl } from '../utils/hooks';
 import { login as loginAction } from '../actions/auth-actions';
 import { useLocation } from 'react-router-dom';
 import { LocationState } from '../types/lib-types';
 
 function LoginPage() {
+  useParentUrl('/');
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
