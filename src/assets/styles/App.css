@@ -3,3 +3,7 @@ body {
   background-repeat: repeat;
   background-position: 0px 0px;
 }
+
+.os-scrollbar-handle {
+  background: #FF5722 !important;
+}
