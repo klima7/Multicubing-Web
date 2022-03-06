@@ -7,3 +7,7 @@ body {
 .os-scrollbar-handle {
   background: #FF5722 !important;
 }
+
+div.MuiDialog-container > div.MuiPaper-root {
+  border: solid 2px #1976D2;
+}
