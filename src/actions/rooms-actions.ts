@@ -27,6 +27,9 @@ export function processRoomsMessage(message: any) {
       console.log("deleted");
       dispatch(roomsActions.deleteRoom({slug: json.slug}));
     }
+    if(json.type === 'rooms.refresh') {
+      dispatch(getRooms());
+    }
   }
 }
 

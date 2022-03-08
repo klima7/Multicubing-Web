@@ -37,7 +37,7 @@ const RoomTile: FC<Props> = ({room}) => {
           <Grid item xs={4}>
               <Badge 
                 color="secondary" 
-                badgeContent={room.count}
+                badgeContent={room.count.toString()}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'left',
