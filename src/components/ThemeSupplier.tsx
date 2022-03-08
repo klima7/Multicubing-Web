@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC, useMemo } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { useAppSelector } from '../utils/hooks';
+import { useAppSelector } from '../hooks';
 import { getTheme } from '../assets/themes/theme';
 
 interface Props {

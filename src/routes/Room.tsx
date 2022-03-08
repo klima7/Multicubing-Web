@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { useAppSelector, useAppThunkDispatch, useParentUrl } from "../utils/hooks";
+import { useAppSelector, useAppThunkDispatch, useParentUrl } from "../hooks";
 import RoomPasswordScreen from '../components/RoomPasswordScreen';
 import RoomScreen from '../components/RoomScreen';
 import { checkPermit } from '../actions/permit-actions';

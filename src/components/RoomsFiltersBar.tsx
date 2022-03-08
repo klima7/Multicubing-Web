@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import CubeFilter from "./CubeFilter";
 import { useTheme } from '@emotion/react';
-import { useAppSelector, useAppThunkDispatch } from '../utils/hooks';
+import { useAppSelector, useAppThunkDispatch } from '../hooks';
 import { setRoomsFilters } from '../actions/rooms-actions';
 import { RoomsFilters } from '../types/types';
 

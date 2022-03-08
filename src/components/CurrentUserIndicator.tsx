@@ -1,5 +1,5 @@
 import Avatar from "@mui/material/Avatar";
-import { useAccount } from "../utils/hooks";
+import { useAccount } from "../hooks";
 import Box from "@mui/material/Box";
 import PersonIcon from "@mui/icons-material/Person";
 import { deepOrange } from "@mui/material/colors";

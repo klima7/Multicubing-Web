@@ -8,10 +8,9 @@ import Grid from '@mui/material/Grid';
 import { Box } from '@mui/material';
 import AddRoomDialog from '../components/AddRoomDialog';
 import { openAddRoomDialog } from '../actions/add-room-actions';
-import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
+import { useAppThunkDispatch, useAppSelector, useWebSocket } from '../hooks';
 import { getRooms, processRoomsMessage } from '../actions/rooms-actions';
 import RoomTile from '../components/RoomTile';
-import { useWebSocket } from '../utils/hooks';
 import RoomsFiltersBar from '../components/RoomsFiltersBar';
 
 const fabStyle = {

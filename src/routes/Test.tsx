@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 import { show, Notification } from '../utils/notifications';
 import backend from '../api/backend'
 import { refreshAccount } from '../actions/auth-actions';
-import { useAppThunkDispatch, useParentUrl } from '../utils/hooks';
+import { useAppThunkDispatch, useParentUrl } from '../hooks';
 
 const notificationOpts: Notification = {
   title: 'Hey, it\'s good to see you!',

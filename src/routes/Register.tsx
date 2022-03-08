@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../utils/hooks';
+import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../hooks';
 import { register } from '../actions/register-actions';
 import { useHistory } from 'react-router-dom';
 

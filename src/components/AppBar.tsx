@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../utils/hooks';
+import { useAppSelector, useAppDispatch } from '../hooks';
 import AppBarLogo from './AppBarLogo';
 import CurrentUserIndicator from './CurrentUserIndicator';
 import LogoutDialog from './LogoutDialog';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useWebSocket } from '../utils/hooks';
+import { useWebSocket } from '../hooks';
 
 interface Props {
   roomSlug: string;

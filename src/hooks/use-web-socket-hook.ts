@@ -1,23 +1,8 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ReconnectingWebSocket from 'reconnecting-websocket';
-import { Action, ThunkDispatch } from '@reduxjs/toolkit';
 import { Event, CloseEvent } from 'reconnecting-websocket';
-import type { RootState, AppDispatch } from '../store';
-import { Account } from '../types/types';
 import config from '../config';
-import { setParentUrl, resetParentUrl } from '../actions/general-actions';
-
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
-export type ThunkAppDispatch = ThunkDispatch<RootState, void, Action>;
-export const useAppThunkDispatch = () => useDispatch<ThunkAppDispatch>();
-
-export function useAccount(): Account {
-  const account = useAppSelector(state => state.auth.account);
-  return account!;
-}
+import { useAppSelector } from './redux-hooks';
 
 interface UseWebSocketParams {
   url: string, 
@@ -54,15 +39,4 @@ export function useWebSocket({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   return webSocket!;
-}
-
-export function useParentUrl(parentUrl: string, dependents: Array<any> = []) {
-  const dispatch = useAppThunkDispatch();
-  useEffect(() => {
-    dispatch(setParentUrl({parentUrl: parentUrl}))
-    return () => {
-      dispatch(resetParentUrl());
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, dependents);
 }

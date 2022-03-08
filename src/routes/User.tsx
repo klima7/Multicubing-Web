@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import NotFound from '../components/NotFound';
 import LoadingIndicator from '../components/LoadingIndicator';
-import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../utils/hooks';
+import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../hooks';
 import { getUser, clearUser } from '../actions/user-actions'
 
 type UserParams = {

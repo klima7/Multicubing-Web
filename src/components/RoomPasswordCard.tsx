@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@emotion/react';
-import { useAppThunkDispatch, useAppSelector } from '../utils/hooks';
+import { useAppThunkDispatch, useAppSelector } from '../hooks';
 import { enterRoomPassword } from '../actions/permit-actions';
 
 interface Props {

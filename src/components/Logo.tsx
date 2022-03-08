@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAppSelector } from "../utils/hooks";
+import { useAppSelector } from "../hooks";
 import logo from '../assets/images/logo.svg';
 import logoWhite from '../assets/images/logo-white.svg';
 

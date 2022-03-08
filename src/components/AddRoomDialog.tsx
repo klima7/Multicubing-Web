@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CircularProgress from '@mui/material/CircularProgress';
-import { useAppSelector, useAppThunkDispatch } from "../utils/hooks";
+import { useAppSelector, useAppThunkDispatch } from "../hooks";
 import { clearAddRoomDialog } from "../actions/add-room-actions";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
