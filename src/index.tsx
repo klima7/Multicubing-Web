@@ -13,7 +13,7 @@ import OverlayScrollbars from 'overlayscrollbars';
 import App from './components/App'
 import history from './utils/history'
 import ThemeSupplier from "./components/ThemeSupplier"
-import './i18n';
+import './utils/i18n';
 
 ReactDOM.render(
   <React.StrictMode>
