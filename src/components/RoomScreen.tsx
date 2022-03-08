@@ -1,6 +1,24 @@
+import { FC } from 'react';
+import { useWebSocket } from '../utils/hooks';
 
+interface Props {
+  roomSlug: string;
+}
 
-function RoomScreen() {
+const RoomScreen: FC<Props> = ({roomSlug}) => {
+
+  useWebSocket({
+    url: `/ws/rooms/${roomSlug}/`, 
+    onMessage: event => {
+      console.log(`Room received: ${event}`)
+    },
+    onOpen: event => console.log('Room Open'),
+    onClose: event => console.log('Room Close'),
+    onReconnect: event => {
+      console.log('Room reconnect');
+    },
+  });
+
   return (
     <div>
       <h1>You are inside room</h1>
