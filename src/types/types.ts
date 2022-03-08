@@ -44,6 +44,7 @@ export interface RoomResponse {
   slug: string;
   description: string | null;
   cube: string;
+  count: number;
   private: boolean;
   creation_date: string;
 }
@@ -53,6 +54,7 @@ export class Room {
   slug: string;
   description: string | null;
   cube: string;
+  count: number;
   private: boolean;
   creation_date: Date;
 
@@ -61,6 +63,7 @@ export class Room {
     this.slug = response.slug;
     this.description = response.description;
     this.cube = response.cube;
+    this.count = response.count;
     this.private = response.private;
     this.creation_date = new Date(response.creation_date);
   }
