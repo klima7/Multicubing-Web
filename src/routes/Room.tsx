@@ -4,7 +4,7 @@ import { useAppSelector, useAppThunkDispatch, useParentUrl } from "../hooks";
 import RoomPasswordScreen from '../components/room/RoomPasswordScreen';
 import RoomScreen from '../components/room/RoomScreen';
 import { checkPermit } from '../redux/permit/permit-actions';
-import LoadingIndicator from '../components/_reusable/LoadingIndicator';
+import LoadingIndicator from '../components/_lib/LoadingIndicator';
 
 
 type RoomParams = {

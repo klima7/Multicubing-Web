@@ -10,7 +10,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { Room } from '../../types/types'
-import CubeImage from '../_reusable/CubeImage';
+import CubeImage from '../_lib/CubeImage';
 
 interface Props {
   room: Room;

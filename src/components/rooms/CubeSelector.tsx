@@ -7,7 +7,7 @@ import { FC } from 'react';
 import Stack from '@mui/material/Stack';
 import { Cube } from '../../types/types';
 import { cubeVisualizations } from '../../utils/cube-visualization';
-import CubeImage from '../_reusable/CubeImage';
+import CubeImage from '../_lib/CubeImage';
 
 const cubes: Cube[] = ['two', 'three', 'four', 'five'];
 

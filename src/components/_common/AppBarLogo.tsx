@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import Logo from '../_reusable/Logo';
+import Logo from '../_lib/Logo';
 
 function AppBarLogo() {
   const history = useHistory();
