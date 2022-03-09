@@ -10,7 +10,7 @@ import LogoutDialog from './LogoutDialog';
 import { showLogoutDialog } from '../../redux/auth/auth-actions';
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSelector from './LanguageSelector';
-import ParrentNav from './ParrentNav';
+import ParentNav from './ParentNav';
 
 
 function AppBarCustom() {
@@ -28,7 +28,7 @@ function AppBarCustom() {
           <Toolbar>
             <AppBarLogo />
             <Box sx={{mr: 3}} />
-            <ParrentNav />
+            <ParentNav />
 
             <div style={{flex: 1}} />
 
