@@ -1,8 +1,6 @@
+import { FormControlLabel, Switch, TextField } from "@mui/material";
 import { FC } from 'react';
-import { Field } from 'react-final-form'
-import { TextField, Switch, FormControlLabel } from "@mui/material"
-import { FieldRenderProps } from 'react-final-form';
-import CubeSelector from '../components/rooms/CubeSelector';
+import { Field, FieldRenderProps } from 'react-final-form';
 
 
 export const Condition: FC<{when: string, is: any, children: JSX.Element|JSX.Element[]}> = 
@@ -35,17 +33,5 @@ export const SwitchAdapter: FC<FieldRenderProps<string, HTMLElement>> =
         onChange={(value) => input.onChange(value)}
       />
     } label={label} />
-  )
-}
-
-
-export const CubeSelectorAdapter: FC<FieldRenderProps<string, HTMLElement>> = 
-({ input, meta, ...rest }) => {
-  return (
-    <CubeSelector
-      {...input}
-      {...rest}
-      onChange={(value) => input.onChange(value)} 
-    />
   )
 }

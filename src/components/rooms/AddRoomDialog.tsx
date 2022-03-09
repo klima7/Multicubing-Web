@@ -11,9 +11,10 @@ import { Field, Form } from 'react-final-form';
 import { useAppSelector, useAppThunkDispatch } from '../../hooks';
 import { addRoom, clearAddRoomDialog } from '../../redux/add-room/add-room-actions';
 import {
-  Condition, CubeSelectorAdapter, SwitchAdapter, TextFieldAdapter
+  Condition, SwitchAdapter, TextFieldAdapter
 } from '../../utils/form-adapters';
 import { composeValidators, minLength, required } from '../../utils/form-validators';
+import { CubeSelectorAdapter } from './CubeSelector';
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 25;
