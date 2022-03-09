@@ -5,8 +5,8 @@ import Stack from '@mui/material/Stack';
 import HomeIcon from "@mui/icons-material/Home";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link, useHistory } from "react-router-dom";
-import notFoundLottie from "../assets/lotties/not-found.json";
-import "../assets/styles/Index.css";
+import notFoundLottie from "../../assets/lotties/not-found.json";
+import "../../assets/styles/Index.css";
 
 function NotFound() {
   const history = useHistory();

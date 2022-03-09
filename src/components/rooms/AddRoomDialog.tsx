@@ -8,12 +8,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { Field, Form } from 'react-final-form';
-import { useAppSelector, useAppThunkDispatch } from '../hooks';
-import { addRoom, clearAddRoomDialog } from '../redux/add-room/add-room-actions';
+import { useAppSelector, useAppThunkDispatch } from '../../hooks';
+import { addRoom, clearAddRoomDialog } from '../../redux/add-room/add-room-actions';
 import {
   Condition, CubeSelectorAdapter, SwitchAdapter, TextFieldAdapter
-} from '../utils/form-adapters';
-import { composeValidators, minLength, required } from '../utils/form-validators';
+} from '../../utils/form-adapters';
+import { composeValidators, minLength, required } from '../../utils/form-validators';
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 25;

@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 import { FC } from 'react';
 import { RouteProps, Redirect } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../../hooks';
 
 interface Props extends RouteProps<string> {
   redirect?: string;

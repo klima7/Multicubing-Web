@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Field } from 'react-final-form'
 import { TextField, Switch, FormControlLabel } from "@mui/material"
 import { FieldRenderProps } from 'react-final-form';
-import CubeSelector from '../components/CubeSelector';
+import CubeSelector from '../components/rooms/CubeSelector';
 
 
 export const Condition: FC<{when: string, is: any, children: JSX.Element|JSX.Element[]}> = 

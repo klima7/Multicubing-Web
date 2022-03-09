@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { FC, useMemo } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { useAppSelector } from '../hooks';
-import { getTheme } from '../assets/themes/theme';
+import { useAppSelector } from '../../hooks';
+import { getTheme } from '../../assets/themes/theme';
 
 interface Props {
   children: React.ReactNode;

@@ -5,9 +5,9 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { FC } from 'react';
 import Stack from '@mui/material/Stack';
-import { Cube } from '../types/types';
-import { cubeVisualizations } from '../utils/cube-visualization';
-import CubeImage from './CubeImage';
+import { Cube } from '../../types/types';
+import { cubeVisualizations } from '../../utils/cube-visualization';
+import CubeImage from '../_reusable/CubeImage';
 
 const cubes: Cube[] = ['two', 'three', 'four', 'five'];
 

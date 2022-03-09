@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Logo from '../components/Logo';
+import Logo from '../components/_reusable/Logo';
 import '../assets/styles/Index.css'
 
 function IndexPage() {

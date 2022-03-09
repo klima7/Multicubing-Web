@@ -6,12 +6,12 @@ import { Container, Typography } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import { Box } from '@mui/material';
-import AddRoomDialog from '../components/AddRoomDialog';
+import AddRoomDialog from '../components/rooms/AddRoomDialog';
 import { openAddRoomDialog } from '../redux/add-room/add-room-actions';
 import { useAppThunkDispatch, useAppSelector, useWebSocket } from '../hooks';
 import { getRooms, processRoomsMessage } from '../redux/rooms/rooms-actions';
-import RoomTile from '../components/RoomTile';
-import RoomsFiltersBar from '../components/RoomsFiltersBar';
+import RoomTile from '../components/rooms/RoomTile';
+import RoomsFiltersBar from '../components/rooms/RoomsFiltersBar';
 
 const fabStyle = {
   backgroundColor: deepOrange[500], 

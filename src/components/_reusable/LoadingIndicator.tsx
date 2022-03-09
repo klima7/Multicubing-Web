@@ -1,5 +1,5 @@
 import Lottie from "react-lottie";
-import loadingLottie from "../assets/lotties/loading.json";
+import loadingLottie from "../../assets/lotties/loading.json";
 
 function LoadingIndicator() {
   const lottieOptions = {

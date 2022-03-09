@@ -6,8 +6,8 @@ import RegisterPage from './routes/Register';
 import RoomsPage from './routes/Rooms';
 import NotFoundPage from './routes/NotFound';
 import UserPage from './routes/User';
-import AuthRoute from './components/AuthRoute';
-import NotAuthRoute from './components/NotAuthRoute';
+import AuthRoute from './components/_utils/AuthRoute';
+import NotAuthRoute from './components/_utils/NotAuthRoute';
 import RoomPage from './routes/Room';
 
 const routes = (

@@ -10,9 +10,9 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import OverlayScrollbars from 'overlayscrollbars';
-import App from './components/App'
+import App from './components/_common/App'
 import history from './utils/history'
-import ThemeSupplier from "./components/ThemeSupplier"
+import ThemeSupplier from "./components/_common/ThemeSupplier"
 import './utils/i18n';
 
 ReactDOM.render(

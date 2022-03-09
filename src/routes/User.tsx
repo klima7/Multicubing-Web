@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
-import NotFound from '../components/NotFound';
-import LoadingIndicator from '../components/LoadingIndicator';
+import NotFound from '../components/_reusable/NotFound';
+import LoadingIndicator from '../components/_reusable/LoadingIndicator';
 import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../hooks';
 import { getUser, clearUser } from '../redux/user/user-actions'
 

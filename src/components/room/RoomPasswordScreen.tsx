@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 import Lottie from "react-lottie";
 import RoomPasswordCard from "./RoomPasswordCard";
-import lockLottie from "../assets/lotties/lock.json";
+import lockLottie from "../../assets/lotties/lock.json";
 
 interface Props {
   roomSlug: string;

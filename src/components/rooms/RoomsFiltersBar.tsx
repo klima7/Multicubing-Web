@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import CubeFilter from "./CubeFilter";
 import { useTheme } from '@emotion/react';
-import { useAppSelector, useAppThunkDispatch } from '../hooks';
-import { setRoomsFilters } from '../redux/rooms/rooms-actions';
-import { RoomsFilters } from '../types/types';
+import { useAppSelector, useAppThunkDispatch } from '../../hooks';
+import { setRoomsFilters } from '../../redux/rooms/rooms-actions';
+import { RoomsFilters } from '../../types/types';
 
 export default function RoomsFiltersBar() {
 

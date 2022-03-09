@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useAppSelector } from "../hooks";
-import logo from '../assets/images/logo.svg';
-import logoWhite from '../assets/images/logo-white.svg';
+import { useAppSelector } from "../../hooks";
+import logo from '../../assets/images/logo.svg';
+import logoWhite from '../../assets/images/logo-white.svg';
 
 interface Props {
   [key: string]: any;

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useAppSelector, useAppThunkDispatch, useParentUrl } from "../hooks";
-import RoomPasswordScreen from '../components/RoomPasswordScreen';
-import RoomScreen from '../components/RoomScreen';
+import RoomPasswordScreen from '../components/room/RoomPasswordScreen';
+import RoomScreen from '../components/room/RoomScreen';
 import { checkPermit } from '../redux/permit/permit-actions';
-import LoadingIndicator from '../components/LoadingIndicator';
+import LoadingIndicator from '../components/_reusable/LoadingIndicator';
 
 
 type RoomParams = {

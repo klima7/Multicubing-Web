@@ -1,6 +1,6 @@
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { useHistory } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../../hooks';
 
 const ParrentNav = () => {
   const parentUrl = useAppSelector(state => state.general.parentUrl);

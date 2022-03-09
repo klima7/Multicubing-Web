@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { cubeVisualizations } from '../utils/cube-visualization';
+import { cubeVisualizations } from '../../utils/cube-visualization';
 
 interface Props {
   cube: string;
