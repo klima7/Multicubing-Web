@@ -1,8 +1,8 @@
-import { show, Notification } from '../utils/notifications';
-import * as authService from "../api/auth-api"
-import { authSlice } from "../reducers/auth-reducer";
 import { push } from 'connected-react-router'
-import { getCurrentAccount } from '../api/accounts-api';
+import { show, Notification } from '../../utils/notifications';
+import * as authService from "../../api/auth-api"
+import { authSlice } from "./auth-reducer";
+import { getCurrentAccount } from '../../api/accounts-api';
 
 
 const authActions = authSlice.actions;

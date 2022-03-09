@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { register } from '../actions/register-actions';
+import { register } from './register-actions';
 
 export const registrationSlice = createSlice({
   name: 'registration',

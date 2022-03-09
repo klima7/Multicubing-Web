@@ -1,13 +1,13 @@
 import {ThunkAction, Action } from '@reduxjs/toolkit';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import authReducer from './reducers/auth-reducer';
-import registrationReducer from './reducers/register-reducer';
+import authReducer from './redux/auth/auth-reducer';
+import registrationReducer from './redux/register/register-reducer';
 import {reducer as notificationsReducer} from 'react-notification-system-redux';
-import userReducer from './reducers/user-reducer';
-import addRoomReducer from './reducers/add-room-reducer';
-import roomsReducer from './reducers/rooms-reducer';
-import generalReducer from './reducers/general-reducer';
-import permitReducer from './reducers/permit-reducer';
+import userReducer from './redux/user/user-reducer';
+import addRoomReducer from './redux/add-room/add-room-reducer';
+import roomsReducer from './redux/rooms/rooms-reducer';
+import generalReducer from './redux/general/general-reducer';
+import permitReducer from './redux/permit/permit-reducer';
 import { connectRouter } from 'connected-react-router'
 import history from './utils/history'
 import thunk from 'redux-thunk'

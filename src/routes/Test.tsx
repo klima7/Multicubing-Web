@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import { show, Notification } from '../utils/notifications';
 import backend from '../api/backend'
-import { refreshAccount } from '../actions/auth-actions';
+import { refreshAccount } from '../redux/auth/auth-actions';
 import { useAppThunkDispatch, useParentUrl } from '../hooks';
 
 const notificationOpts: Notification = {

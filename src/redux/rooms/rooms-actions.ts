@@ -1,5 +1,5 @@
-import { roomsSlice } from '../reducers/rooms-reducer';
-import * as roomsApi from '../api/rooms-api';
+import { roomsSlice } from './rooms-reducer';
+import * as roomsApi from '../../api/rooms-api';
 
 const roomsActions = roomsSlice.actions;
 

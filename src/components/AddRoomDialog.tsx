@@ -1,23 +1,19 @@
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useAppSelector, useAppThunkDispatch } from "../hooks";
-import { clearAddRoomDialog } from "../actions/add-room-actions";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import { Form, Field } from "react-final-form";
-import Stack from "@mui/material/Stack";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import { Field, Form } from 'react-final-form';
+import { useAppSelector, useAppThunkDispatch } from '../hooks';
+import { addRoom, clearAddRoomDialog } from '../redux/add-room/add-room-actions';
 import {
-  TextFieldAdapter,
-  SwitchAdapter,
-  CubeSelectorAdapter,
-  Condition,
-} from "../utils/form-adapters";
-import { minLength, required, composeValidators } from "../utils/form-validators";
-import { addRoom } from "../actions/add-room-actions";
+  Condition, CubeSelectorAdapter, SwitchAdapter, TextFieldAdapter
+} from '../utils/form-adapters';
+import { composeValidators, minLength, required } from '../utils/form-validators';
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 25;

@@ -11,7 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppDispatch, useAppSelector, useParentUrl } from '../hooks';
-import { login as loginAction } from '../actions/auth-actions';
+import { login as loginAction } from '../redux/auth/auth-actions';
 import { useLocation } from 'react-router-dom';
 import { LocationState } from '../types/lib-types';
 

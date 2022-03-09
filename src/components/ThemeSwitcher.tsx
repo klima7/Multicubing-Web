@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import { useAppSelector, useAppThunkDispatch } from '../hooks';
-import { setTheme } from '../actions/general-actions';
+import { setTheme } from '../redux/general/general-actions';
 
 const ThemeSwitcher = () => {
   const dispatch = useAppThunkDispatch();

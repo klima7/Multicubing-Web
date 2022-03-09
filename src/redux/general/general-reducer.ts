@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ThemeIdentifier } from '../types/types';
+import { ThemeIdentifier } from '../../types/types';
 
 
 interface StateType {

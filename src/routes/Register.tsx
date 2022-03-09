@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../hooks';
-import { register } from '../actions/register-actions';
+import { register } from '../redux/register/register-actions';
 import { useHistory } from 'react-router-dom';
 
 function RegisterPage() {

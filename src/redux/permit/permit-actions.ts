@@ -1,5 +1,5 @@
-import { permitSlice } from "../reducers/permit-reducer";
-import { checkRoomPermit, sendRoomPassword } from "../api/rooms-api";
+import { permitSlice } from "./permit-reducer";
+import { checkRoomPermit, sendRoomPassword } from "../../api/rooms-api";
 
 
 const permitActions = permitSlice.actions;

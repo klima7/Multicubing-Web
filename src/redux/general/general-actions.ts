@@ -1,4 +1,4 @@
-import { generalSlice } from '../reducers/general-reducer';
+import { generalSlice } from './general-reducer';
 
 const generalActions = generalSlice.actions;
 

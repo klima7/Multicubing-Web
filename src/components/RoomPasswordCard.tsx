@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@emotion/react';
 import { useAppThunkDispatch, useAppSelector } from '../hooks';
-import { enterRoomPassword } from '../actions/permit-actions';
+import { enterRoomPassword } from '../redux/permit/permit-actions';
 
 interface Props {
   roomSlug: string;

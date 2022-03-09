@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Room, RoomsFilters } from '../types/types';
+import { Room, RoomsFilters } from '../../types/types';
 
 interface StateType {
   rooms: Room[];

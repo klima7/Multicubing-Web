@@ -1,8 +1,8 @@
-import { show, Notification } from '../utils/notifications';
-import { addRoomSlice } from '../reducers/add-room-reducer';
-import { createRoom } from '../api/rooms-api';
+import { show, Notification } from '../../utils/notifications';
+import { addRoomSlice } from './add-room-reducer';
+import { createRoom } from '../../api/rooms-api';
 import { push } from 'connected-react-router'
-import { ApiError } from '../types/types';
+import { ApiError } from '../../types/types';
 
 const userActions = addRoomSlice.actions;
 

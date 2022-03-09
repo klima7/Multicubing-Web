@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '../hooks';
 import AppBarLogo from './AppBarLogo';
 import CurrentUserIndicator from './CurrentUserIndicator';
 import LogoutDialog from './LogoutDialog';
-import { showLogoutDialog } from '../actions/auth-actions';
+import { showLogoutDialog } from '../redux/auth/auth-actions';
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSelector from './LanguageSelector';
 import ParrentNav from './ParrentNav';

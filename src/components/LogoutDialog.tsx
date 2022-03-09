@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useAppSelector, useAppThunkDispatch } from "../hooks";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -6,8 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { hideLogoutDialog } from '../actions/auth-actions';
-import { logout } from '../actions/auth-actions';
+import { hideLogoutDialog, logout } from '../redux/auth/auth-actions';
 
 export default function LogoutDialog() {
   const dispatch = useAppThunkDispatch();

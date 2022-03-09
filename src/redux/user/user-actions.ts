@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getAccount } from '../api/accounts-api'
-import { userSlice } from '../reducers/user-reducer';
+import { getAccount } from '../../api/accounts-api'
+import { userSlice } from './user-reducer';
 
 const userActions = userSlice.actions;
 

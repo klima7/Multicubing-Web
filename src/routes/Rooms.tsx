@@ -7,9 +7,9 @@ import { deepOrange } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import { Box } from '@mui/material';
 import AddRoomDialog from '../components/AddRoomDialog';
-import { openAddRoomDialog } from '../actions/add-room-actions';
+import { openAddRoomDialog } from '../redux/add-room/add-room-actions';
 import { useAppThunkDispatch, useAppSelector, useWebSocket } from '../hooks';
-import { getRooms, processRoomsMessage } from '../actions/rooms-actions';
+import { getRooms, processRoomsMessage } from '../redux/rooms/rooms-actions';
 import RoomTile from '../components/RoomTile';
 import RoomsFiltersBar from '../components/RoomsFiltersBar';
 

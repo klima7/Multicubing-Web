@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import NotFound from '../components/NotFound';
 import LoadingIndicator from '../components/LoadingIndicator';
 import { useAppSelector, useAppThunkDispatch, useParentUrl } from '../hooks';
-import { getUser, clearUser } from '../actions/user-actions'
+import { getUser, clearUser } from '../redux/user/user-actions'
 
 type UserParams = {
   username: string;

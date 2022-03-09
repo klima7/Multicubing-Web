@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import CubeFilter from "./CubeFilter";
 import { useTheme } from '@emotion/react';
 import { useAppSelector, useAppThunkDispatch } from '../hooks';
-import { setRoomsFilters } from '../actions/rooms-actions';
+import { setRoomsFilters } from '../redux/rooms/rooms-actions';
 import { RoomsFilters } from '../types/types';
 
 export default function RoomsFiltersBar() {

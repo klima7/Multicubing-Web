@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
-import { Account } from '../types/types';
+import { Account } from '../../types/types';
 
 const token = JSON.parse(String(localStorage.getItem('token'))) as string | null;
 const account = JSON.parse(String(localStorage.getItem('account'))) as Account | null;
