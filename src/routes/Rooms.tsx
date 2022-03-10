@@ -31,7 +31,8 @@ function RoomsPage() {
   const dispatch = useAppThunkDispatch();
 
   useWebSocket({
-    url: "/ws/rooms/", 
+    url: "/ws/rooms/",
+    heartbeat: true,
     onMessage: event => {
       dispatch(processRoomsMessage(event.data));
     },

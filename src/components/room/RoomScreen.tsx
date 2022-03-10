@@ -8,7 +8,8 @@ interface Props {
 const RoomScreen: FC<Props> = ({roomSlug}) => {
 
   useWebSocket({
-    url: `/ws/rooms/${roomSlug}/`, 
+    url: `/ws/rooms/${roomSlug}/`,
+    heartbeat: true,
     onMessage: event => {
       console.log(`Room received: ${event}`)
     },
