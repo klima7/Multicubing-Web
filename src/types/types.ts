@@ -20,7 +20,7 @@ export class Account {
     this.active = response.active;
     if(response.last_seen) {
       console.log(response.last_seen);
-      this.lastSeen = new Date(response.date_joined);
+      this.lastSeen = new Date(response.last_seen);
     }
   }
 }
