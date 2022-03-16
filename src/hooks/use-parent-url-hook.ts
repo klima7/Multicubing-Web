@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { resetParentUrl, setParentUrl } from '../redux/general/general-actions';
 import { useAppThunkDispatch } from './redux-hooks';
 
-export function useParentUrl(parentUrl: string, dependents: Array<any> = []) {
+export function useParentUrl(parentUrl: string | null, dependents: Array<any> = []) {
   const dispatch = useAppThunkDispatch();
   useEffect(() => {
     dispatch(setParentUrl({parentUrl: parentUrl}))

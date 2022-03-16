@@ -21,7 +21,7 @@ export const generalSlice = createSlice({
     setTheme(state, action: PayloadAction<{theme: ThemeIdentifier}>) {
       state.theme = action.payload.theme;
     },
-    setParentUrl(state, action: PayloadAction<{parentUrl: string}>) {
+    setParentUrl(state, action: PayloadAction<{parentUrl: string | null}>) {
       state.parentUrl = action.payload.parentUrl;
     },
     resetParentUrl(state) {

@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { useParentUrl } from '../hooks';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Logo from '../components/_lib/Logo';
 import '../assets/styles/Index.css'
 
 function IndexPage() {
+  useParentUrl(null);
   const [t] = useTranslation();
 
   return (

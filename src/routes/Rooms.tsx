@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import { Box } from '@mui/material';
 import AddRoomDialog from '../components/rooms/AddRoomDialog';
 import { openAddRoomDialog } from '../redux/add-room/add-room-actions';
-import { useAppThunkDispatch, useAppSelector, useWebSocket } from '../hooks';
+import { useAppThunkDispatch, useAppSelector, useWebSocket, useParentUrl } from '../hooks';
 import { getRooms, processRoomsMessage } from '../redux/rooms/rooms-actions';
 import RoomTile from '../components/rooms/RoomTile';
 import RoomsFiltersBar from '../components/rooms/RoomsFiltersBar';
@@ -27,6 +27,7 @@ const fabStyle = {
 
 function RoomsPage() {
 
+  useParentUrl(null);
   const [t] = useTranslation();
   const dispatch = useAppThunkDispatch();
 
