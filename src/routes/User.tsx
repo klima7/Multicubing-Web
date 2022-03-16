@@ -43,6 +43,10 @@ function UserPage() {
       <h1>Username: {user?.username}</h1>
       <h1>Email: {user?.email}</h1>
       <h1>Join date: {String(user?.dateJoined?.toLocaleDateString("en-US"))}</h1>
+      <h1>Active: {String(user?.active)}</h1>
+      {user?.lastSeen &&
+        (<h1>Last seen: {String(user?.lastSeen?.toLocaleString())}</h1>)
+      }
     </div>
   );
 }
