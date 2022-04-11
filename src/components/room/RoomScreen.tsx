@@ -11,7 +11,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
     url: `/ws/rooms/${roomSlug}/`,
     heartbeat: true,
     onMessage: event => {
-      console.log(`Room received: ${event}`)
+      console.log(`Room received: ${event.data}`)
     },
     onOpen: event => console.log('Room Open'),
     onClose: event => console.log('Room Close'),
