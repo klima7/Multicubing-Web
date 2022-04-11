@@ -2,7 +2,6 @@ export interface AccountResponse {
   email: string;
   username: string;
   date_joined: string;
-  active: boolean;
   last_seen?: string;
 }
 
@@ -17,7 +16,7 @@ export class Account {
     this.email = response.email;
     this.username = response.username;
     this.dateJoined = new Date(response.date_joined);
-    this.active = response.active;
+    this.active = response.last_seen == null;
     if(response.last_seen) {
       console.log(response.last_seen);
       this.lastSeen = new Date(response.last_seen);
