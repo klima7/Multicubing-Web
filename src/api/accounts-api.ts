@@ -23,20 +23,22 @@ export async function getAccount(username: string) {
   return account;
 }
 
+
 export async function getCurrentAccount() {
   const response = await backend.get('/accounts/me/');
   const account = getAccountFromResponse(response.data);
   return account;
 }
 
-// export async function getRoomUsers(roomSlug: string) {
-//   try {
-//     const response = await backend.get<AccountResponse>(`/accounts/?room=${roomSlug}`);
-//     const account = new Account(response.data);
-//     return account;
-//   } catch(e) {
-//     if(axios.isAxiosError(e)) {
-//       throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
-//     }
-//   }
-// }
+
+export async function getRoomUsers(roomSlug: string) {
+  try {
+    const response = await backend.get<AccountResponse[]>(`/accounts/?room=${roomSlug}`);
+    const accounts = response.data.map(response_element => getAccountFromResponse(response_element));
+    return accounts;
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+  }
+}
