@@ -1,5 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useWebSocket } from '../../hooks';
+import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import { fetchRoomUsers } from '../../redux/room/room-actions'
 
 interface Props {
   roomSlug: string;
@@ -20,9 +22,18 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
     },
   });
 
+  const dispatch = useAppThunkDispatch();
+  const users = useAppSelector(state => state.room.users);
+
+  useEffect(() => {
+    dispatch(fetchRoomUsers(roomSlug));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div>
       <h1>You are inside room</h1>
+      <ul>{users.map(user => <li>{user.username}</li>)}</ul>
     </div>
   );
 }

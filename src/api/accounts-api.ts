@@ -40,5 +40,6 @@ export async function getRoomUsers(roomSlug: string) {
     if(axios.isAxiosError(e)) {
       throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
     }
+    throw e;
   }
 }
