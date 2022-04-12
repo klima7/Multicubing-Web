@@ -1,26 +1,17 @@
-export interface AccountResponse {
-  email: string;
-  username: string;
-  date_joined: string;
-  last_seen?: string;
-}
-
 export class Account {
-  email: string;
-  username: string;
-  dateJoined: Date;
-  active: boolean;
-  lastSeen?: Date;
 
-  constructor(response: AccountResponse) {
-    this.email = response.email;
-    this.username = response.username;
-    this.dateJoined = new Date(response.date_joined);
-    this.active = response.last_seen == null;
-    if(response.last_seen) {
-      console.log(response.last_seen);
-      this.lastSeen = new Date(response.last_seen);
-    }
+  dateJoined: Date;
+  lastSeen?: Date;
+  active: boolean;
+
+  constructor(
+    public email: string, 
+    public username: string, 
+    dateJoined: string, 
+    lastSeen?: string) {
+    this.dateJoined = new Date(dateJoined);
+    if(lastSeen) this.lastSeen = new Date(lastSeen);
+    this.active = this.lastSeen == null;
   }
 }
 
