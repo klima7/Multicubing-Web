@@ -11,7 +11,7 @@ export interface AccountResponse {
 }
 
 
-function getAccountFromResponse(res: AccountResponse) {
+export function getAccountFromResponse(res: AccountResponse) {
   const account = new Account(res.email, res.username, res.date_joined, res.last_seen)
   return account
 }

@@ -1,4 +1,4 @@
-import { getRoomUsers } from '../../api/accounts-api'
+import { getRoomUsers, getAccountFromResponse } from '../../api/accounts-api'
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -35,7 +35,7 @@ export function processRoomMessage(message: any) {
     console.log(`Processing message: ${json}`)
     console.log(`Type: ${json.type}`);
     if(json.type === 'users.update') {
-      dispatch(roomActions.updateUser({user: json.user}));
+      dispatch(roomActions.updateUser({user: getAccountFromResponse(json.user)}));
     }
     if(json.type === 'users.delete') {
       console.log("deleted");
