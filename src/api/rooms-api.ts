@@ -45,7 +45,7 @@ interface CheckRoomPermitResponse {
 
 export async function checkRoomPermit(roomSlug: string): Promise<boolean> {
   try {
-    const response = await backend.get(`/permits/${roomSlug}/`);
+    const response = await backend.get(`/rooms/${roomSlug}/permits/`);
     const typeResponses = response.data as CheckRoomPermitResponse;
     return typeResponses.permit;
   } catch(e) {
@@ -59,7 +59,7 @@ export async function checkRoomPermit(roomSlug: string): Promise<boolean> {
 export async function sendRoomPassword(roomSlug: string, password: string): Promise<boolean> {
   try {
     const data = { password }
-    await backend.post(`/permits/${roomSlug}/`, data);
+    await backend.post(`/rooms/${roomSlug}/permits/`, data);
     return true;
   } catch(e) {
     if(axios.isAxiosError(e)) {
