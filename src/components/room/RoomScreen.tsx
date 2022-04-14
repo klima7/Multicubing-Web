@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { useWebSocket } from '../../hooks';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
+import Chat from './Chat'
 
 interface Props {
   roomSlug: string;
@@ -39,6 +40,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
     <div>
       <h1>You are inside room</h1>
       <ul>{users.map(user => <li key={user.username}>{user.username}</li>)}</ul>
+      <Chat roomSlug={roomSlug} />
     </div>
   );
 }
