@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import { addMessage } from '../../api/messages-api';
 
 interface Props {
   roomSlug: string;
@@ -14,6 +15,14 @@ const Chat: FC<Props> = ({roomSlug}) => {
 
   const dispatch = useAppThunkDispatch();
   const messages = useAppSelector(state => state.room.messages);
+
+  const [message, setMessage] = useState('');
+
+  function onSendClick() {
+    if(message.length === 0) return;
+    addMessage(roomSlug, message);
+    setMessage('');
+  }
 
   return (
     <div style={{
@@ -44,8 +53,14 @@ const Chat: FC<Props> = ({roomSlug}) => {
           variant="standard" 
           style={{flex: 1}}
           InputProps={{ disableUnderline: true }}
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
         />
-        <Button variant="contained" endIcon={<SendIcon />}>
+        <Button 
+          variant="contained" 
+          endIcon={<SendIcon />}
+          onClick={onSendClick}
+        >
           Send
         </Button>
       </Box>
