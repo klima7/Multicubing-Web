@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useWebSocket } from '../../hooks';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
-import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions'
+import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
 
 interface Props {
   roomSlug: string;

@@ -73,3 +73,12 @@ export class RoomsFilters {
 }
 
 export type ThemeIdentifier = "light" | "dark";
+
+export class Message {
+
+  constructor(
+    public sender: string, 
+    public room: string, 
+    public content: string, 
+    public send_time: Date) {}
+}
