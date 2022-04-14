@@ -77,6 +77,7 @@ export type ThemeIdentifier = "light" | "dark";
 export class Message {
 
   constructor(
+    public id: number,
     public sender: string, 
     public room: string, 
     public content: string, 

@@ -1,4 +1,5 @@
 import { getRoomUsers, getAccountFromResponse } from '../../api/accounts-api'
+import { getMessages } from '../../api/messages-api'
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -21,7 +22,8 @@ export function fetchRoom() {
     dispatch(roomActions.enterRoom({roomSlug: roomSlug}));
     try {
       const users = await getRoomUsers(roomSlug);
-      dispatch(roomActions.updateRoom({users: users}))
+      const messages = await getMessages(roomSlug);
+      dispatch(roomActions.updateRoom({users: users, messages: messages}))
     } catch(e: unknown) {
       console.log('Error occurred')
     }

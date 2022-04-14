@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { ApiError, ApiErrorData, Room, Message } from '../types/types';
+import { ApiError, ApiErrorData, Message } from '../types/types';
 import backend from './backend'
 
 
 export interface MessageResponse {
+  id: number;
   sender: string;
   room: string;
   content: string;
@@ -13,7 +14,7 @@ export interface MessageResponse {
 
 export function getMessageFromResponse(res: MessageResponse) {
   const send_time = new Date(res.send_time);
-  const message = new Message(res.sender, res.room, res.content, send_time)
+  const message = new Message(res.id, res.sender, res.room, res.content, send_time)
   return message
 }
 
