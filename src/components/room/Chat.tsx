@@ -42,7 +42,7 @@ const Chat: FC<Props> = ({roomSlug}) => {
           style={{ maxHeight: '100pt' }}
         >
           <ul>
-            {messages.map(message => <li>{message.sender} - {message.content}</li>)}
+            {Array.from(messages).reverse().map(message => <li key={message.id}>{message.sender} - {message.content}</li>)}
           </ul>
         </OverlayScrollbarsComponent>
       </div>

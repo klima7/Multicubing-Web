@@ -55,6 +55,14 @@ export const roomSlice = createSlice({
     deleteUser(state, action: PayloadAction<{username: string}>) {
       state.users = state.users.filter(user => user.username !== action.payload.username);
     },
+    updateMessage(state, action: PayloadAction<{message: Message}>) {
+      const message = action.payload.message;
+      state.messages = state.messages.filter(m => m.id !== message.id);
+      state.messages.push(message)
+    },
+    deleteMessage(state, action: PayloadAction<{id: number}>) {
+      state.messages = state.messages.filter(message => message.id !== action.payload.id);
+    },
   },
 });
 

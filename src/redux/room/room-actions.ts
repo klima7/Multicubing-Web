@@ -1,5 +1,5 @@
-import { getRoomUsers, getAccountFromResponse } from '../../api/accounts-api'
-import { getMessages } from '../../api/messages-api'
+import { getRoomUsers, getAccountFromResponse } from '../../api/accounts-api';
+import { getMessages, getMessageFromResponse } from '../../api/messages-api';
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -40,11 +40,16 @@ export function processRoomMessage(message: any) {
       dispatch(roomActions.updateUser({user: getAccountFromResponse(json.user)}));
     }
     if(json.type === 'users.delete') {
-      console.log("deleted");
       dispatch(roomActions.deleteUser({username: json.username}));
     }
     if(json.type === 'users.refresh') {
       dispatch(fetchRoom());
+    }
+    if(json.type === 'messages.update') {
+      dispatch(roomActions.updateMessage({message: getMessageFromResponse(json.message)}));
+    }
+    if(json.type === 'messages.delete') {
+      dispatch(roomActions.deleteMessage({id: json.id}));
     }
   }
 }
