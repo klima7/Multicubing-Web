@@ -26,7 +26,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   });
 
   const dispatch = useAppThunkDispatch();
-  const users = useAppSelector(state => state.room.users);
+  const participants = useAppSelector(state => state.room.participants);
 
   useEffect(() => {
     dispatch(enterRoom(roomSlug));
@@ -39,7 +39,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   return (
     <div>
       <h1>You are inside room</h1>
-      <ul>{users.map(user => <li key={user.username}>{user.username}</li>)}</ul>
+      <ul>{participants.map(participant => <li key={participant.user.username}>{participant.user.username} (Spectator: {participant.spectator.toString()})</li>)}</ul>
       <Chat roomSlug={roomSlug} />
     </div>
   );

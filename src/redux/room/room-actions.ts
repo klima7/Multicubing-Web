@@ -1,4 +1,4 @@
-import { getRoomUsers, getAccountFromResponse } from '../../api/accounts-api';
+import { getParticipants, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
 import { roomSlice } from './room-reducer';
 
@@ -21,9 +21,9 @@ export function fetchRoom() {
     const roomSlug = getState().room.roomSlug;
     dispatch(roomActions.enterRoom({roomSlug: roomSlug}));
     try {
-      const users = await getRoomUsers(roomSlug);
+      const participants = await getParticipants(roomSlug);
       const messages = await getMessages(roomSlug);
-      dispatch(roomActions.updateRoom({users: users, messages: messages}))
+      dispatch(roomActions.updateRoom({participants: participants, messages: messages}))
     } catch(e: unknown) {
       console.log('Error occurred')
     }
@@ -36,11 +36,11 @@ export function processRoomMessage(message: any) {
     const json = JSON.parse(message);
     console.log(`Processing message: ${json}`)
     console.log(`Type: ${json.type}`);
-    if(json.type === 'users.update') {
-      dispatch(roomActions.updateUser({user: getAccountFromResponse(json.user)}));
+    if(json.type === 'participants.update') {
+      dispatch(roomActions.updateParticipant({participant: getParticipantFromResponse(json.participant)}));
     }
-    if(json.type === 'users.delete') {
-      dispatch(roomActions.deleteUser({username: json.username}));
+    if(json.type === 'participants.delete') {
+      dispatch(roomActions.deleteParticipant({username: json.username}));
     }
     if(json.type === 'users.refresh') {
       dispatch(fetchRoom());

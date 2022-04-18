@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
-import { Account, Message } from '../../types/types';
+import { Message, Participant } from '../../types/types';
 
 interface StateType {
   roomSlug: string | null;
-  users: Account[];
+  participants: Participant[];
   messages: Message[];
 }
 
@@ -11,26 +11,26 @@ export const roomSlice = createSlice({
   name: 'room',
   initialState: {
     roomSlug: null,
-    users: [],
+    participants: [],
     messages: [],
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string}>) {
       state.roomSlug = action.payload.roomSlug;
-      state.users = [];
+      state.participants = [];
     },
     resetRoom(state) {
-      state.users = [];
+      state.participants = [];
       state.messages = [];
     },
-    updateRoom(state, action: PayloadAction<{users: Account[], messages: Message[]}>) {
+    updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[]}>) {
       const payload = action.payload;
 
-      // Update users
-      const usernames = state.users.map(u => u.username);
-      payload.users.forEach(u => {
-        if(!usernames.includes(u.username)) {
-          state.users.push(u);
+      // Update participants
+      const usernames = state.participants.map(p => p.user.username);
+      payload.participants.forEach(p => {
+        if(!usernames.includes(p.user.username)) {
+          state.participants.push(p);
         }
       });
 
@@ -44,16 +44,16 @@ export const roomSlice = createSlice({
     },
     leaveRoom(state) {
       state.roomSlug = null;
-      state.users = [];
+      state.participants = [];
       state.messages = [];
     },
-    updateUser(state, action: PayloadAction<{user: Account}>) {
-      const user = action.payload.user;
-      state.users = state.users.filter(u => u.username !== user.username);
-      state.users.push(user)
+    updateParticipant(state, action: PayloadAction<{participant: Participant}>) {
+      const participant = action.payload.participant;
+      state.participants = state.participants.filter(p => p.user.username !== participant.user.username);
+      state.participants.push(participant)
     },
-    deleteUser(state, action: PayloadAction<{username: string}>) {
-      state.users = state.users.filter(user => user.username !== action.payload.username);
+    deleteParticipant(state, action: PayloadAction<{username: string}>) {
+      state.participants = state.participants.filter(participant => participant.user.username !== action.payload.username);
     },
     updateMessage(state, action: PayloadAction<{message: Message}>) {
       const message = action.payload.message;

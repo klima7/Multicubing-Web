@@ -83,3 +83,11 @@ export class Message {
     public content: string, 
     public send_time: Date) {}
 }
+
+export class Participant {
+
+  constructor(
+    public user: Account,
+    public room: string, 
+    public spectator: boolean) {}
+}
