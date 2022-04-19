@@ -4,6 +4,7 @@ import { Message, Participant } from '../../types/types';
 interface StateType {
   roomSlug: string | null;
   username: string | null;
+  loading: boolean;
   me: Participant | null;
   participants: Participant[];
   messages: Message[];
@@ -14,6 +15,7 @@ export const roomSlice = createSlice({
   initialState: {
     roomSlug: null,
     username: null,
+    loading: true,
     me: null,
     participants: [],
     messages: [],
@@ -23,11 +25,12 @@ export const roomSlice = createSlice({
       state.roomSlug = action.payload.roomSlug;
       state.username = action.payload.username;
       state.participants = [];
-      console.log(state.username);
+      state.loading = true;
     },
     resetRoom(state) {
       state.participants = [];
       state.messages = [];
+      state.loading = true;
     },
     updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[]}>) {
       const payload = action.payload;
@@ -49,10 +52,14 @@ export const roomSlice = createSlice({
         }
       });
     },
+    stopLoading(state) {
+      state.loading = false;
+    },
     leaveRoom(state) {
       state.roomSlug = null;
       state.participants = [];
       state.messages = [];
+      state.loading = true;
     },
     updateParticipant(state, action: PayloadAction<{participant: Participant}>) {
       const participant = action.payload.participant;

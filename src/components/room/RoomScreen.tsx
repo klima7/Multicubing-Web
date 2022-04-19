@@ -3,6 +3,7 @@ import { useWebSocket } from '../../hooks';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
 import Chat from './Chat';
+import LoadingIndicator from '../../components/_lib/LoadingIndicator';
 import SpectatorButton from './SpectatorButton';
 
 interface Props {
@@ -28,6 +29,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
 
   const dispatch = useAppThunkDispatch();
   const participants = useAppSelector(state => state.room.participants);
+  const loading = useAppSelector(state => state.room.loading);
 
   useEffect(() => {
     dispatch(enterRoom(roomSlug));
@@ -36,6 +38,12 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if(loading === true) {
+    return (
+      <LoadingIndicator />
+    );
+  }
 
   return (
     <div style={{textAlign: 'left', margin: '1ex 3ex'}}>

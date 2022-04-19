@@ -26,6 +26,8 @@ export function fetchRoom() {
       const participants = await getParticipants(roomSlug);
       const messages = await getMessages(roomSlug);
       dispatch(roomActions.updateRoom({participants: participants, messages: messages}))
+      await new Promise(r => setTimeout(r, 1000));
+      dispatch(roomActions.stopLoading())
     } catch(e: unknown) {
       console.log('Error occurred')
     }
