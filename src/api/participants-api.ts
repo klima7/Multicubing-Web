@@ -30,3 +30,16 @@ export async function getParticipants(roomSlug: string) {
     throw e;
   }
 }
+
+
+export async function setSpectator(roomSlug: string, username: string, spectator: boolean) {
+  try {
+    const data = { spectator: spectator }
+    await backend.patch<ParticipantResponse[]>(`/rooms/${roomSlug}/participants/${username}/`, data);
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+    throw e;
+  }
+}

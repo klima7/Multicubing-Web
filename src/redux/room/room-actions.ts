@@ -1,4 +1,4 @@
-import { getParticipants, getParticipantFromResponse } from '../../api/participants-api';
+import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
 import { roomSlice } from './room-reducer';
 
@@ -6,8 +6,10 @@ const roomActions = roomSlice.actions;
 
 
 export function enterRoom(roomSlug: string) {
-  return async (dispatch: any) => {
-    dispatch(roomActions.enterRoom({roomSlug: roomSlug}));
+  return async (dispatch: any, getState: any) => {
+    const username = getState().auth.account.username;
+    console.log('Username', username);
+    dispatch(roomActions.enterRoom({roomSlug: roomSlug, username: username}));
     dispatch(fetchRoom());
   };
 }
@@ -19,7 +21,7 @@ export const leaveRoom = roomActions.leaveRoom;
 export function fetchRoom() {
   return async (dispatch: any, getState: any) => {
     const roomSlug = getState().room.roomSlug;
-    dispatch(roomActions.enterRoom({roomSlug: roomSlug}));
+    dispatch(roomActions.resetRoom());
     try {
       const participants = await getParticipants(roomSlug);
       const messages = await getMessages(roomSlug);
@@ -52,4 +54,17 @@ export function processRoomMessage(message: any) {
       dispatch(roomActions.deleteMessage({id: json.id}));
     }
   }
+}
+
+
+export function setSpectator(spectator: boolean) {
+  return async (dispatch: any, getState: any) => {
+    const roomSlug = getState().room.roomSlug;
+    const username = getState().auth.account.username;
+    try {
+      await setSpectatorAPI(roomSlug, username, spectator);
+    } catch(e: unknown) {
+      console.log('Error occurred')
+    }
+  };
 }

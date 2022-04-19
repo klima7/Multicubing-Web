@@ -3,6 +3,8 @@ import { Message, Participant } from '../../types/types';
 
 interface StateType {
   roomSlug: string | null;
+  username: string | null;
+  me: Participant | null;
   participants: Participant[];
   messages: Message[];
 }
@@ -11,13 +13,17 @@ export const roomSlice = createSlice({
   name: 'room',
   initialState: {
     roomSlug: null,
+    username: null,
+    me: null,
     participants: [],
     messages: [],
   } as StateType,
   reducers: {
-    enterRoom(state, action: PayloadAction<{roomSlug: string}>) {
+    enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
       state.roomSlug = action.payload.roomSlug;
+      state.username = action.payload.username;
       state.participants = [];
+      console.log(state.username);
     },
     resetRoom(state) {
       state.participants = [];
@@ -33,6 +39,7 @@ export const roomSlice = createSlice({
           state.participants.push(p);
         }
       });
+      updateMe(state);
 
       // Update messages
       const messageIds = state.messages.map(m => m.id);
@@ -50,7 +57,8 @@ export const roomSlice = createSlice({
     updateParticipant(state, action: PayloadAction<{participant: Participant}>) {
       const participant = action.payload.participant;
       state.participants = state.participants.filter(p => p.user.username !== participant.user.username);
-      state.participants.push(participant)
+      state.participants.push(participant);
+      updateMe(state);
     },
     deleteParticipant(state, action: PayloadAction<{username: string}>) {
       state.participants = state.participants.filter(participant => participant.user.username !== action.payload.username);
@@ -65,5 +73,9 @@ export const roomSlice = createSlice({
     },
   },
 });
+
+function updateMe(state: StateType) {
+  state.me = state.participants.find(p => p.user.username === state.username) || null;
+}
 
 export default roomSlice.reducer;
