@@ -19,11 +19,11 @@ const SpectatorButton: FC = () => {
     <div>
       { !spectator ?
       <Button variant="contained" startIcon={<PauseCircleIcon />} onClick={onClick} color="primary">
-        Go to spectator mode
+        Enter spectator mode
       </Button>
       :
-      <Button variant="outlined" startIcon={<PlayCircleIcon />} onClick={onClick} color="primary">
-        Go to competitor mode
+      <Button variant="contained" startIcon={<PlayCircleIcon />} onClick={onClick} color="primary">
+        Enter competitor mode
       </Button>
       }
     </div>

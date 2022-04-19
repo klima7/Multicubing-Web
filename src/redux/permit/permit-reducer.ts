@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ApiError } from '../../types/types';
 
 interface StateType {
   permit: boolean;
   check: {
     pending: boolean;
     error: any;
+    notFound: boolean;
   },
   enter: {
     password: string | null;
@@ -20,7 +22,8 @@ export const permitSlice = createSlice({
     permit: false,
     check: {
       pending: false,
-      error: null
+      error: null,
+      notFound: false,
     },
     enter: {
       password: null,
@@ -34,21 +37,29 @@ export const permitSlice = createSlice({
       state.check = {
         pending: true,
         error: null,
+        notFound: false,
       };
     },
     checkSuccess(state, action: PayloadAction<{permit: boolean}>) {
       state.check = {
         pending: false,
         error: null,
+        notFound: false,
       };
       state.permit = action.payload.permit;
     },
     checkFailure(state, action: PayloadAction<{error: any}>) {
+      const error = action.payload.error;
       state.check = {
         pending: false,
-        error: action.payload.error,
+        error: error,
+        notFound: false,
       };
       state.permit = false;
+
+      if(error instanceof ApiError && error.status === 404) {
+        state.check.notFound = true;
+      }
     },
 
     enterStart(state, action: PayloadAction<{password: string}>) {

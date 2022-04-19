@@ -1,5 +1,5 @@
-import { permitSlice } from "./permit-reducer";
-import { checkRoomPermit, sendRoomPassword } from "../../api/rooms-api";
+import { permitSlice } from './permit-reducer';
+import { checkRoomPermit, sendRoomPassword } from '../../api/rooms-api';
 
 
 const permitActions = permitSlice.actions;
@@ -12,6 +12,7 @@ export function checkPermit(roomSlug: string) {
       const permit = await checkRoomPermit(roomSlug);
       dispatch(permitActions.checkSuccess({permit: permit}))
     } catch(e) {
+      console.log(e)
       dispatch(permitActions.checkFailure({error: e}))
     }
   };
