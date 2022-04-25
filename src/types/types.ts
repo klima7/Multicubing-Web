@@ -91,3 +91,18 @@ export class Participant {
     public room: string, 
     public spectator: boolean) {}
 }
+
+export enum Flag {
+  DNF,
+  PLUS2
+}
+
+export class Time {
+
+  constructor(
+    public turn_no: number,
+    public username: string, 
+    public time: number,
+    public flag: Flag | null) {}
+}
+

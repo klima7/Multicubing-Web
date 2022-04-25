@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
-import { Message, Participant } from '../../types/types';
+import { Message, Participant, Time } from '../../types/types';
 
 interface StateType {
   roomSlug: string | null;
@@ -8,6 +8,7 @@ interface StateType {
   me: Participant | null;
   participants: Participant[];
   messages: Message[];
+  times: Time[];
 }
 
 export const roomSlice = createSlice({
@@ -19,20 +20,21 @@ export const roomSlice = createSlice({
     me: null,
     participants: [],
     messages: [],
+    times: [],
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
       state.roomSlug = action.payload.roomSlug;
       state.username = action.payload.username;
-      state.participants = [];
       state.loading = true;
     },
     resetRoom(state) {
       state.participants = [];
       state.messages = [];
+      state.times = [];
       state.loading = true;
     },
-    updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[]}>) {
+    updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[], times: Time[]}>) {
       const payload = action.payload;
 
       // Update participants
@@ -51,6 +53,9 @@ export const roomSlice = createSlice({
           state.messages.push(m);
         }
       });
+
+      // Update times
+      state.times = action.payload.times;
     },
     stopLoading(state) {
       state.loading = false;

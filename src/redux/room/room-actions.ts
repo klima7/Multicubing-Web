@@ -1,5 +1,6 @@
 import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
+import { getTimes } from '../../api/times-api';
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -25,7 +26,8 @@ export function fetchRoom() {
     try {
       const participants = await getParticipants(roomSlug);
       const messages = await getMessages(roomSlug);
-      dispatch(roomActions.updateRoom({participants: participants, messages: messages}))
+      const times = await getTimes(roomSlug);
+      dispatch(roomActions.updateRoom({participants: participants, messages: messages, times: times}))
       await new Promise(r => setTimeout(r, 1000));
       dispatch(roomActions.stopLoading())
     } catch(e: unknown) {
