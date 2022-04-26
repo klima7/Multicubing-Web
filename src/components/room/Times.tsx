@@ -30,20 +30,21 @@ const Times: FC<Props> = ({roomSlug}) => {
       marginLeft: 10, 
       marginRight: 10, 
       textAlign: 'left',
+      height: '100%',
       }}>
 
       <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
         <h2 style={{marginBottom: 0, marginTop: 0}}>Times</h2>
       </div>
 
-      <div style={{height: '330px'}}>
+      <div style={{height: '100%'}}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-            <TableCell width="200ex">Turn / User</TableCell>
+            <TableCell width="15ex">Turn / User</TableCell>
               { participants.map(participant => (
-                <TableCell>{participant.user.username}</TableCell>
+                <TableCell width="15ex">{participant.user.username}</TableCell>
               ))}
             </TableRow>
           </TableHead>

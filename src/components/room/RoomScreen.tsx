@@ -7,6 +7,8 @@ import Chat from './Chat';
 import LoadingIndicator from '../../components/_lib/LoadingIndicator';
 import SpectatorButton from './SpectatorButton';
 import Times from './Times';
+import Status from './Status';
+import Stats from './Stats';
 
 interface Props {
   roomSlug: string;
@@ -50,9 +52,24 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   return (
     <div style={{textAlign: 'left', margin: '1ex 3ex'}}>
       <SpectatorButton />
-      <Times roomSlug={roomSlug} />
-      <Box height={15} />
-      <Chat roomSlug={roomSlug} />
+      <Box height={10} />
+      <Box sx={{ display: 'flex', height: '200px' }}>
+        <Box sx={{ flex: 1 }}>
+          <Status roomSlug={roomSlug} />
+        </Box>
+        <Box sx={{ flex: 1 }}>
+          <Chat roomSlug={roomSlug} />
+        </Box>
+      </Box>
+      <Box height={10} />
+      <Box sx={{ display: 'flex', height: '370px' }}>
+        <Box sx={{ flex: 8 }}>
+          <Times roomSlug={roomSlug} />
+        </Box>
+        <Box sx={{ flex: 2 }}>
+          <Stats roomSlug={roomSlug} />
+        </Box>
+      </Box>
     </div>
   );
 }

@@ -31,6 +31,7 @@ const Chat: FC<Props> = ({roomSlug}) => {
       marginLeft: 10, 
       marginRight: 10, 
       textAlign: 'left',
+      height: '100%',
       }}>
 
       <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
@@ -41,7 +42,7 @@ const Chat: FC<Props> = ({roomSlug}) => {
         <OverlayScrollbarsComponent
           style={{ height: '80pt' }}
         >
-          {messages.length == 0 ? <p>No messages</p> :
+          {messages.length === 0 ? <p>No messages</p> :
           <ul>
             {Array.from(messages).reverse().map(message => <li key={message.id}>{message.sender} - {message.content}</li>)}
           </ul>
