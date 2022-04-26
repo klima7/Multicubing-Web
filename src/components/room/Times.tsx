@@ -22,6 +22,8 @@ const Times: FC<Props> = ({roomSlug}) => {
   const dispatch = useAppThunkDispatch();
   const times = useAppSelector(state => state.room.times);
   const participants = useAppSelector(state => state.room.participants);
+  const tableParticipants = useAppSelector(state => state.room.tableParticipants);
+  const tableTimes = useAppSelector(state => state.room.tableTimes);
 
   return (
     <div style={{
@@ -43,21 +45,22 @@ const Times: FC<Props> = ({roomSlug}) => {
           <TableHead>
             <TableRow>
             <TableCell width="15ex">Turn / User</TableCell>
-              { participants.map(participant => (
+              { tableParticipants.map(participant => (
                 <TableCell width="15ex">{participant.user.username}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">1</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">3</TableCell>
-              <TableCell align="right">4</TableCell>
-              <TableCell align="right">5</TableCell>
-            </TableRow> */}
+            { tableTimes.map((row, turn_no) => (
+              <TableRow
+                // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">{turn_no+1}</TableCell>
+                { row.map(time => (
+                  <TableCell component="th" scope="row">{time?.time}</TableCell>
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

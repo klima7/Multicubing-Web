@@ -9,6 +9,8 @@ interface StateType {
   participants: Participant[];
   messages: Message[];
   times: Time[];
+  tableParticipants: Participant[];
+  tableTimes: Array<Array<Time | null>>;
 }
 
 export const roomSlice = createSlice({
@@ -21,6 +23,8 @@ export const roomSlice = createSlice({
     participants: [],
     messages: [],
     times: [],
+    tableParticipants: [],
+    tableTimes: [],
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
@@ -57,7 +61,7 @@ export const roomSlice = createSlice({
       // Update times
       state.times = action.payload.times;
 
-      updateStructuredTimes(state);
+      updateTable(state);
     },
     stopLoading(state) {
       state.loading = false;
@@ -74,11 +78,11 @@ export const roomSlice = createSlice({
       state.participants.push(participant);
 
       updateMe(state);
-      updateStructuredTimes(state);
+      updateTable(state);
     },
     deleteParticipant(state, action: PayloadAction<{username: string}>) {
       state.participants = state.participants.filter(participant => participant.user.username !== action.payload.username);
-      updateStructuredTimes(state);
+      updateTable(state);
     },
     updateMessage(state, action: PayloadAction<{message: Message}>) {
       const message = action.payload.message;
@@ -95,8 +99,27 @@ function updateMe(state: StateType) {
   state.me = state.participants.find(p => p.user.username === state.username) || null;
 }
 
-function updateStructuredTimes(state: StateType) {
+function updateTable(state: StateType) {
+  updateTableParticipants(state);
 
+  const turns = state.times.map(t => t.turn_no);
+  const maxTurn = Math.max(...turns);
+  const tableTimes = []
+  for(let i=1; i<=maxTurn; i++) {
+    const turnTimes = []
+    for(let participant of state.tableParticipants) {
+      const time = state.times.filter(t => t.username === participant.user.username && t.turn_no === i)
+      if(time.length > 0) turnTimes.push(time[0])
+      else turnTimes.push(null);
+    }
+    tableTimes.push(turnTimes);
+  }
+  state.tableTimes = tableTimes.reverse();
+  // const table = 
+}
+
+function updateTableParticipants(state: StateType) {
+  state.tableParticipants = state.participants.filter(p => p.spectator === false);
 }
 
 export default roomSlice.reducer;
