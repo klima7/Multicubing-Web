@@ -39,11 +39,13 @@ const Chat: FC<Props> = ({roomSlug}) => {
 
       <div>
         <OverlayScrollbarsComponent
-          style={{ maxHeight: '100pt' }}
+          style={{ height: '80pt' }}
         >
+          {messages.length == 0 ? <p>No messages</p> :
           <ul>
             {Array.from(messages).reverse().map(message => <li key={message.id}>{message.sender} - {message.content}</li>)}
           </ul>
+          }
         </OverlayScrollbarsComponent>
       </div>
 

@@ -1,10 +1,12 @@
 import { FC, useEffect } from 'react';
 import { useWebSocket } from '../../hooks';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import Box from '@mui/material/Box';
 import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
 import Chat from './Chat';
 import LoadingIndicator from '../../components/_lib/LoadingIndicator';
 import SpectatorButton from './SpectatorButton';
+import Times from './Times';
 
 interface Props {
   roomSlug: string;
@@ -47,9 +49,9 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
 
   return (
     <div style={{textAlign: 'left', margin: '1ex 3ex'}}>
-      <h1 style={{textAlign: 'center'}}>You are inside room</h1>
       <SpectatorButton />
-      <ul>{participants.map(participant => <li key={participant.user.username}>{participant.user.username} (Spectator: {participant.spectator.toString()})</li>)}</ul>
+      <Times roomSlug={roomSlug} />
+      <Box height={15} />
       <Chat roomSlug={roomSlug} />
     </div>
   );

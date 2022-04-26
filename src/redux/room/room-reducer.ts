@@ -56,6 +56,8 @@ export const roomSlice = createSlice({
 
       // Update times
       state.times = action.payload.times;
+
+      updateStructuredTimes(state);
     },
     stopLoading(state) {
       state.loading = false;
@@ -70,10 +72,13 @@ export const roomSlice = createSlice({
       const participant = action.payload.participant;
       state.participants = state.participants.filter(p => p.user.username !== participant.user.username);
       state.participants.push(participant);
+
       updateMe(state);
+      updateStructuredTimes(state);
     },
     deleteParticipant(state, action: PayloadAction<{username: string}>) {
       state.participants = state.participants.filter(participant => participant.user.username !== action.payload.username);
+      updateStructuredTimes(state);
     },
     updateMessage(state, action: PayloadAction<{message: Message}>) {
       const message = action.payload.message;
@@ -88,6 +93,10 @@ export const roomSlice = createSlice({
 
 function updateMe(state: StateType) {
   state.me = state.participants.find(p => p.user.username === state.username) || null;
+}
+
+function updateStructuredTimes(state: StateType) {
+
 }
 
 export default roomSlice.reducer;
