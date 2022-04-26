@@ -55,9 +55,9 @@ const Times: FC<Props> = ({roomSlug}) => {
               <TableRow
                 // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">{turn_no+1}</TableCell>
+                <TableCell component="th" scope="row"><b>{turn_no+1}</b></TableCell>
                 { row.map(time => (
-                  <TableCell component="th" scope="row">{time?.time}</TableCell>
+                  <TableCell component="th" scope="row">{time?.time ?? '-----'}</TableCell>
                 ))}
               </TableRow>
             ))}

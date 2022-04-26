@@ -114,7 +114,7 @@ function updateTable(state: StateType) {
     }
     tableTimes.push(turnTimes);
   }
-  state.tableTimes = tableTimes.reverse();
+  state.tableTimes = tableTimes;
   // const table = 
 }
 
