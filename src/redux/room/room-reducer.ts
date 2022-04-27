@@ -12,6 +12,10 @@ interface StateType {
   tableParticipants: Participant[];
   tableTimes: Array<Array<Time | null>>;
   turn: Turn | null;
+  timer: {
+    start: Date | null;
+    end: Date | null;
+  };
 }
 
 export const roomSlice = createSlice({
@@ -27,6 +31,10 @@ export const roomSlice = createSlice({
     tableParticipants: [],
     tableTimes: [],
     turn: null,
+    timer: {
+      start: null,
+      end: null,
+    },
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
@@ -103,6 +111,21 @@ export const roomSlice = createSlice({
       state.times.push(action.payload.time);
       updateTable(state);
     },
+    startTimer(state) {
+      state.timer = {
+        start: new Date(),
+        end: null,
+      };
+    },
+    stopTimer(state) {
+      state.timer.end = new Date();
+    },
+    clearTimer(state) {
+      state.timer = {
+        start: null,
+        end: null,
+      };
+    }
   },
 });
 

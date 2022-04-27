@@ -24,7 +24,7 @@ function RoomPage() {
   useEffect(() => {
     dispatch(checkPermit(roomSlug));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   if(notFound) {
     return (

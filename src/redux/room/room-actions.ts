@@ -82,3 +82,8 @@ export function setSpectator(spectator: boolean) {
     }
   };
 }
+
+
+export const startTimer = roomActions.startTimer;
+export const stopTimer = roomActions.stopTimer;
+export const clearTimer = roomActions.clearTimer;

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import ExtendedTimer from './ExtendedTimer';
 
 interface Props {
   roomSlug: string;
@@ -27,6 +28,7 @@ const Status: FC<Props> = ({roomSlug}) => {
       <div style={{height: '100%'}}>
         <p>Turn number: {turn_number}</p>
         <p>Scramble: {scramble}</p>
+        <ExtendedTimer roomSlug={roomSlug} />
       </div>
 
     </div>
