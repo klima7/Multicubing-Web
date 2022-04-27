@@ -99,6 +99,10 @@ export const roomSlice = createSlice({
     updateTurn(state, action: PayloadAction<{turn: Turn}>) {
       state.turn = action.payload.turn;
     },
+    updateTime(state, action: PayloadAction<{time: Time}>) {
+      state.times.push(action.payload.time);
+      updateTable(state);
+    },
   },
 });
 

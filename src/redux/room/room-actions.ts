@@ -1,6 +1,6 @@
 import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
-import { getTimes, getLastTurn, getTurnFromResponse } from '../../api/times-api';
+import { getTimes, getLastTurn, getTurnFromResponse, getTimeFromResponse } from '../../api/times-api';
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -63,6 +63,9 @@ export function processRoomMessage(message: any) {
     }
     if(json.type === 'turns.update') {
       dispatch(roomActions.updateTurn({turn: getTurnFromResponse(json.turn)}));
+    }
+    if(json.type === 'times.update') {
+      dispatch(roomActions.updateTime({time: getTimeFromResponse(json.time)}));
     }
   }
 }
