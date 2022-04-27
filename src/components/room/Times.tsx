@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useAppSelector } from '../../hooks';
+import { Time, Flag } from '../../types/types';
 
 interface Props {
   roomSlug: string;
@@ -53,7 +54,7 @@ const Times: FC<Props> = ({roomSlug}) => {
                   >
                     <TableCell component="th" scope="row"><b>{tableTimes.length-turn_no}</b></TableCell>
                     { row.map(time => (
-                      <TableCell component="th" scope="row">{time?.time ?? '-----'}</TableCell>
+                      <TableCell component="th" scope="row">{renderTime(time)}</TableCell>
                     ))}
                   </TableRow>
                 ))}
@@ -65,6 +66,26 @@ const Times: FC<Props> = ({roomSlug}) => {
 
     </div>
   );
+
+  function renderTime(time: Time | null) {
+    if(time === null) {
+      return '-----';
+    }
+    else if(time.flag === Flag.DNF) {
+      return 'DNF';
+    }
+    else if(time.flag === Flag.PLUS2) {
+      return `${roundTime(time.time + 2)} (+2)`;
+    }
+    else {
+      return roundTime(time.time);
+    }
+  }
+
+  function roundTime(number: number) {
+    return number.toFixed(2);
+  } 
+
 }
 
 export default Times;

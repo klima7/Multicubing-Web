@@ -50,7 +50,7 @@ export async function getTimes(roomSlug: string): Promise<Time[]> {
 
 export async function addTime(roomSlug: string, turn: number, username: string, time: number, flag: Flag | null) {
   let flagNum = null;
-  if(flag === Flag.DNF) flagNum = 'dnf'
+  if(flag === Flag.DNF) flagNum = 'DNF'
   else if(flag === Flag.PLUS2) flagNum = '+2'
 
   const data = {
