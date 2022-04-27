@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
-import { Message, Participant, Time } from '../../types/types';
+import { Message, Participant, Time, Turn } from '../../types/types';
 
 interface StateType {
   roomSlug: string | null;
@@ -11,6 +11,7 @@ interface StateType {
   times: Time[];
   tableParticipants: Participant[];
   tableTimes: Array<Array<Time | null>>;
+  turn: Turn | null;
 }
 
 export const roomSlice = createSlice({
@@ -25,6 +26,7 @@ export const roomSlice = createSlice({
     times: [],
     tableParticipants: [],
     tableTimes: [],
+    turn: null,
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
@@ -38,7 +40,8 @@ export const roomSlice = createSlice({
       state.times = [];
       state.loading = true;
     },
-    updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[], times: Time[]}>) {
+    updateRoom(state, action: PayloadAction<{participants: Participant[], messages: Message[], 
+      times: Time[], turn: Turn | null}>) {
       const payload = action.payload;
 
       // Update participants
@@ -60,6 +63,7 @@ export const roomSlice = createSlice({
 
       // Update times
       state.times = action.payload.times;
+      state.turn = action.payload.turn;
 
       updateTable(state);
     },
@@ -91,6 +95,9 @@ export const roomSlice = createSlice({
     },
     deleteMessage(state, action: PayloadAction<{id: number}>) {
       state.messages = state.messages.filter(message => message.id !== action.payload.id);
+    },
+    updateTurn(state, action: PayloadAction<{turn: Turn}>) {
+      state.turn = action.payload.turn;
     },
   },
 });

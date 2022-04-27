@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ApiError, ApiErrorData, Time, Flag } from '../types/types';
+import { ApiError, ApiErrorData, Time, Turn, Flag } from '../types/types';
 import backend from './backend'
 
 
@@ -8,6 +8,13 @@ export interface TimeResponse {
   user: string;
   time: number;
   flag: string;
+}
+
+
+export interface TurnResponse {
+  room: string;
+  number: number;
+  scramble: string;
 }
 
 
@@ -20,12 +27,33 @@ export function getTimeFromResponse(res: TimeResponse) {
 }
 
 
+export function getTurnFromResponse(res: TurnResponse) {
+  const turn = new Turn(res.number, res.scramble);
+  return turn
+}
+
+
 export async function getTimes(roomSlug: string): Promise<Time[]> {
   try {
     const response = await backend.get(`/rooms/${roomSlug}/times/`);
     const timesResponses = response.data as TimeResponse[]
     const times = timesResponses.map(res => getTimeFromResponse(res))
     return times;
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+    throw e;
+  }
+}
+
+
+export async function getLastTurn(roomSlug: string): Promise<Turn> {
+  try {
+    const response = await backend.get(`/rooms/${roomSlug}/turns/last/`);
+    const turnRes = response.data as TurnResponse
+    const turn = getTurnFromResponse(turnRes);
+    return turn;
   } catch(e) {
     if(axios.isAxiosError(e)) {
       throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);

@@ -106,3 +106,9 @@ export class Time {
     public flag: Flag | null) {}
 }
 
+export class Turn {
+
+  constructor(
+    public number: number,
+    public scramble: string) {}
+}

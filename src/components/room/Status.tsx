@@ -1,10 +1,14 @@
 import { FC } from 'react';
+import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 
 interface Props {
   roomSlug: string;
 }
 
 const Status: FC<Props> = ({roomSlug}) => {
+
+  const turn_number = useAppSelector(state => state.room.turn?.number);
+  const scramble = useAppSelector(state => state.room.turn?.scramble);
 
   return (
     <div style={{
@@ -21,7 +25,8 @@ const Status: FC<Props> = ({roomSlug}) => {
       </div>
 
       <div style={{height: '100%'}}>
-
+        <p>Turn number: {turn_number}</p>
+        <p>Scramble: {scramble}</p>
       </div>
 
     </div>

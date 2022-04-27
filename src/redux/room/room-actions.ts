@@ -1,6 +1,6 @@
 import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
-import { getTimes } from '../../api/times-api';
+import { getTimes, getLastTurn, getTurnFromResponse } from '../../api/times-api';
 import { roomSlice } from './room-reducer';
 
 const roomActions = roomSlice.actions;
@@ -27,7 +27,11 @@ export function fetchRoom() {
       const participants = await getParticipants(roomSlug);
       const messages = await getMessages(roomSlug);
       const times = await getTimes(roomSlug);
-      dispatch(roomActions.updateRoom({participants: participants, messages: messages, times: times}))
+      let lastTurn = null;
+      try {
+        lastTurn = await getLastTurn(roomSlug);
+      } catch(e) {}
+      dispatch(roomActions.updateRoom({participants: participants, messages: messages, times: times, turn: lastTurn}))
       await new Promise(r => setTimeout(r, 1000));
       dispatch(roomActions.stopLoading())
     } catch(e: unknown) {
@@ -56,6 +60,9 @@ export function processRoomMessage(message: any) {
     }
     if(json.type === 'messages.delete') {
       dispatch(roomActions.deleteMessage({id: json.id}));
+    }
+    if(json.type === 'turns.update') {
+      dispatch(roomActions.updateTurn({turn: getTurnFromResponse(json.turn)}));
     }
   }
 }
