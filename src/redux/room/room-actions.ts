@@ -1,7 +1,8 @@
 import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
 import { getMessages, getMessageFromResponse } from '../../api/messages-api';
-import { getTimes, getLastTurn, getTurnFromResponse, getTimeFromResponse } from '../../api/times-api';
+import { getTimes, getLastTurn, getTurnFromResponse, getTimeFromResponse, addTime as addTimeAPI } from '../../api/times-api';
 import { roomSlice } from './room-reducer';
+import { Flag } from '../../types/types';
 
 const roomActions = roomSlice.actions;
 
@@ -77,6 +78,22 @@ export function setSpectator(spectator: boolean) {
     const username = getState().auth.account.username;
     try {
       await setSpectatorAPI(roomSlug, username, spectator);
+    } catch(e: unknown) {
+      console.log('Error occurred')
+    }
+  };
+}
+
+
+export function addTime(flag: Flag | null) {
+  return async (dispatch: any, getState: any) => {
+    const roomSlug = getState().room.roomSlug;
+    const username = getState().auth.account.username;
+    const turn = getState().room.turn?.number ?? -1;
+    const elapsed = +(getState().room.timer.end!!) - +(getState().room.timer.start!!);
+    const seconds = elapsed / 1000;
+    try {
+      await addTimeAPI(roomSlug, turn, username, seconds, flag);
     } catch(e: unknown) {
       console.log('Error occurred')
     }

@@ -1,9 +1,5 @@
-import * as React from 'react';import { FC, useState } from 'react';
+import * as React from 'react';import { FC } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import TextField from '@mui/material/TextField';
-import SendIcon from '@mui/icons-material/Send';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 
 interface Props {
   roomSlug: string;
@@ -19,9 +15,6 @@ interface Props {
 
 const Times: FC<Props> = ({roomSlug}) => {
 
-  const dispatch = useAppThunkDispatch();
-  const times = useAppSelector(state => state.room.times);
-  const participants = useAppSelector(state => state.room.participants);
   const tableParticipants = useAppSelector(state => state.room.tableParticipants);
   const tableTimes = useAppSelector(state => state.room.tableTimes);
 

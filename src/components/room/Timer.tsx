@@ -1,7 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
-import Button from '@mui/material/Button';
-import { startTimer, stopTimer, clearTimer } from '../../redux/room/room-actions';
+import { useAppSelector } from '../../hooks';
 
 interface Props {
   roomSlug: string;
@@ -9,7 +7,6 @@ interface Props {
 
 const Timer: FC<Props> = ({roomSlug}) => {
 
-  const dispatch = useAppThunkDispatch();
   const timer = useAppSelector(state => state.room.timer);
   const [runTime, setRunTime] = useState(0.0);
 
@@ -42,7 +39,7 @@ const Timer: FC<Props> = ({roomSlug}) => {
   }
 
   function pausedTimer() {
-    const elapsed = +(new Date()) - +(timer.start!!);
+    const elapsed = +(timer.end!!) - +(timer.start!!);
     const seconds = elapsed / 1000;
     return (<span>{ seconds }</span>)
   }

@@ -48,6 +48,26 @@ export async function getTimes(roomSlug: string): Promise<Time[]> {
 }
 
 
+export async function addTime(roomSlug: string, turn: number, username: string, time: number, flag: Flag | null) {
+  let flagNum = null;
+  if(flag === Flag.DNF) flagNum = 'dnf'
+  else if(flag === Flag.PLUS2) flagNum = '+2'
+
+  const data = {
+    'time': time,
+    'flag': flagNum,
+  };
+
+  try {
+    await backend.put(`/rooms/${roomSlug}/turns/${turn}/times/${username}/`, data);
+  } catch(e) {
+    if(axios.isAxiosError(e)) {
+      throw new ApiError(e.response?.data as ApiErrorData, e.response?.status ?? 0);
+    }
+  }
+}
+
+
 export async function getLastTurn(roomSlug: string): Promise<Turn> {
   try {
     const response = await backend.get(`/rooms/${roomSlug}/turns/last/`);
