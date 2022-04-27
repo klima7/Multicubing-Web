@@ -40,30 +40,34 @@ const Times: FC<Props> = ({roomSlug}) => {
       </div>
 
       <div style={{height: '100%'}}>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-            <TableCell width="15ex">Turn / User</TableCell>
-              { tableParticipants.map(participant => (
-                <TableCell width="15ex">{participant.user.username}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            { tableTimes.map((row, turn_no) => (
-              <TableRow
-                // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row"><b>{turn_no+1}</b></TableCell>
-                { row.map(time => (
-                  <TableCell component="th" scope="row">{time?.time ?? '-----'}</TableCell>
+        <OverlayScrollbarsComponent
+            style={{ height: '325px' }}
+          >
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                <TableCell width="15ex">Turn / User</TableCell>
+                  { tableParticipants.map(participant => (
+                    <TableCell width="15ex">{participant.user.username}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                { tableTimes.map((row, turn_no) => (
+                  <TableRow
+                    // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row"><b>{turn_no+1}</b></TableCell>
+                    { row.map(time => (
+                      <TableCell component="th" scope="row">{time?.time ?? '-----'}</TableCell>
+                    ))}
+                  </TableRow>
                 ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </OverlayScrollbarsComponent>
       </div>
 
     </div>
