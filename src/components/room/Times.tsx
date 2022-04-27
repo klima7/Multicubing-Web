@@ -54,11 +54,11 @@ const Times: FC<Props> = ({roomSlug}) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                { tableTimes.map((row, turn_no) => (
+                { tableTimes.slice(0).reverse().map((row, turn_no) => (
                   <TableRow
                     // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row"><b>{turn_no+1}</b></TableCell>
+                    <TableCell component="th" scope="row"><b>{tableTimes.length-turn_no}</b></TableCell>
                     { row.map(time => (
                       <TableCell component="th" scope="row">{time?.time ?? '-----'}</TableCell>
                     ))}
