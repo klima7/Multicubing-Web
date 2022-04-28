@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <OverlayScrollbarsComponent>
+      <OverlayScrollbarsComponent options={{overflowBehavior: {y: 'hidden'}}}>
         <Suspense fallback="loading">
           <AppBarCustom />
           <Notifications />

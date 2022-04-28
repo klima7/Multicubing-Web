@@ -10,8 +10,6 @@ const Stats: FC<Props> = ({roomSlug}) => {
     <div style={{
       border: 'solid 2px black', 
       borderRadius: 10,
-      marginLeft: 10, 
-      marginRight: 10, 
       textAlign: 'left',
       height: '100%'
       }}>

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import { addMessage } from '../../api/messages-api';
 
 interface Props {
@@ -13,7 +13,6 @@ interface Props {
 
 const Chat: FC<Props> = ({roomSlug}) => {
 
-  const dispatch = useAppThunkDispatch();
   const messages = useAppSelector(state => state.room.messages);
 
   const [message, setMessage] = useState('');
@@ -25,22 +24,22 @@ const Chat: FC<Props> = ({roomSlug}) => {
   }
 
   return (
-    <div style={{
+    <Box 
+      sx={{ display: 'flex', flexDirection: 'column'}}
+      style={{
       border: 'solid 2px black', 
       borderRadius: 10, 
-      marginLeft: 10, 
-      marginRight: 10, 
       textAlign: 'left',
       height: '100%',
       }}>
 
-      <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
+      <Box style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
         <h2 style={{marginBottom: 0, marginTop: 0}}>Chat</h2>
-      </div>
+      </Box>
 
-      <div>
+      <Box sx={{ flex: 1 }}>
         <OverlayScrollbarsComponent
-          style={{ height: '80pt' }}
+          style={{ height: '100%' }}
         >
           {messages.length === 0 ? <p>No messages</p> :
           <ul>
@@ -48,7 +47,7 @@ const Chat: FC<Props> = ({roomSlug}) => {
           </ul>
           }
         </OverlayScrollbarsComponent>
-      </div>
+      </Box>
 
       <Box sx={{display: 'flex'}} style={{textAlign: 'left', borderTop: 'solid 2px black', padding: '3px 3px 3px 10px'}}>
         <TextField 
@@ -68,7 +67,7 @@ const Chat: FC<Props> = ({roomSlug}) => {
         </Button>
       </Box>
 
-    </div>
+    </Box>
   );
 }
 

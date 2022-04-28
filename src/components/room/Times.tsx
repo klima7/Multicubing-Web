@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import { useAppSelector } from '../../hooks';
 import { Time, Flag } from '../../types/types';
 
@@ -20,22 +21,22 @@ const Times: FC<Props> = ({roomSlug}) => {
   const tableTimes = useAppSelector(state => state.room.tableTimes);
 
   return (
-    <div style={{
+    <Box 
+      sx={{ display: 'flex', flexDirection: 'column'}}
+      style={{
       border: 'solid 2px black', 
       borderRadius: 10, 
-      marginLeft: 10, 
-      marginRight: 10, 
       textAlign: 'left',
       height: '100%',
       }}>
 
-      <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
+      <Box style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
         <h2 style={{marginBottom: 0, marginTop: 0}}>Times</h2>
-      </div>
+      </Box>
 
-      <div style={{height: '100%'}}>
+      <Box sx={{ flex: 1 }}>
         <OverlayScrollbarsComponent
-            style={{ height: '325px' }}
+            style={{ height: '100%' }}
           >
           <TableContainer component={Paper}>
             <Table>
@@ -62,9 +63,9 @@ const Times: FC<Props> = ({roomSlug}) => {
             </Table>
           </TableContainer>
         </OverlayScrollbarsComponent>
-      </div>
+      </Box>
 
-    </div>
+    </Box>
   );
 
   function renderTime(time: Time | null) {

@@ -32,7 +32,6 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   });
 
   const dispatch = useAppThunkDispatch();
-  const participants = useAppSelector(state => state.room.participants);
   const loading = useAppSelector(state => state.room.loading);
 
   useEffect(() => {
@@ -50,27 +49,52 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   }
 
   return (
-    <div style={{textAlign: 'left', margin: '1ex 3ex'}}>
-      <SpectatorButton />
-      <Box height={10} />
-      <Box sx={{ display: 'flex', height: '200px' }}>
-        <Box sx={{ flex: 1 }}>
-          <Status roomSlug={roomSlug} />
-        </Box>
-        <Box sx={{ flex: 1 }}>
-          <Chat roomSlug={roomSlug} />
-        </Box>
+    <Box 
+      sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 84px)' }}
+      style={{textAlign: 'left', margin: '1ex 1ex'}}
+      >
+
+      <Box>
+        <SpectatorButton />
       </Box>
+
       <Box height={10} />
-      <Box sx={{ display: 'flex', height: '370px' }}>
-        <Box sx={{ flex: 8 }}>
-          <Times roomSlug={roomSlug} />
+      
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column'}}>
+
+        <Box sx={{ flex: 1, display: 'flex' }}>
+
+          <Box sx={{ flex: 1 }}>
+            <Status roomSlug={roomSlug} />
+          </Box>
+
+          <Box width={10} />
+
+          <Box sx={{ flex: 1 }}>
+            <Chat roomSlug={roomSlug} />
+          </Box>
+
         </Box>
-        <Box sx={{ flex: 2 }}>
-          <Stats roomSlug={roomSlug} />
+
+        <Box height={10} />
+
+        <Box sx={{ flex: 1, display: 'flex' }}>
+
+          <Box sx={{ flex: 8 }}>
+            <Times roomSlug={roomSlug} />
+          </Box>
+
+          <Box width={10} />
+
+          <Box sx={{ flex: 2 }}>
+            <Stats roomSlug={roomSlug} />
+          </Box>
+
         </Box>
+
       </Box>
-    </div>
+
+    </Box>
   );
 }
 
