@@ -64,13 +64,13 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
 
         <Box sx={{ flex: 1, display: 'flex' }}>
 
-          <Box sx={{ flex: 1 }}>
+          <Box sx={{ width: '50%' }}>
             <Status roomSlug={roomSlug} />
           </Box>
 
           <Box width={10} />
 
-          <Box sx={{ flex: 1 }}>
+          <Box sx={{ width: '50%' }}>
             <Chat roomSlug={roomSlug} />
           </Box>
 

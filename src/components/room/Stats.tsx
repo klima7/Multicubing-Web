@@ -15,7 +15,7 @@ const Stats: FC<Props> = ({roomSlug}) => {
       }}>
 
       <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
-        <h2 style={{marginBottom: 0, marginTop: 0}}>Stats</h2>
+        <h4 style={{marginBottom: 0, marginTop: 0}}>Stats</h4>
       </div>
 
       <div style={{height: '100%'}}>

@@ -31,7 +31,7 @@ const Times: FC<Props> = ({roomSlug}) => {
       }}>
 
       <Box style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
-        <h2 style={{marginBottom: 0, marginTop: 0}}>Times</h2>
+        <h4 style={{marginBottom: 0, marginTop: 0}}>Times</h4>
       </Box>
 
       <Box sx={{ flex: 1 }}>

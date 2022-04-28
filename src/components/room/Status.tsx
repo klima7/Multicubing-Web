@@ -21,7 +21,7 @@ const Status: FC<Props> = ({roomSlug}) => {
       }}>
 
       <Box style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
-        <h2 style={{marginBottom: 0, marginTop: 0}}>Status</h2>
+        <h4 style={{marginBottom: 0, marginTop: 0}}>Status</h4>
       </Box>
 
       <Box sx={{ flex: 1 }}>
