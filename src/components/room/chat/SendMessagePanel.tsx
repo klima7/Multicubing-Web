@@ -3,16 +3,18 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
+import { useAppThunkDispatch } from '../../../hooks';
 import { sendMessage } from '../../../redux/room/room-actions';
 
 
 const ChatMessagesPanel = () => {
 
+  const dispatch = useAppThunkDispatch();
   const [message, setMessage] = useState('');
 
   function onSendClick() {
     if(message.length === 0) return;
-    sendMessage(message);
+    dispatch(sendMessage(message));
     setMessage('');
   }
 
