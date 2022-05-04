@@ -3,7 +3,7 @@ import { useWebSocket } from '../../hooks';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 import Box from '@mui/material/Box';
 import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
-import Chat from './Chat';
+import Chat from './chat/Chat';
 import LoadingIndicator from '../../components/_lib/LoadingIndicator';
 import SpectatorButton from './SpectatorButton';
 import Times from './Times';

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import { Message } from '../../types/types';
+import { Message } from '../../../types/types';
 import Typography from '@mui/material/Typography';
 
 interface Props {
