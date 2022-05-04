@@ -1,5 +1,5 @@
 import { getParticipants, setSpectator as setSpectatorAPI, getParticipantFromResponse } from '../../api/participants-api';
-import { getMessages, getMessageFromResponse } from '../../api/messages-api';
+import { getMessages, getMessageFromResponse, addMessage } from '../../api/messages-api';
 import { getTimes, getLastTurn, getTurnFromResponse, getTimeFromResponse, addTime as addTimeAPI } from '../../api/times-api';
 import { roomSlice } from './room-reducer';
 import { Flag } from '../../types/types';
@@ -94,6 +94,18 @@ export function addTime(flag: Flag | null) {
     const seconds = elapsed / 1000;
     try {
       await addTimeAPI(roomSlug, turn, username, seconds, flag);
+    } catch(e: unknown) {
+      console.log('Error occurred')
+    }
+  };
+}
+
+
+export function sendMessage(content: string) {
+  return async (dispatch: any, getState: any) => {
+    const roomSlug = getState().room.roomSlug;
+    try {
+      await addMessage(roomSlug, content)
     } catch(e: unknown) {
       console.log('Error occurred')
     }

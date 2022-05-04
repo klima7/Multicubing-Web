@@ -1,32 +1,20 @@
-import Box from '@mui/material/Box';
-import { FC } from 'react';
 import RoomPanelHeader from '../RoomPanelHeader';
+import RoomPanel from '../RoomPanel';
 import ChatMessagesPanel from './ChatMessagesPanel';
 import SendMessagePanel from './SendMessagePanel';
 
-interface Props {
-  roomSlug: string;
-}
-
-const Chat: FC<Props> = ({roomSlug}) => {
+const Chat = () => {
 
   return (
-    <Box 
-      sx={{ display: 'flex', flexDirection: 'column'}}
-      style={{
-        border: 'solid 2px black', 
-        borderRadius: 10,
-        textAlign: 'left',
-        height: '100%',
-      }}>
+    <RoomPanel>
 
       <RoomPanelHeader>Chat</RoomPanelHeader>
 
       <ChatMessagesPanel />
 
-      <SendMessagePanel roomSlug={roomSlug} />
+      <SendMessagePanel />
 
-    </Box>
+    </RoomPanel>
   );
 }
 

@@ -71,7 +71,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
           <Box width={10} />
 
           <Box sx={{ width: '50%' }}>
-            <Chat roomSlug={roomSlug} />
+            <Chat />
           </Box>
 
         </Box>

@@ -2,22 +2,17 @@ import SendIcon from '@mui/icons-material/Send';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import { FC, useState } from 'react';
-import { addMessage } from '../../../api/messages-api';
+import { useState } from 'react';
+import { sendMessage } from '../../../redux/room/room-actions';
 
 
-interface Props {
-  roomSlug: string;
-}
-
-
-const ChatMessagesPanel: FC<Props> = ({ roomSlug }) => {
+const ChatMessagesPanel = () => {
 
   const [message, setMessage] = useState('');
 
   function onSendClick() {
     if(message.length === 0) return;
-    addMessage(roomSlug, message);
+    sendMessage(message);
     setMessage('');
   }
 
