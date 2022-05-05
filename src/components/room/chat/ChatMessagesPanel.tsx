@@ -11,7 +11,6 @@ const ChatMessagesPanel = () => {
   const messages = useAppSelector(state => state.room.messages);
   const os = useRef<OverlayScrollbarsComponent>(null);
   const [isBottom, setIsBottom] = useState(true);
-  const [forcedScrolling, setForcedScrolling] = useState(false);
 
   useEffect(() => {
     if(isBottom) {
@@ -38,9 +37,7 @@ const ChatMessagesPanel = () => {
   }
 
   function scrollBottom() {
-    setForcedScrolling(true)
-    os.current?.osInstance()?.scroll({y: '100%'}, 500, 'linear', 
-    () => setTimeout(() => setForcedScrolling(false), 100));
+    os.current?.osInstance()?.scroll({y: '100%'}, 0, 'linear')
   }
 
   return (
@@ -58,7 +55,7 @@ const ChatMessagesPanel = () => {
 
         <Box style={{position: 'absolute', right: 10, bottom: 10}}>
           <NewMessageNotification 
-            visible={!isBottom && !forcedScrolling}
+            visible={!isBottom}
             onClick={scrollBottomClicked}
             />
         </Box>
