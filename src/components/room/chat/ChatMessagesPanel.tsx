@@ -47,6 +47,7 @@ const ChatMessagesPanel = () => {
     <Box sx={{ flex: 1 }} style={{position: 'relative'}}>
         <OverlayScrollbarsComponent
           ref={os}
+          options={{overflowBehavior: {x: 'hidden', y: 'scroll'}}}
           onScroll={onScroll}
           style={{ height: '100%' }}
         >

@@ -22,8 +22,8 @@ const ChatMessage: FC<Props> = ({message}) => {
         <Typography variant="body1" component="p"><b>{ message.sender }</b></Typography>
       </Box>
 
-      <Box sx={{flex: 1}}>
-        <Typography variant="body1" component="p">{ message.content }</Typography>
+      <Box sx={{ flex: 1 }}>
+        <Typography variant="body1" component="p" style={{wordWrap: 'break-word', wordBreak: 'break-all'}}>{ message.content }</Typography>
       </Box>
 
     </Box>
