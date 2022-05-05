@@ -17,6 +17,7 @@ const ChatMessagesPanel = () => {
     if(isBottom) {
       scrollBottom()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   function updateIsBottom() {
