@@ -54,11 +54,12 @@ const ChatMessagesPanel = () => {
           }
         </OverlayScrollbarsComponent>
 
-        {!isBottom && !forcedScrolling &&
-          <Box style={{position: 'absolute', right: 10, bottom: 10}}>
-            <NewMessageNotification onClick={scrollBottomClicked} />
-          </Box>
-        }
+        <Box style={{position: 'absolute', right: 10, bottom: 10}}>
+          <NewMessageNotification 
+            visible={!isBottom && !forcedScrolling}
+            onClick={scrollBottomClicked}
+            />
+        </Box>
         
       </Box>
   );
