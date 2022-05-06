@@ -15,11 +15,11 @@ const RoomPanel: FC<Props> = ({children}) => {
       sx={{ display: 'flex', flexDirection: 'column'}}
       style={{
         borderStyle: 'solid',
-        borderWidth: '2px',
         borderColor: theme.palette.text.primary,
         borderRadius: 10,
         textAlign: 'left',
         height: '100%',
+        overflow: 'hidden',
       }}>
       {children}
     </Box>
