@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { useAppSelector } from '../../../hooks';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import ChatMessage from './ChatMessage';
+import NoChatMessage from './NoChatMessage';
 import NewMessageNotification from './NewMessageNotification';
 
 
@@ -48,7 +49,7 @@ const ChatMessagesPanel = () => {
           onScroll={onScroll}
           style={{ height: '100%' }}
         >
-          {messages.length === 0 ? <p>No messages</p> :
+          {messages.length === 0 ? <NoChatMessage /> :
             messages.map(message => <ChatMessage key={message.id} message={message} />)
           }
         </OverlayScrollbarsComponent>
