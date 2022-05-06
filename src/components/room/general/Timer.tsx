@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../../hooks';
 
 interface Props {
   roomSlug: string;

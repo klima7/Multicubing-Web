@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../../hooks';
 import ExtendedTimer from './ExtendedTimer';
-import RoomPanel from './RoomPanel';
-import RoomPanelHeader from './RoomPanelHeader';
+import RoomPanel from '../RoomPanel';
+import RoomPanelHeader from '../RoomPanelHeader';
 
 interface Props {
   roomSlug: string;
 }
 
-const Status: FC<Props> = ({roomSlug}) => {
+const General: FC<Props> = ({roomSlug}) => {
 
   const turn_number = useAppSelector(state => state.room.turn?.number);
   const scramble = useAppSelector(state => state.room.turn?.scramble);
@@ -17,7 +17,7 @@ const Status: FC<Props> = ({roomSlug}) => {
   return (
     <RoomPanel>
 
-      <RoomPanelHeader>Status</RoomPanelHeader>
+      <RoomPanelHeader>General</RoomPanelHeader>
 
       <Box sx={{ flex: 1 }}>
         <p>Turn number: {turn_number}</p>
@@ -29,4 +29,4 @@ const Status: FC<Props> = ({roomSlug}) => {
   );
 }
 
-export default Status;
+export default General;

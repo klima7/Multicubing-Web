@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
-import { startTimer, stopTimer, clearTimer, addTime } from '../../redux/room/room-actions';
+import { useAppThunkDispatch, useAppSelector } from '../../../hooks';
+import { startTimer, stopTimer, clearTimer, addTime } from '../../../redux/room/room-actions';
 import Timer from './Timer';
-import { Flag } from '../../types/types';
+import { Flag } from '../../../types/types';
 
 interface Props {
   roomSlug: string;

@@ -7,7 +7,7 @@ import Chat from './chat/Chat';
 import LoadingIndicator from '../../components/_lib/LoadingIndicator';
 import SpectatorButton from './SpectatorButton';
 import Times from './Times';
-import Status from './Status';
+import General from './general/General';
 import Stats from './Stats';
 
 interface Props {
@@ -65,7 +65,7 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
         <Box sx={{ flex: 1, display: 'flex' }}>
 
           <Box sx={{ width: '50%' }}>
-            <Status roomSlug={roomSlug} />
+            <General roomSlug={roomSlug} />
           </Box>
 
           <Box width={10} />
