@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import { useAppSelector } from '../../../hooks';
 import ExtendedTimer from './ExtendedTimer';
 import RoomPanel from '../RoomPanel';
 import RoomPanelHeader from '../RoomPanelHeader';
+import Scramble from './Scramble';
+import TurnIndicator from './TurnIndicator';
 
 interface Props {
   roomSlug: string;
@@ -11,22 +12,22 @@ interface Props {
 
 const General: FC<Props> = ({roomSlug}) => {
 
-  const turn_number = useAppSelector(state => state.room.turn?.number);
-  const scramble = useAppSelector(state => state.room.turn?.scramble);
-
   return (
     <RoomPanel>
 
       <RoomPanelHeader>General</RoomPanelHeader>
 
-      <Box sx={{ padding: '0px 10px' }} style={{textAlign: 'center'}}>
-
-        <Box sx={{ flex: 1 }}>
-          <p>Turn number: {turn_number}</p>
-          <p>Scramble: {scramble}</p>
-          <ExtendedTimer roomSlug={roomSlug} />
-        </Box>
-
+      <Box sx={{ 
+        height: '100%',
+        padding: '0px 10px', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'space-evenly', 
+        }}>
+        <TurnIndicator />
+        <ExtendedTimer roomSlug={roomSlug} />
+        <Scramble />
       </Box>
 
     </RoomPanel>
