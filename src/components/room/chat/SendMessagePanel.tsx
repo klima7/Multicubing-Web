@@ -31,7 +31,13 @@ const ChatMessagesPanel = () => {
   return (
     <Box 
       sx={{display: 'flex'}} 
-      style={{textAlign: 'left', borderTop: 'solid 2px black', padding: '0px 3px 0px 10px', borderRadius: 10}}>
+      style={{
+        textAlign: 'left', 
+        borderTop: 'solid 2px',
+        borderColor: 'inherit', 
+        padding: '0px 3px 0px 10px', 
+        borderRadius: 10
+        }}>
       <InputBase 
         placeholder='Message'
         style={{flex: 1}}

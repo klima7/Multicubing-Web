@@ -14,7 +14,6 @@ const ChatMessage: FC<Props> = ({message}) => {
       sx={{ display: 'flex', pl: 1, pr: 1.2 }}
       style={{
         borderTop: 'solid 1px gray',
-        backgroundColor: 'white',
       }}
       >
 
