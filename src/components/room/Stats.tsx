@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import RoomPanel from './RoomPanel';
+import RoomPanelHeader from './RoomPanelHeader';
 
 interface Props {
   roomSlug: string;
@@ -7,22 +9,13 @@ interface Props {
 const Stats: FC<Props> = ({roomSlug}) => {
 
   return (
-    <div style={{
-      border: 'solid 2px black', 
-      borderRadius: 10,
-      textAlign: 'left',
-      height: '100%'
-      }}>
+    <RoomPanel>
 
-      <div style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
-        <h4 style={{marginBottom: 0, marginTop: 0}}>Stats</h4>
-      </div>
+      <RoomPanelHeader>Stats</RoomPanelHeader>
 
-      <div style={{height: '100%'}}>
+      <div style={{height: '100%'}}></div>
 
-      </div>
-
-    </div>
+    </RoomPanel>
   );
 }
 

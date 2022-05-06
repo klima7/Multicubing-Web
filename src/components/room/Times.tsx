@@ -1,4 +1,5 @@
-import * as React from 'react';import { FC } from 'react';
+import * as React from 'react';
+import { FC } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,6 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import RoomPanel from './RoomPanel';
+import RoomPanelHeader from './RoomPanelHeader';
 import { useAppSelector } from '../../hooks';
 import { Time, Flag } from '../../types/types';
 
@@ -21,18 +24,9 @@ const Times: FC<Props> = ({roomSlug}) => {
   const tableTimes = useAppSelector(state => state.room.tableTimes);
 
   return (
-    <Box 
-      sx={{ display: 'flex', flexDirection: 'column'}}
-      style={{
-      border: 'solid 2px black', 
-      borderRadius: 10, 
-      textAlign: 'left',
-      height: '100%',
-      }}>
+    <RoomPanel>
 
-      <Box style={{textAlign: 'center', borderBottom: 'solid 2px black'}}>
-        <h4 style={{marginBottom: 0, marginTop: 0}}>Times</h4>
-      </Box>
+      <RoomPanelHeader>Times</RoomPanelHeader>
 
       <Box sx={{ flex: 1 }}>
         <OverlayScrollbarsComponent
@@ -65,7 +59,7 @@ const Times: FC<Props> = ({roomSlug}) => {
         </OverlayScrollbarsComponent>
       </Box>
 
-    </Box>
+    </RoomPanel>
   );
 
   function renderTime(time: Time | null) {
