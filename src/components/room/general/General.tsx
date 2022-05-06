@@ -19,10 +19,14 @@ const General: FC<Props> = ({roomSlug}) => {
 
       <RoomPanelHeader>General</RoomPanelHeader>
 
-      <Box sx={{ flex: 1 }}>
-        <p>Turn number: {turn_number}</p>
-        <p>Scramble: {scramble}</p>
-        <ExtendedTimer roomSlug={roomSlug} />
+      <Box sx={{ padding: '0px 10px' }} style={{textAlign: 'center'}}>
+
+        <Box sx={{ flex: 1 }}>
+          <p>Turn number: {turn_number}</p>
+          <p>Scramble: {scramble}</p>
+          <ExtendedTimer roomSlug={roomSlug} />
+        </Box>
+
       </Box>
 
     </RoomPanel>

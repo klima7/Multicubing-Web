@@ -8,45 +8,74 @@ interface Props {
 const Timer: FC<Props> = ({roomSlug}) => {
 
   const timer = useAppSelector(state => state.room.timer);
-  const [runTime, setRunTime] = useState(0.0);
+  const [time, setTime] = useState(0.0);
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
-    if (timer.start !== null && timer.end === null) {
+
+    // Cleared
+    if (timer.start === null) {
+      setTime(0);
+    }
+
+    // Running
+    else if (timer.end === null) {
+      let interval: ReturnType<typeof setInterval>;
       interval = setInterval(() => {
         const elapsed = +(new Date()) - +(timer.start!!);
-        const seconds = elapsed / 1000;
-        setRunTime(seconds);
+        setTime(elapsed);
       }, 10);
       return () => clearInterval(interval);
     }
+
+    // Paused
+    else {
+      const elapsed = +(timer.end!!) - +(timer.start!!);
+      setTime(elapsed);
+    }
   }, [timer]);
 
-  let timerView = null;
-  if(timer.start === null) timerView = clearedTimer();
-  else if(timer.end === null) timerView = runningTimer();
-  else timerView = pausedTimer();
+  function getTimeUnits(ms: number) {
+    const allocate = (amount: number) => {
+      const wholes = Math.floor(ms / amount);
+      ms -= wholes * amount;
+      return wholes;
+    }
+    return {
+      minutes: allocate(60 * 1000),
+      seconds: allocate(1000),
+      ms: ms,
+    }
+  }
 
+  function getTimeString(ms: number) {
+    const timeUnits = getTimeUnits(ms);
+
+    // minutes
+    const minString = timeUnits.minutes > 0 ? timeUnits.minutes + ':' : '';
+
+    // seconds
+    const secPadding = timeUnits.minutes > 0 ? 2 : 0;
+    const secString = String(timeUnits.seconds).padStart(secPadding, '0');
+
+    // ms
+    const msLimited = Math.floor(timeUnits.ms / 10)
+    const msString = String(msLimited).padStart(2, '0');
+
+    return minString + secString + '.' + msString
+  }
+
+  const timeString = getTimeString(time);
 
   return (
     <div>
-      { timerView ?? <p></p> }
+      <span style={{
+        fontFamily: 'monospace', 
+        fontSize: '50pt',
+        }}>
+        { timeString }
+      </span>
     </div>
   );
-
-  function clearedTimer() {
-    return (<span>0.00</span>)
-  }
-
-  function pausedTimer() {
-    const elapsed = +(timer.end!!) - +(timer.start!!);
-    const seconds = elapsed / 1000;
-    return (<span>{ seconds }</span>)
-  }
-  
-  function runningTimer() {
-    return (<span>{ runTime }</span>)
-  }
 
 }
 
