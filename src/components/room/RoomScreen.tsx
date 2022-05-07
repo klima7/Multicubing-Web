@@ -10,6 +10,7 @@ import Times from './Times';
 import General from './general/General';
 import Stats from './Stats';
 import KeyboardInterceptor from './KeyboardInterceptor';
+import SpectatorsList from './SpectatorsList';
 
 interface Props {
   roomSlug: string;
@@ -56,8 +57,10 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
         style={{textAlign: 'left', margin: '1ex 1ex'}}
         >
 
-        <Box>
+        <Box sx={{display: 'flex'}}>
           <SpectatorButton />
+          <Box sx={{width: '30px'}}/>
+          <SpectatorsList />
         </Box>
 
         <Box height={10} />
