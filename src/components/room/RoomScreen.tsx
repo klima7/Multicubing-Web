@@ -1,16 +1,14 @@
-import { FC, useEffect } from 'react';
-import { useWebSocket } from '../../hooks';
-import { useAppThunkDispatch, useAppSelector } from '../../hooks';
 import Box from '@mui/material/Box';
-import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
-import Chat from './chat/Chat';
+import { FC, useEffect } from 'react';
 import LoadingIndicator from '../../components/_lib/LoadingIndicator';
-import SpectatorButton from './SpectatorButton';
-import Times from './Times';
+import { useAppSelector, useAppThunkDispatch, useWebSocket } from '../../hooks';
+import { enterRoom, fetchRoom, leaveRoom, processRoomMessage } from '../../redux/room/room-actions';
+import RoomBar from './bar/RoomBar';
+import Chat from './chat/Chat';
 import General from './general/General';
-import Stats from './Stats';
 import KeyboardInterceptor from './KeyboardInterceptor';
-import SpectatorsList from './SpectatorsList';
+import Stats from './Stats';
+import Times from './Times';
 
 interface Props {
   roomSlug: string;
@@ -57,10 +55,8 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
         style={{textAlign: 'left', margin: '1ex 1ex'}}
         >
 
-        <Box sx={{display: 'flex'}}>
-          <SpectatorButton />
-          <Box sx={{width: '30px'}}/>
-          <SpectatorsList />
+        <Box sx={{height: 'auto'}}>
+          <RoomBar />
         </Box>
 
         <Box height={10} />
