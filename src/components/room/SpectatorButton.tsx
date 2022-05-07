@@ -11,21 +11,31 @@ const SpectatorButton: FC = () => {
   const dispatch = useAppThunkDispatch();
   const spectator = useAppSelector(state => state.room.me?.spectator) || false;
 
-  function onClick() {
-    dispatch(setSpectator(!spectator));
-  }
-
   return (
     <div>
-      { !spectator ?
-      <Button variant="contained" startIcon={<PauseCircleIcon />} onClick={onClick} color="primary">
-        Enter spectator mode
+      
+      <Button 
+        variant="text" 
+        startIcon={<PauseCircleIcon />} 
+        onClick={() => dispatch(setSpectator(true))} 
+        color="primary"
+        disabled={spectator}
+      >
+        Spectator
       </Button>
-      :
-      <Button variant="contained" startIcon={<PlayCircleIcon />} onClick={onClick} color="primary">
-        Enter competitor mode
+      
+      /
+
+      <Button 
+        variant="text" 
+        startIcon={<PlayCircleIcon />} 
+        onClick={() => dispatch(setSpectator(false))} 
+        color="primary"
+        disabled={!spectator}
+      >
+        Competitor
       </Button>
-      }
+  
     </div>
   );
 }

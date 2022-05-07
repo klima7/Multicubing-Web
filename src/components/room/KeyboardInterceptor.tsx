@@ -1,6 +1,6 @@
 import { FC, FocusEvent, KeyboardEvent, useRef, useEffect, useState } from 'react';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
-import { loadTimer, startTimer, stopTimer, clearTimer, addTime, nextFlag, prevFlag, addTimeNoFlag } from '../../redux/room/room-actions';
+import { loadTimer, startTimer, stopTimer, nextFlag, prevFlag, addTimeNoFlag, switchSpectator } from '../../redux/room/room-actions';
 import { TimerState } from '../../types/types';
 
 interface Props {
@@ -21,9 +21,7 @@ const KeyboardInterceptor: FC<Props> = ({children}) => {
 
   function onKeyDown(e: KeyboardEvent) {
     if (e.repeat) return
-  
     const key = e.key;
-    console.log('Key Down', key)
 
     if (chatFocused) {
       if (key === 'Escape') {
@@ -36,6 +34,9 @@ const KeyboardInterceptor: FC<Props> = ({children}) => {
         const field = document.getElementById('chat-send-field');
         e.preventDefault();
         field?.focus();
+      }
+      if (key === 'p') {
+        dispatch(switchSpectator());
       }
       else if (key === ' ') {
         if (timerState === TimerState.Cleared && timerLoaded === false) {
@@ -59,9 +60,7 @@ const KeyboardInterceptor: FC<Props> = ({children}) => {
 
   function onKeyUp(e: KeyboardEvent) {
     if (e.repeat) return
-
     const key = e.key;
-    console.log('Key up', key)
 
     if (chatFocused) {
 

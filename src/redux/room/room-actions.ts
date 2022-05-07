@@ -85,6 +85,15 @@ export function setSpectator(spectator: boolean) {
 }
 
 
+export function switchSpectator() {
+  return async (dispatch: any, getState: any) => {
+    const spectator = getState().room.me.spectator;
+    console.log('spectator', spectator);
+    dispatch(setSpectator(!spectator));
+  };
+}
+
+
 export function addTime(flag: Flag | null) {
   return async (dispatch: any, getState: any) => {
     const roomSlug = getState().room.roomSlug;
