@@ -113,6 +113,7 @@ export function sendMessage(content: string) {
 }
 
 
+export const loadTimer = roomActions.loadTimer;
 export const startTimer = roomActions.startTimer;
 export const stopTimer = roomActions.stopTimer;
 export const clearTimer = roomActions.clearTimer;

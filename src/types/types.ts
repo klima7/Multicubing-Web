@@ -112,3 +112,9 @@ export class Turn {
     public number: number,
     public scramble: string) {}
 }
+
+export enum TimerState {
+  Cleared,
+  Running,
+  Paused,
+}

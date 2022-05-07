@@ -39,6 +39,7 @@ const ChatMessagesPanel = () => {
         borderRadius: 10
         }}>
       <InputBase 
+        id='chat-send-field'
         placeholder='Message'
         style={{flex: 1}}
         value={message}

@@ -65,12 +65,14 @@ const Timer: FC<Props> = ({roomSlug}) => {
   }
 
   const timeString = getTimeString(time);
+  const color = timer.loaded ? 'green' : 'inherit';
 
   return (
     <div>
       <span style={{
         fontFamily: 'monospace', 
         fontSize: '50pt',
+        color: color,
         }}>
         { timeString }
       </span>

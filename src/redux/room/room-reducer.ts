@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction  } from '@reduxjs/toolkit'
-import { Message, Participant, Time, Turn } from '../../types/types';
+import { Message, Participant, Time, Turn, TimerState } from '../../types/types';
 
 interface StateType {
   roomSlug: string | null;
@@ -15,6 +15,8 @@ interface StateType {
   timer: {
     start: Date | null;
     end: Date | null;
+    state: TimerState;
+    loaded: boolean;
   };
 }
 
@@ -34,6 +36,8 @@ export const roomSlice = createSlice({
     timer: {
       start: null,
       end: null,
+      state: TimerState.Cleared,
+      loaded: false,
     },
   } as StateType,
   reducers: {
@@ -111,19 +115,27 @@ export const roomSlice = createSlice({
       state.times.push(action.payload.time);
       updateTable(state);
     },
+    loadTimer(state) {
+      state.timer.loaded = true;
+    },
     startTimer(state) {
       state.timer = {
         start: new Date(),
         end: null,
+        state: TimerState.Running,
+        loaded: false,
       };
     },
     stopTimer(state) {
       state.timer.end = new Date();
+      state.timer.state = TimerState.Paused;
     },
     clearTimer(state) {
       state.timer = {
         start: null,
         end: null,
+        state: TimerState.Cleared,
+        loaded: false,
       };
     }
   },

@@ -9,6 +9,7 @@ import SpectatorButton from './SpectatorButton';
 import Times from './Times';
 import General from './general/General';
 import Stats from './Stats';
+import KeyboardInterceptor from './KeyboardInterceptor';
 
 interface Props {
   roomSlug: string;
@@ -49,52 +50,54 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
   }
 
   return (
-    <Box 
-      sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 84px)' }}
-      style={{textAlign: 'left', margin: '1ex 1ex'}}
-      >
+    <KeyboardInterceptor>
+      <Box 
+        sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 84px)' }}
+        style={{textAlign: 'left', margin: '1ex 1ex'}}
+        >
 
-      <Box>
-        <SpectatorButton />
-      </Box>
-
-      <Box height={10} />
-      
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column'}}>
-
-        <Box sx={{ flex: 1, display: 'flex' }}>
-
-          <Box sx={{ width: '50%' }}>
-            <General roomSlug={roomSlug} />
-          </Box>
-
-          <Box width={10} />
-
-          <Box sx={{ width: '50%' }}>
-            <Chat />
-          </Box>
-
+        <Box>
+          <SpectatorButton />
         </Box>
 
         <Box height={10} />
+        
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column'}}>
 
-        <Box sx={{ flex: 1, display: 'flex' }}>
+          <Box sx={{ flex: 1, display: 'flex' }}>
 
-          <Box sx={{ flex: 8 }}>
-            <Times roomSlug={roomSlug} />
+            <Box sx={{ width: '50%' }}>
+              <General roomSlug={roomSlug} />
+            </Box>
+
+            <Box width={10} />
+
+            <Box sx={{ width: '50%' }}>
+              <Chat />
+            </Box>
+
           </Box>
 
-          <Box width={10} />
+          <Box height={10} />
 
-          <Box sx={{ flex: 2 }}>
-            <Stats roomSlug={roomSlug} />
+          <Box sx={{ flex: 1, display: 'flex' }}>
+
+            <Box sx={{ flex: 8 }}>
+              <Times roomSlug={roomSlug} />
+            </Box>
+
+            <Box width={10} />
+
+            <Box sx={{ flex: 2 }}>
+              <Stats roomSlug={roomSlug} />
+            </Box>
+
           </Box>
 
         </Box>
 
       </Box>
-
-    </Box>
+    </KeyboardInterceptor>
   );
 }
 
