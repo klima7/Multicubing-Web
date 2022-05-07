@@ -9,7 +9,6 @@ interface Props {
 const RoomPanelHeader: FC<Props> = ({children}) => {
 
   const theme = useTheme() as any;
-  console.log(theme);
 
   return (
     <Box style={{

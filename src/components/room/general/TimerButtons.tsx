@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import { useAppThunkDispatch, useAppSelector } from '../../../hooks';
 import { Flag } from '../../../types/types';
 import { startTimer, stopTimer, clearTimer, addTime } from '../../../redux/room/room-actions';
@@ -8,6 +9,7 @@ const TimerButtons = () => {
 
   const dispatch = useAppThunkDispatch();
   const timer = useAppSelector(state => state.room.timer);
+  const flag = useAppSelector(state => state.room.flag);
 
   function timerButtonClick() {
     if(timer.start === null)
@@ -20,17 +22,14 @@ const TimerButtons = () => {
 
   function plus2ButtonClick() {
     dispatch(addTime(Flag.PLUS2));
-    dispatch(clearTimer());
   }
 
   function dnfButtonClick() {
     dispatch(addTime(Flag.DNF));
-    dispatch(clearTimer());
   }
 
   function okButtonClick() {
     dispatch(addTime(null));
-    dispatch(clearTimer());
   }
 
   const buttons = timer.start ? (timer.end ? sendButtons() : stopButtons()) : startButtons()
@@ -48,7 +47,7 @@ const TimerButtons = () => {
             onClick={timerButtonClick}
           >
             Start
-        </Button>
+      </Button>
     );
   }
 
@@ -64,23 +63,28 @@ const TimerButtons = () => {
   }
 
   function sendButtons() {
+    const activeStyle = { backgroundColor: '#1976D255' }
+
     return (
       <Box>
         <Button 
           variant="text" 
           onClick={okButtonClick}
+          style={flag === null ? activeStyle : {}}
         >
           OK
         </Button>
         <Button 
           variant="text" 
           onClick={plus2ButtonClick}
+          style={flag === Flag.PLUS2 ? activeStyle : {}}
         >
           +2
         </Button>
         <Button 
           variant="text" 
           onClick={dnfButtonClick}
+          style={flag === Flag.DNF ? activeStyle : {}}
         >
           DNF
         </Button>

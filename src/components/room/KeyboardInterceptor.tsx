@@ -1,6 +1,6 @@
 import { FC, FocusEvent, KeyboardEvent, useRef, useEffect, useState } from 'react';
 import { useAppThunkDispatch, useAppSelector } from '../../hooks';
-import { loadTimer, startTimer, stopTimer, clearTimer, addTime } from '../../redux/room/room-actions';
+import { loadTimer, startTimer, stopTimer, clearTimer, addTime, nextFlag, prevFlag, addTimeNoFlag } from '../../redux/room/room-actions';
 import { TimerState } from '../../types/types';
 
 interface Props {
@@ -20,6 +20,8 @@ const KeyboardInterceptor: FC<Props> = ({children}) => {
   }, [])
 
   function onKeyDown(e: KeyboardEvent) {
+    if (e.repeat) return
+  
     const key = e.key;
     console.log('Key Down', key)
 
@@ -37,16 +39,27 @@ const KeyboardInterceptor: FC<Props> = ({children}) => {
       }
       else if (key === ' ') {
         if (timerState === TimerState.Cleared && timerLoaded === false) {
-          dispatch(loadTimer())
+          dispatch(loadTimer());
         }
         if (timerState === TimerState.Running) {
-          dispatch(stopTimer())
+          dispatch(stopTimer());
         }
+      }
+      else if (key === 'Enter' && timerState === TimerState.Paused) {
+        dispatch(addTimeNoFlag());
+      }
+      else if (key === 'ArrowLeft') {
+        dispatch(prevFlag());
+      }
+      else if (key === 'ArrowRight') {
+        dispatch(nextFlag());
       }
     }
   }
 
   function onKeyUp(e: KeyboardEvent) {
+    if (e.repeat) return
+
     const key = e.key;
     console.log('Key up', key)
 

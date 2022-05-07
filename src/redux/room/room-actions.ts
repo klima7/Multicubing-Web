@@ -94,9 +94,18 @@ export function addTime(flag: Flag | null) {
     const seconds = elapsed / 1000;
     try {
       await addTimeAPI(roomSlug, turn, username, seconds, flag);
+      dispatch(roomActions.clearTimer());
     } catch(e: unknown) {
       console.log('Error occurred')
     }
+  };
+}
+
+
+export function addTimeNoFlag() {
+  return async (dispatch: any, getState: any) => {
+    const flag = getState().room.flag;
+    dispatch(addTime(flag))
   };
 }
 
@@ -117,3 +126,5 @@ export const loadTimer = roomActions.loadTimer;
 export const startTimer = roomActions.startTimer;
 export const stopTimer = roomActions.stopTimer;
 export const clearTimer = roomActions.clearTimer;
+export const nextFlag = roomActions.nextFlag;
+export const prevFlag = roomActions.prevFlag;
