@@ -1,16 +1,20 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
+import { useAppSelector } from '../../../hooks';
 import ExtendedTimer from './ExtendedTimer';
 import RoomPanel from '../RoomPanel';
 import RoomPanelHeader from '../RoomPanelHeader';
 import Scramble from './Scramble';
 import TurnIndicator from './TurnIndicator';
+import SpectatorIndicator from './SpectatorIndicator';
 
 interface Props {
   roomSlug: string;
 }
 
 const General: FC<Props> = ({roomSlug}) => {
+
+  const spectator = useAppSelector(state => state.room.me?.spectator);
 
   return (
     <RoomPanel>
@@ -26,7 +30,12 @@ const General: FC<Props> = ({roomSlug}) => {
         justifyContent: 'space-evenly', 
         }}>
         <TurnIndicator />
-        <ExtendedTimer roomSlug={roomSlug} />
+        { 
+          !spectator ?
+          <ExtendedTimer roomSlug={roomSlug} />
+          :
+          <SpectatorIndicator />
+        }
         <Scramble />
       </Box>
 
