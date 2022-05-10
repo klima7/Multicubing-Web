@@ -7,7 +7,7 @@ import RoomBar from './bar/RoomBar';
 import Chat from './chat/Chat';
 import General from './general/General';
 import KeyboardInterceptor from './KeyboardInterceptor';
-import Stats from './Stats';
+import Stats from './stats/Stats';
 import Times from './Times';
 
 interface Props {
@@ -81,13 +81,13 @@ const RoomScreen: FC<Props> = ({roomSlug}) => {
 
           <Box sx={{ flex: 1, display: 'flex' }}>
 
-            <Box sx={{ flex: 8 }}>
+            <Box sx={{ flex: 5 }}>
               <Times roomSlug={roomSlug} />
             </Box>
 
             <Box width={10} />
 
-            <Box sx={{ flex: 2 }}>
+            <Box sx={{ flex: 1 }}>
               <Stats roomSlug={roomSlug} />
             </Box>
 
