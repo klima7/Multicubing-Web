@@ -20,6 +20,10 @@ const SpectatorsList: FC = () => {
       {spectators.map((s, index) => (
         <span>{index !== 0 ? ',' : ''}&nbsp;{s.user.username}</span>
       ))}
+
+      {spectators.length === 0 &&
+        <span>&nbsp;Any</span>
+      }
   
     </Box>
   );
