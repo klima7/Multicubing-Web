@@ -1,13 +1,18 @@
 import { FC, CSSProperties } from 'react';
+import Box from '@mui/material/Box';
 import RoomPanel from '../RoomPanel';
 import RoomPanelHeader from '../RoomPanelHeader';
-import Box from '@mui/material/Box';
+import { useAppSelector } from '../../../hooks';
 
 interface Props {
   roomSlug: string;
 }
 
 const Stats: FC<Props> = ({roomSlug}) => {
+
+  const stats = useAppSelector(state => state.room.stats);
+
+  const placeholder = <span>- - - -</span>
 
   const style1: CSSProperties = {
     textAlign: 'right',
@@ -34,35 +39,35 @@ const Stats: FC<Props> = ({roomSlug}) => {
 
         <table style={{margin: '10px'}}>
           <tr>
+            <td style={style1}><span>Solves:</span></td>
+            <td style={style2}>{stats.solves}</td>
+          </tr>
+          <tr>
             <td style={style1}><span>Average:</span></td>
-            <td style={style2}>9.35</td>
+            <td style={style2}>{stats.avg?.toFixed(2) ?? placeholder}</td>
           </tr>
           <tr>
             <td style={style1}><span>Best:</span></td>
-            <td style={style2}>12.86</td>
-          </tr>
-          <tr>
-            <td style={style1}><span>Solves:</span></td>
-            <td style={style2}>23</td>
+            <td style={style2}>{stats.best?.toFixed(2) ?? placeholder}</td>
           </tr>
         </table>
 
         <table style={{margin: '10px'}}>
           <tr>
             <td style={style1}><span>Avg 5:</span></td>
-            <td style={style2}>9.35</td>
+            <td style={style2}>{stats.avg5?.toFixed(2) ?? placeholder}</td>
           </tr>
           <tr>
             <td style={style1}><span>Avg 12:</span></td>
-            <td style={style2}>12.86</td>
+            <td style={style2}>{stats.avg12?.toFixed(2) ?? placeholder}</td>
           </tr>
           <tr>
             <td style={style1}><span>Avg 50:</span></td>
-            <td style={style2}>- - - -</td>
+            <td style={style2}>{stats.avg50?.toFixed(2) ?? placeholder}</td>
           </tr>
           <tr>
             <td style={style1}><span>Avg 100:</span></td>
-            <td style={style2}>- - - -</td>
+            <td style={style2}>{stats.avg100?.toFixed(2) ?? placeholder}</td>
           </tr>
         </table>
 

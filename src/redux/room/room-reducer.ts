@@ -19,6 +19,15 @@ interface StateType {
     loaded: boolean;
   };
   flag: Flag | null;
+  stats: {
+    avg: number | null,
+    best: number | null,
+    solves: number,
+    avg5: number | null,
+    avg12: number | null,
+    avg50: number | null,
+    avg100: number | null,
+  }
 }
 
 export const roomSlice = createSlice({
@@ -41,6 +50,15 @@ export const roomSlice = createSlice({
       loaded: false,
     },
     flag: null,
+    stats: {
+      avg: null,
+      best: null,
+      solves: 0,
+      avg5: null,
+      avg12: null,
+      avg50: null,
+      avg100: null,
+    }
   } as StateType,
   reducers: {
     enterRoom(state, action: PayloadAction<{roomSlug: string, username: string}>) {
@@ -80,6 +98,7 @@ export const roomSlice = createSlice({
       state.turn = action.payload.turn;
 
       updateTable(state);
+      updateStats(state);
     },
     stopLoading(state) {
       state.loading = false;
@@ -116,6 +135,7 @@ export const roomSlice = createSlice({
     updateTime(state, action: PayloadAction<{time: Time}>) {
       state.times.push(action.payload.time);
       updateTable(state);
+      updateStats(state);
     },
     loadTimer(state) {
       state.timer.loaded = true;
@@ -174,11 +194,40 @@ function updateTable(state: StateType) {
     tableTimes.push(turnTimes);
   }
   state.tableTimes = tableTimes;
-  // const table = 
 }
 
 function updateTableParticipants(state: StateType) {
   state.tableParticipants = state.participants.filter(p => p.spectator === false);
+}
+
+function updateStats(state: StateType) {
+  const username = state.username;
+  const times = state.times.filter(t => t.username === username).sort((a, b) => a.turn_no - b.turn_no)
+  const times_values = times.filter(t => t.flag !== Flag.DNF).map(t => t.time);
+
+  function calc_avg(count: number) {
+    if (times_values.length < count) return null;
+    const sliced = times_values.slice(0, count)
+    return sliced.reduce((a,b)=>a+b) / times_values.length
+  }
+
+  const solves = times.length;
+  const best = times_values.length > 0 ? Math.min(...times_values) : null;
+  const avg = times_values.length > 0 ? times_values.reduce((a,b)=>a+b) / times_values.length : null;
+
+  state.stats = {
+    solves: solves,
+    best: best,
+    avg: avg,
+    avg5: calc_avg(5),
+    avg12: calc_avg(12),
+    avg50: calc_avg(50),
+    avg100: calc_avg(100 ),
+  }
+
+  state.stats.solves = solves;
+  state.stats.best = best;
+  state.stats.avg = avg;
 }
 
 export default roomSlice.reducer;
